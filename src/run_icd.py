@@ -1,3 +1,4 @@
+
 # coding=utf-8
 # Copyright 2021 The HuggingFace Inc. team. All rights reserved.
 #
@@ -18,6 +19,8 @@ import logging
 import math
 import os
 import random
+import code #interact inside for debugging
+import pdb
 
 import datasets
 from datasets import load_dataset, load_metric
@@ -207,7 +210,7 @@ def main():
     logger.setLevel(logging.INFO if accelerator.is_local_main_process else logging.ERROR)
     if accelerator.is_local_main_process:
         datasets.utils.logging.set_verbosity_warning()
-        transformers.utils.logging.set_verbosity_info()
+        transformers.utils.logging.set_verbosity_info() #changed from info which outputs the config.json
     else:
         datasets.utils.logging.set_verbosity_error()
         transformers.utils.logging.set_verbosity_error()
@@ -259,12 +262,17 @@ def main():
     #
     # In distributed training, the .from_pretrained methods guarantee that only one local process can concurrently
     # download model & vocab.
+    
+    #this next line outputs the Model config when verbosity is set to "info" level
+    
     config = AutoConfig.from_pretrained(args.model_name_or_path, num_labels=num_labels, finetuning_task=args.task_name)
+    logger.info(accelerator.state)
+
     if args.model_type == "longformer":
         config.attention_window = args.chunk_size
     elif args.model_type in ["bert", "roberta"]:
         config.model_mode = args.model_mode
-    tokenizer = AutoTokenizer.from_pretrained(
+    tokenizer = AutoTokenizer.from_pretrained( #I am here
         args.model_name_or_path,
         use_fast=not args.use_slow_tokenizer,
         do_lower_case=not args.cased)
@@ -281,21 +289,21 @@ def main():
             config=config,
         )
 
-    sentence1_key, sentence2_key = "text", None
+    sentence1_key, sentence2_key = "TEXT", None
 
     label_to_id = {v: i for i, v in enumerate(label_list)}
-
+    
     padding = False
 
-    def preprocess_function(examples):
+    def preprocess_function(examples): #i am here
         # Tokenize the texts
         texts = (
             (examples[sentence1_key],) if sentence2_key is None else (examples[sentence1_key], examples[sentence2_key])
         )
         result = tokenizer(*texts, padding=padding, max_length=args.max_length, truncation=True, add_special_tokens="cls" not in args.model_mode)
-        if "label" in examples:
-            result["labels"] = examples["label"]
-            result["label_ids"] = [[label_to_id[label.strip()] for label in labels.strip().split(';') if label.strip() != ""] if labels is not None else [] for labels in examples["label"]]
+        if "LABELS" in examples:
+            result["labels"] = examples["LABELS"]
+            result["label_ids"] = [[label_to_id[label.strip()] for label in labels.strip().split(';') if label.strip() != ""] if labels is not None else [] for labels in examples["LABELS"]]
         return result
 
     remove_columns = raw_datasets["train"].column_names if args.train_file is not None else raw_datasets["validation"].column_names
@@ -304,7 +312,7 @@ def main():
     )
 
     eval_dataset = processed_datasets["validation"]
-
+    code.interact(local=locals())
     if args.num_train_epochs > 0:
         train_dataset = processed_datasets["train"]
         # Log a few random samples from the training set:
@@ -353,8 +361,8 @@ def main():
         train_dataloader = DataLoader(
             train_dataset, shuffle=True, collate_fn=data_collator, batch_size=args.per_device_train_batch_size
         )
-    eval_dataloader = DataLoader(eval_dataset, collate_fn=data_collator, batch_size=args.per_device_eval_batch_size)
-
+    eval_dataloader = DataLoader(eval_dataset, collate_fn=data_collator, batch_size=args.per_device_eval_batch_size) #default batch size is 8
+    #code.interact(local=locals())
     # Optimizer
     # Split weights in two groups, one with weight decay and the other not.
     no_decay = ["bias", "LayerNorm.weight"]
@@ -455,25 +463,28 @@ def main():
     
     if args.num_train_epochs == 0 and accelerator.is_local_main_process:
         model.eval()
-        all_preds = []
+        #all_preds = []
         all_preds_raw = []
         all_labels = []
+        i = 0
         for step, batch in enumerate(tqdm(eval_dataloader)):
+            i += 1
             with torch.no_grad():
                 outputs = model(**batch)
             preds_raw = outputs.logits.sigmoid().cpu()
-            preds = (preds_raw > 0.5).int()
+            #preds = (preds_raw > 0.5).int()
             all_preds_raw.extend(list(preds_raw))
-            all_preds.extend(list(preds))
+            #all_preds.extend(list(preds))
             all_labels.extend(list(batch["labels"].cpu().numpy()))
+            #if i == 500: break
         
         all_preds_raw = np.stack(all_preds_raw)
-        all_preds = np.stack(all_preds)
+        #all_preds = np.stack(all_preds)
         all_labels = np.stack(all_labels)
-        metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw)
+        #metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw)
         logger.info(f"evaluation finished")
-        logger.info(f"metrics: {metrics}")
-        for t in [0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5]:
+        #logger.info(f"metrics: {metrics}")
+        for t in [0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5]: #these are the cutoffs of the logits
             all_preds = (all_preds_raw > t).astype(int)
             metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw, k=[5,8,15])
             logger.info(f"metrics for threshold {t}: {metrics}")
