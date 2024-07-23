@@ -284,7 +284,7 @@ def main():
             config=config,
         )
     else:
-        model = model_class.from_pretrained(
+        model = model_class.from_pretrained( #This is where a trained model is loaded
             args.output_dir,
             config=config,
         )
@@ -312,7 +312,7 @@ def main():
     )
 
     eval_dataset = processed_datasets["validation"]
-    code.interact(local=locals())
+    #code.interact(local=locals())
     if args.num_train_epochs > 0:
         train_dataset = processed_datasets["train"]
         # Log a few random samples from the training set:
@@ -476,7 +476,7 @@ def main():
             all_preds_raw.extend(list(preds_raw))
             #all_preds.extend(list(preds))
             all_labels.extend(list(batch["labels"].cpu().numpy()))
-            #if i == 500: break
+            #if i == 50: break
         
         all_preds_raw = np.stack(all_preds_raw)
         #all_preds = np.stack(all_preds)
@@ -484,6 +484,7 @@ def main():
         #metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw)
         logger.info(f"evaluation finished")
         #logger.info(f"metrics: {metrics}")
+        #code.interact(local=locals())
         for t in [0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5]: #these are the cutoffs of the logits
             all_preds = (all_preds_raw > t).astype(int)
             metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw, k=[5,8,15])
