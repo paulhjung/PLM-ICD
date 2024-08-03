@@ -10,9 +10,9 @@ from torch.utils.data.dataloader import DataLoader
 from tqdm.auto import tqdm
 import transformers
 import torch
-import code
 import numpy as np
-from accelerate import Accelerator, DistributedDataParallelKwargs
+import accelerate
+#from accelerate import Accelerator, DistributedDataParallelKwargs
 from transformers import (
     AdamW,
     AutoConfig,
@@ -33,7 +33,7 @@ logging.basicConfig(
     level=logging.INFO,
 )
 datasets.utils.logging.set_verbosity_warning()
-transformers.utils.logging.set_verbosity_error() #changed from info which outputs the config.json
+transformers.utils.logging.set_verbosity_error() ###changed from info which outputs the config.json
 
 ##### Args
 args = parse_args()
@@ -78,10 +78,11 @@ def main():
     # In distributed training, the .from_pretrained methods guarantee that only one local process can concurrently download model & vocab.
     ### This next line outputs the Model config when verbosity is set to "info" level
     ### default model_name_or_path is "../models/roberta-mimic3-50", need to change this for ICD-10
-    config = AutoConfig.from_pretrained(args.model_name_or_path, num_labels=num_labels, finetuning_task=args.task_name)
-    config.model_mode = args.model_mode ### default is "laat", args.model_type = "roberta"
-    tokenizer = AutoTokenizer.from_pretrained(args.model_name_or_path,use_fast=not args.use_slow_tokenizer,do_lower_case=not args.cased)
-    model_class = RobertaForMultilabelClassification
+    config = AutoConfig.from_pretrained(args.model_name_or_path, num_labels=num_labels)#, finetuning_task=args.task_name)
+    config.model_mode = args.model_mode ### different modes implemented by PLM-ICD, default is "laat"; args.model_type = "roberta"
+    #code.interact(local=locals())
+    tokenizer = AutoTokenizer.from_pretrained(args.tokenizer_path,use_fast=not args.use_slow_tokenizer,do_lower_case=not args.cased)
+    model_class = RobertaForMultilabelClassification ### from modeling_roberta
     ### This is where model is trained or loaded
     if args.num_train_epochs > 0:
         model = model_class.from_pretrained(args.model_name_or_path,from_tf=bool(".ckpt" in args.model_name_or_path),config=config)
@@ -89,6 +90,7 @@ def main():
         model = model_class.from_pretrained(args.output_dir, config=config)
 
     ##### Tokenize the texts
+    logger.info("Tokenizing")
     def preprocess_function(examples):
         result = tokenizer(examples["TEXT"], padding=False, max_length=args.max_length, truncation=True, add_special_tokens=True)
         if "LABELS" in examples:
@@ -99,16 +101,16 @@ def main():
     processed_datasets = raw_datasets.map(preprocess_function, batched=True, remove_columns=remove_columns)
     eval_dataset = processed_datasets["validation"]
     train_dataset = processed_datasets["train"]
+    logger.info("Finished tokenizing")
     ### https://huggingface.co/docs/datasets/en/process
     ### for testing: code.interact(local=locals())
-
+ 
     ##### Collate data
     def data_collator(features):
         batch = dict()
         max_length = max([len(f["input_ids"]) for f in features])
         if max_length % args.chunk_size != 0:
             max_length = max_length - (max_length % args.chunk_size) + args.chunk_size
-
         batch["input_ids"] = torch.tensor([
             f["input_ids"] + [tokenizer.pad_token_id] * (max_length - len(f["input_ids"]))
             for f in features
@@ -129,7 +131,12 @@ def main():
                 label_ids[i, label] = 1
         batch["labels"] = label_ids
         return batch
+    
+    ##### DataLoaders
     eval_dataloader = DataLoader(eval_dataset, collate_fn=data_collator, batch_size=args.per_device_eval_batch_size) #default batch size is 8
+    train_dataloader = DataLoader(train_dataset, shuffle=True, collate_fn=data_collator, batch_size=args.per_device_train_batch_size)
+    # Note -> the training dataloader needs to be prepared before we grab his length below (cause its length will be
+    # shorter in multiprocess)    
     
     ##### Optimizer
     # Split weights in two groups, one with weight decay and the other not.
@@ -146,9 +153,23 @@ def main():
     ]
     optimizer = AdamW(optimizer_grouped_parameters, lr=args.learning_rate)
 
+    ##### Scheduler (and math around the number of training steps)
+    num_update_steps_per_epoch = 3 #math.ceil(len(train_dataloader) / args.gradient_accumulation_steps)
+    if args.max_train_steps is None:
+        args.max_train_steps = args.num_train_epochs * num_update_steps_per_epoch
+    else:
+        args.num_train_epochs = math.ceil(args.max_train_steps / num_update_steps_per_epoch)
+
+    lr_scheduler = get_scheduler(
+        name=args.lr_scheduler_type,
+        optimizer=optimizer,
+        num_warmup_steps=args.num_warmup_steps,
+        num_training_steps=args.max_train_steps,
+    )
+
     ##### Accelerator
     # Initialize the accelerator. We will let the accelerator handle device placement for us in this example.
-    accelerator = Accelerator(kwargs_handlers=[DistributedDataParallelKwargs(find_unused_parameters=True)])
+    accelerator = accelerate.Accelerator(kwargs_handlers=[accelerate.DistributedDataParallelKwargs(find_unused_parameters=True)], project_dir=args.output_dir)
     # Make one log on every process with the configuration for debugging.
     # Setup logging, we only want one process per machine to log things on the screen.
     # accelerator.is_local_main_process is only True for one process per machine.
@@ -156,36 +177,25 @@ def main():
     logger.setLevel(logging.INFO if accelerator.is_local_main_process else logging.ERROR)
     if not accelerator.is_local_main_process:
         logger.info("Accelerator NOT on")
-    model, optimizer, eval_dataloader = accelerator.prepare(model, optimizer, eval_dataloader)
+    model, optimizer, eval_dataloader, train_dataloader = accelerator.prepare(model, optimizer, eval_dataloader, train_dataloader)
+    # Register the LR scheduler
+    accelerator.register_for_checkpointing(lr_scheduler)
+    accelerate.utils.ProjectConfiguration(automatic_checkpoint_naming=True)
     
+    ### I don't know if this is necessary, but just in case
+    device = accelerator.device
+    model.to(device)
+
     ##### Train!
     # Get the metric function
     if args.task_name is not None:
         metric = load_metric("glue", args.task_name)
     if args.num_train_epochs > 0:
         # Log a few random samples from the training set:
-        for index in random.sample(range(len(train_dataset)), 3):
+        for index in random.sample(range(len(train_dataset)), 1):
             logger.info(f"Sample {index} of the training set: {train_dataset[index]}.")
             logger.info(f"Original tokens: {tokenizer.decode(train_dataset[index]['input_ids'])}")
-        train_dataloader = DataLoader(train_dataset, shuffle=True, collate_fn=data_collator, batch_size=args.per_device_train_batch_size)
-        train_dataloader = accelerator.prepare(train_dataloader)
-
-        # Note -> the training dataloader needs to be prepared before we grab his length below (cause its length will be
-        # shorter in multiprocess)
-
-        # Scheduler and math around the number of training steps.
-        num_update_steps_per_epoch = math.ceil(len(train_dataloader) / args.gradient_accumulation_steps)
-        if args.max_train_steps is None:
-            args.max_train_steps = args.num_train_epochs * num_update_steps_per_epoch
-        else:
-            args.num_train_epochs = math.ceil(args.max_train_steps / num_update_steps_per_epoch)
-
-        lr_scheduler = get_scheduler(
-            name=args.lr_scheduler_type,
-            optimizer=optimizer,
-            num_warmup_steps=args.num_warmup_steps,
-            num_training_steps=args.max_train_steps,
-        )
+        
         total_batch_size = args.per_device_train_batch_size * accelerator.num_processes * args.gradient_accumulation_steps
 
         logger.info("***** Running training *****")
@@ -218,6 +228,7 @@ def main():
 
                 if completed_steps >= args.max_train_steps:
                     break
+            accelerator.save_state(args.output_dir)
 
             model.eval()
             all_preds = []
@@ -272,7 +283,8 @@ def main():
     if args.output_dir is not None and args.num_train_epochs > 0:
         accelerator.wait_for_everyone()
         unwrapped_model = accelerator.unwrap_model(model)
-        unwrapped_model.save_pretrained(args.output_dir, save_function=accelerator.save)
+        logger.info("Saving model")
+        unwrapped_model.save_pretrained(args.output_dir,is_main_process=accelerator.is_main_process, save_function=accelerator.save)
 
 if __name__ == "__main__":
     main()

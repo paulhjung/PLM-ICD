@@ -476,7 +476,7 @@ def main():
             all_preds_raw.extend(list(preds_raw))
             #all_preds.extend(list(preds))
             all_labels.extend(list(batch["labels"].cpu().numpy()))
-            #if i == 50: break
+            if i == 50: break
         
         all_preds_raw = np.stack(all_preds_raw)
         #all_preds = np.stack(all_preds)
