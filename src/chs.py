@@ -3,6 +3,7 @@ import logging
 import math 
 import os
 import random
+import pyarrow.feather as fthr
 import code ### interact inside for debugging
 import datasets ### Hugging Face
 from datasets import load_dataset, load_metric
@@ -52,18 +53,28 @@ def main():
     # In distributed training, the load_dataset function guarantee that only one local process can concurrently
     # download the dataset.
     data_files = {}
+    fthrTF = False
     if args.train_file is not None:
         data_files["train"] = args.train_file
     if args.validation_file is not None:
         data_files["validation"] = args.validation_file
     datafile_path = (args.train_file if args.train_file is not None else args.validation_file).split(".")[-1]
+    
+    # if fthrTF:
+    #     if args.train_file is not None:
+    #         pd_train_df= fthr.read_feather(args.train_file)
+    #         raw_datasets["train"] =  datasets.Dataset.from_pandas(pd_train_df)
+    #     if args.validation_file is not None:
+    #         pd_val_df= fthr.read_feather(args.validation_file)
+    #         raw_datasets["validation"] =  datasets.Dataset.from_pandas(pd_val_df)
+    # else:
     raw_datasets = load_dataset(datafile_path, data_files=data_files) #data_files (str or Sequence or Mapping, optional) — Path(s) to source data file(s).
     # More on loading datasets: https://huggingface.co/docs/datasets/v2.20.0/en/package_reference/loading_methods#datasets.load_dataset
 
     ##### Load labels
     # A useful fast method: https://huggingface.co/docs/datasets/package_reference/main_classes.html#datasets.Dataset.unique
     labels = set()
-    all_codes_file = "../data/mimic3/ALL_CODES.txt" if not args.code_50 else "../data/mimic3/ALL_CODES_50.txt"
+    all_codes_file = "../data/mimic4/codes_atleast5.txt" if not args.code_50 else "../data/mimic3/ALL_CODES_50.txt"
     ### Need to update the above file for ICD-10
 
     with open(all_codes_file, "r") as f:
