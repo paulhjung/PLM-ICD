@@ -1,0 +1,30 @@
+	K219,Gastro-esophageal reflux disease without esophagitis 
+*N400,Benign prostatic hyperplasia without lower urinary tract symptoms
+*D62,Acute posthemorrhagic anemia
+*G8929,Other chronic pain
+*I4891,Unspecified atrial fibrillation
+	N189,Chronic kidney disease; unspecified
+*I110,Hypertensive heart disease with heart failure
+*I129,Hypertensive chronic kidney disease w stg 1-4/unsp chr kdny
+*K5900,Constipation; unspecified
+	E669,Obesity; unspecified
+*E119,Type 2 diabetes mellitus without complications
+*E039,Hypothyroidism; unspecified
+	I252,Old myocardial infarction
+*N390,Urinary tract infection; site not specified
+*I10,Essential (primary) hypertension
+*J449,Chronic obstructive pulmonary disease; unspecified
+*I480,Paroxysmal atrial fibrillation
+	E872,Acidosis
+	G4733,Obstructive sleep apnea (adult) (pediatric)
+	F17210,Nicotine dependence; cigarettes; uncomplicated
+	N183,Chronic kidney disease; stage 3 (moderate)
+*D649,Anemia; unspecified
+*E871,Hypo-osmolality and hyponatremia
+*F329,Major depressive disorder; single episode; unspecified
+*I2510,Athscl heart disease of native coronary artery w/o ang pctrs
+*N179,Acute kidney failure; unspecified
+*E1122,Type 2 diabetes mellitus w diabetic chronic kidney disease
+	E785,Hyperlipidemia; unspecified
+	J45909,Unspecified asthma; uncomplicated
+*F419,Anxiety disorder; unspecified
