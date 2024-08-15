@@ -69,11 +69,13 @@ def reformat_code_dataframe(row: pd.DataFrame, col: str) -> pd.Series:
 
 def parse_codes_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     """Parse the codes dataframe"""
-    df = df.rename(columns={"hadm_id": ID_COLUMN, "subject_id": SUBJECT_ID_COLUMN})
+    df[ID_COLUMN] = df["hadm_id"]
+    df["version"] = df["icd_version"]
+    df = df.rename(columns={"subject_id": SUBJECT_ID_COLUMN})
     df = df.dropna(subset=["icd_code"])
     df = df.drop_duplicates(subset=[ID_COLUMN, "icd_code"])
     df = (
-        df.groupby([SUBJECT_ID_COLUMN, ID_COLUMN, "icd_version"])
+        df.groupby(["hadm_id", "version"])
         .apply(partial(reformat_code_dataframe, col="icd_code"), include_groups=False)
         .reset_index()
     )
