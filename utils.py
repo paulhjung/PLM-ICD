@@ -85,33 +85,6 @@ def reformat_icd10(code: str, is_diag: bool) -> str:
         return code
     return code[:3] + "." + code[3:]
 
-def format_code_dataframe(df: pd.DataFrame, col_in: str, col_out: str) -> pd.DataFrame:
-    """Formats the code dataframe.
-    Args:
-        df (pd.DataFrame): The dataframe containing the codes.
-        col_in (str): The name of the column containing the codes.
-        col_out (str): The new name of the column containing the codes
-    Returns:
-        pd.DataFrame: The formatted dataframe.
-    """
-    df = df.rename(
-        columns={
-            "HADM_ID": ID_COLUMN,
-            "SUBJECT_ID": SUBJECT_ID_COLUMN,
-            "TEXT": TEXT_COLUMN,
-        }
-    )
-    df = df.sort_values([SUBJECT_ID_COLUMN, ID_COLUMN])
-    df[col_in] = df[col_in].astype(str).str.strip()
-    df = df[[SUBJECT_ID_COLUMN, ID_COLUMN, col_in]].rename({col_in: col_out}, axis=1)
-    # remove codes that are nan
-    df = df[df[col_out] != "nan"]
-    return (
-        df.groupby([SUBJECT_ID_COLUMN, ID_COLUMN])
-        .apply(partial(reformat_code_dataframe, col=col_out))
-        .reset_index()
-    )
-
 def top_k_codes(df: pd.DataFrame, column_names: list[str], k: int) -> set[str]:
     """Get the top k most frequent codes from a dataframe"""
     df = df.copy()
