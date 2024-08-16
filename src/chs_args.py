@@ -27,8 +27,8 @@ from evaluation import all_metrics
 def parse_args():
     parser = argparse.ArgumentParser(description="Finetune a transformers model on a text classification task")
     parser.add_argument("--task_name", type=str, default=None, help="The name of the GLUE task to train on.")
-    parser.add_argument("--train_file", type=str, default=None, help="A csv or a json file containing the training data.")
-    parser.add_argument("--validation_file", type=str, default=None, help="A csv or a json file containing the validation data.")
+    parser.add_argument("--train_file", type=str, default="../data/mimic4/CHSmimic4icd10train15-1424.csv", help="A csv or a json file containing the training data.")
+    parser.add_argument("--validation_file", type=str, default="../data/mimic4/CHSmimic4icd10test15-1424.csv", help="A csv or a json file containing the validation data.")
     parser.add_argument("--code_file", type=str, default=None, help="A txt file containing all codes.")
     parser.add_argument("--max_length", type=int, default=4096, help="The maximum total input sequence length after tokenization. Seq longer than this are truncated, seq shorter are padded if `--pad_to_max_lengh` is passed.")
     parser.add_argument("--chunk_size", type=int, default=128, help="The size of chunks that we'll split the inputs into")

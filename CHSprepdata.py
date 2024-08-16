@@ -143,7 +143,8 @@ numrows = mimic_diag.shape[0]
 logging.info(f"Numrows codes is {numrows}, Numrows notes is {numrows_notes}")
 logging.info("Finished loading data")
 
-##### Parse codes and notes
+###### Process the data 
+# Drop na, duplicates, rename columns, group codes, drop icd9
 mimic_diag = parse_codes_dataframe(mimic_diag)
 mimic_notes = parse_notes_dataframe(mimic_notes)
 mimic_diag10 = mimic_diag[mimic_diag["icd_version"] == 10]
@@ -152,22 +153,19 @@ numrows = mimic_diag.shape[0]
 numrows10 = mimic_diag10.shape[0]
 logging.info(f"Parsed: Numrows codes is {numrows}, Numrows notes is {numrows_notes}, Numrows codes10 is {numrows10}")
 
+# Merge the dfs
 mimiciv_10 = mimic_notes.merge(mimic_diag10[[ID_COLUMN, "icd_code"]], on=ID_COLUMN, how="right")
 numrows = mimiciv_10.shape[0]
 logging.info(f"Merged notes+codes: Numrows is {numrows}")
 
-# remove unneeded columns
+# Remove unneeded columns
 mimiciv_10 = mimiciv_10.drop(columns=["charttime","storetime","note_seq", "note_type","note_id"])
 
-# remove notes with no codes
+# Remove notes with no codes, subject_id
 mimiciv_10 = mimiciv_10.dropna(subset=["icd_code"], how="all")
-numrows = mimiciv_10.shape[0]
-logging.info(f"Removed notes with no codes: Num rows is {numrows}")
-
-##### Old filter codes (now just find top codes) 
-codes2keep(mimiciv_10, ["icd_code"], MIN_TARGET_COUNT)
-top_k_codes(mimiciv_10, ["icd_code"], 120)
-logging.info(f"filter_codes: Num rows is {numrows}")
+m = mimiciv_10[mimiciv_10["SUBJECT_ID"].apply(lambda x: x > 0)]
+numrows = m.shape[0]
+logging.info(f"Removed notes with no codes, subject_id: Num rows is {numrows}")
 
 # Text preprocess the notes
 preprocessor = TextPreprocessor(
@@ -179,29 +177,38 @@ preprocessor = TextPreprocessor(
     remove_brackets=False,
     convert_danish_characters=True,
 )
-m10pp = preprocesser(df=mimiciv_10, preprocessor=preprocessor)
+m10pp = preprocesser(df=m, preprocessor=preprocessor)
 # preprocesser changes icd10_code from list to string joined by semicolon
 m10pp = m10pp.drop(columns=["icd_code"])
 numrows = m10pp.shape[0]
 logging.info(f"Text preprocess icd10: Num rows is {numrows}")
 
-# remove empty text, subject_id
+# Remove empty/long text
 m10pp = m10pp[m10pp["length"].apply(lambda x: x > 0)]
 numrows = m10pp.shape[0]
 logging.info(f"Remove empty text: Num rows is {numrows}")
-m = m10pp[m10pp["length"].apply(lambda x: x < 10000)]
-numrows = m.shape[0]
+m10 = m10pp[m10pp["length"].apply(lambda x: x < 10000)]
+numrows = m10.shape[0]
 logging.info(f"Remove long text: Num rows is {numrows}")
-m = m[m["SUBJECT_ID"].apply(lambda x: x > 0)]
-numrows = m.shape[0]
-logging.info(f"Remove empty subject_id: Num rows is {numrows}")
+
+# Shuffle df
+m10 = m10.sample(frac = 1)
+
+##### Old filter codes (now just find top codes) 
+codes2keep(m10, ["icd_code"], MIN_TARGET_COUNT)
+top_k_codes(m10, ["icd_code"], 120)
+logging.info(f"filter_codes: Num rows is {numrows}")
 
 ##### Save files to disk
 # code.interact(local=locals())
-trainrows = int(numrows*.9)
-train10 = m[:trainrows]
-test10 = m[trainrows:]
+trainrows = int(numrows*.8)
+valrows = int(numrows*.9)
+train10 = m10[:trainrows]
+val10 = m10[trainrows:valrows]
+test10 = m10[valrows:]
 trainfile = 'CHSmimic4icd10train'+str(time.strftime("%d-%H%M"))+'.csv'
+valfile = 'CHSmimic4icd10validation'+str(time.strftime("%d-%H%M"))+'.csv'
 testfile = 'CHSmimic4icd10test'+str(time.strftime("%d-%H%M"))+'.csv'
 train10.to_csv(output_dir_icd10 / trainfile, index=False)#, quoting=csv.QUOTE_NONE) 
+val10.to_csv(output_dir_icd10 / valfile, index=False)#, quoting=csv.QUOTE_NONE) 
 test10.to_csv(output_dir_icd10 / testfile, index=False)#, quoting=csv.QUOTE_NONE) 
