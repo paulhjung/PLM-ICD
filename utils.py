@@ -31,33 +31,33 @@ class TextPreprocessor:
         self.remove_brackets = remove_brackets
         self.convert_danish_characters = convert_danish_characters
 
-    def __call__(self, df: vaex.dataframe.DataFrame) -> vaex.dataframe.DataFrame:
+    def __call__(self, df):
         if self.lower:
-            df[TEXT_COLUMN] = df[TEXT_COLUMN].str.lower()
+            df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.lower()
         if self.convert_danish_characters:
-            df[TEXT_COLUMN] = df[TEXT_COLUMN].str.replace("å", "aa", regex=True)
-            df[TEXT_COLUMN] = df[TEXT_COLUMN].str.replace("æ", "ae", regex=True)
-            df[TEXT_COLUMN] = df[TEXT_COLUMN].str.replace("ø", "oe", regex=True)
+            df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("å", "aa", regex=True)
+            df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("æ", "ae", regex=True)
+            df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("ø", "oe", regex=True)
         if self.remove_accents:
-            df[TEXT_COLUMN] = df[TEXT_COLUMN].str.replace("é|è|ê", "e", regex=True)
-            df[TEXT_COLUMN] = df[TEXT_COLUMN].str.replace("á|à|â", "a", regex=True)
-            df[TEXT_COLUMN] = df[TEXT_COLUMN].str.replace("ô|ó|ò", "o", regex=True)
+            df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("é|è|ê", "e", regex=True)
+            df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("á|à|â", "a", regex=True)
+            df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("ô|ó|ò", "o", regex=True)
         if self.remove_brackets:
-            df[TEXT_COLUMN] = df[TEXT_COLUMN].str.replace("\[[^]]*\]", "", regex=True)
+            df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("\[[^]]*\]", "", regex=True)
         if self.remove_special_characters:
-            df[TEXT_COLUMN] = df[TEXT_COLUMN].str.replace("\n|/|-", " ", regex=True)
-            df[TEXT_COLUMN] = df[TEXT_COLUMN].str.replace(
+            df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("\n|/|-", " ", regex=True)
+            df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace(
                 "[^a-zA-Z0-9 ]", "", regex=True
             )
         if self.remove_special_characters_mullenbach:
-            df[TEXT_COLUMN] = df[TEXT_COLUMN].str.replace(
+            df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace(
                 "[^A-Za-z0-9]+", " ", regex=True
             )
         if self.remove_digits:
-            df[TEXT_COLUMN] = df[TEXT_COLUMN].str.replace("(\s\d+)+\s", " ", regex=True)
+            df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("(\s\d+)+\s", " ", regex=True)
 
-        df[TEXT_COLUMN] = df[TEXT_COLUMN].str.replace("\s+", " ", regex=True)
-        df[TEXT_COLUMN] = df[TEXT_COLUMN].str.strip()
+        df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("\s+", " ", regex=True)
+        df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.strip()
         return df
 
 def merge_code_dataframes(code_dfs: list[pd.DataFrame]) -> pd.DataFrame:

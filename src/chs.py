@@ -56,17 +56,17 @@ def main():
     if args.train_file is not None:
         data_files["train"] = args.train_file
     if args.validation_file is not None:
-        data_files["validation"] = args.validation_file
-    datafile_path = (args.train_file if args.train_file is not None else args.validation_file).split(".")[-1]
+        data_files["validation"] = args.validation_file 
+    # validation set is for hyperparameters; learning rate (.00005 in Edin), minibatch (8 or 16 in Edin), Decision boundary cutoff theshold (default in Edin is .5), Dropout is .2 in Edin
+    datafiletype = (args.train_file if args.train_file is not None else args.validation_file).split(".")[-1]
     
-    raw_datasets = load_dataset(datafile_path, data_files=data_files) #data_files (str or Sequence or Mapping, optional) — Path(s) to source data file(s).
+    raw_datasets = load_dataset(datafiletype, data_files=data_files) #data_files (str or Sequence or Mapping, optional) — Path(s) to source data file(s).
     # More on loading datasets: https://huggingface.co/docs/datasets/v2.20.0/en/package_reference/loading_methods#datasets.load_dataset
 
     ##### Load labels
     # A useful fast method: https://huggingface.co/docs/datasets/package_reference/main_classes.html#datasets.Dataset.unique
     labels = set()
-    all_codes_file = "../data/mimic4/codes_atleast5.txt" if not args.code_50 else "../data/mimic3/ALL_CODES_50.txt"
-    ### Need to update the above file for ICD-10
+    all_codes_file = "../data/mimic4/top25codes.txt" #if not args.code_50 else "../data/mimic3/ALL_CODES_50.txt"
 
     with open(all_codes_file, "r") as f:
         for line in f:
@@ -86,6 +86,9 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer_path,use_fast=not args.use_slow_tokenizer,do_lower_case=not args.cased)
     model_class = RobertaForMultilabelClassification ### from modeling_roberta
     ### This is where model is trained or loaded
+
+
+    #!!!! Revisit checkpointing
     if args.num_train_epochs > 0:
         model = model_class.from_pretrained(args.model_name_or_path,from_tf=bool(".ckpt" in args.model_name_or_path),config=config)
     else:
@@ -99,8 +102,8 @@ def main():
             result["labels"] = examples["LABELS"]
             result["label_ids"] = [[label_to_id[label.strip()] for label in labels.strip().split(';') if label.strip() != ""] if labels is not None else [] for labels in examples["LABELS"]]
         return result
-    remove_columns = raw_datasets["train"].column_names if args.train_file is not None else raw_datasets["validation"].column_names
-    processed_datasets = raw_datasets.map(preprocess_function, batched=True, remove_columns=remove_columns)
+    columns_names = raw_datasets["train"].column_names if args.train_file is not None else raw_datasets["validation"].column_names
+    processed_datasets = raw_datasets.map(preprocess_function, batched=True, remove_columns=columns_names)
     eval_dataset = processed_datasets["validation"]
     train_dataset = processed_datasets["train"]
     logger.info("Finished tokenizing")

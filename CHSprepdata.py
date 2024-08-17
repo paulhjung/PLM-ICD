@@ -89,50 +89,9 @@ def parse_notes_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 
 def preprocesser(df: pd.DataFrame, preprocessor: TextPreprocessor) -> pd.DataFrame:
     df = preprocessor(df)
-    df["LABELS"] = df["icd_code"].apply(lambda x: ";".join(x))
-    df["length"] = df.TEXT.str.count(" ") + 1
+    df.loc[:,"LABELS"] = df["icd_code"].apply(lambda x: ";".join(x))
+    df.loc[:,"length"] = df.TEXT.str.count(" ") + 1
     return df
-
-def codes2keep(df: pd.DataFrame, columns: list[str], min_count: int) -> pd.DataFrame:
-    """Filter the codes dataframe to only include codes that appear at least min_count times
-    Args:
-        df (pd.DataFrame): The codes dataframe
-        col (str): The column name of the codes
-        min_count (int): The minimum number of times a code must appear
-    Returns:
-        pd.DataFrame: The filtered codes dataframe
-    """
-    for col in columns:
-        code_counts = Counter([codE for codes in df[col] for codE in codes])
-        codes_to_keep = set(
-            codE for codE, count in code_counts.items() if count >= min_count
-        )
-        #df[col] = df[col].apply(lambda x: [codE for codE in x if codE in codes_to_keep])
-        print(f"Number of unique codes in {col} before filtering: {len(code_counts)}")
-        print(f"Number of unique codes in {col} after filtering: {len(codes_to_keep)}")
-        outfile = "codes_atleast"+str(min_count)+".txt"
-        f = open(output_dir_icd10 / outfile, "a")
-        for cde in codes_to_keep:
-            if cde in code_dict.keys():
-                f.write(cde+','+ str(code_dict[cde][0]).replace(",",";")+'\n')
-            else:
-                print(cde)
-        f.close()
-    #return df
-def top_k_codes(df: pd.DataFrame, column_names: list[str], k: int) -> set[str]:
-    """Get the top k most frequent codes from a dataframe"""
-    df = df.copy()
-    counter = Counter()
-    for col in column_names:
-        list(map(counter.update, df[col]))
-    top_k = counter.most_common(k)
-    outfile = "top_k.txt"
-    f = open(output_dir_icd10 / outfile, "a")
-    for cde in top_k:
-        if cde[0] in code_dict.keys():
-            f.write(cde[0]+', '+str(cde[1])+'\t'+code_dict[cde[0]][0]+'\n')
-        #else: print(str(cde)+'\n')
-    f.close()
 
 logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 ##### Load the data
@@ -179,7 +138,6 @@ preprocessor = TextPreprocessor(
 )
 m10pp = preprocesser(df=m, preprocessor=preprocessor)
 # preprocesser changes icd10_code from list to string joined by semicolon
-m10pp = m10pp.drop(columns=["icd_code"])
 numrows = m10pp.shape[0]
 logging.info(f"Text preprocess icd10: Num rows is {numrows}")
 
@@ -195,14 +153,15 @@ logging.info(f"Remove long text: Num rows is {numrows}")
 m10 = m10.sample(frac = 1)
 
 ##### Old filter codes (now just find top codes) 
-codes2keep(m10, ["icd_code"], MIN_TARGET_COUNT)
-top_k_codes(m10, ["icd_code"], 120)
-logging.info(f"filter_codes: Num rows is {numrows}")
+#codes2keep(m10, ["icd_code"], MIN_TARGET_COUNT)
+#top_k_codes(m10, ["icd_code"], 120)
+m10 = m10.drop(columns=["icd_code"])
+#logging.info(f"filter_codes: Num rows is {numrows}")
 
 ##### Save files to disk
 # code.interact(local=locals())
-trainrows = int(numrows*.8)
-valrows = int(numrows*.9)
+trainrows = int(numrows*.84)
+valrows = int(numrows*.92)
 train10 = m10[:trainrows]
 val10 = m10[trainrows:valrows]
 test10 = m10[valrows:]
@@ -212,3 +171,44 @@ testfile = 'CHSmimic4icd10test'+str(time.strftime("%d-%H%M"))+'.csv'
 train10.to_csv(output_dir_icd10 / trainfile, index=False)#, quoting=csv.QUOTE_NONE) 
 val10.to_csv(output_dir_icd10 / valfile, index=False)#, quoting=csv.QUOTE_NONE) 
 test10.to_csv(output_dir_icd10 / testfile, index=False)#, quoting=csv.QUOTE_NONE) 
+
+#########################
+# Functions for later use
+def codes2keep(df: pd.DataFrame, columns: list[str], min_count: int) -> pd.DataFrame:
+    """Filter the codes dataframe to only include codes that appear at least min_count times
+    Args:
+        df (pd.DataFrame): The codes dataframe
+        col (str): The column name of the codes
+        min_count (int): The minimum number of times a code must appear
+    Returns:
+        pd.DataFrame: The filtered codes dataframe
+    """
+    for col in columns:
+        code_counts = Counter([codE for codes in df[col] for codE in codes])
+        codes_to_keep = set(
+            codE for codE, count in code_counts.items() if count >= min_count
+        )
+        #df[col] = df[col].apply(lambda x: [codE for codE in x if codE in codes_to_keep])
+        print(f"Number of unique codes in {col} before filtering: {len(code_counts)}")
+        print(f"Number of unique codes in {col} after filtering: {len(codes_to_keep)}")
+        outfile = "codes_atleast"+str(min_count)+".txt"
+        f = open(output_dir_icd10 / outfile, "a")
+        for cde in codes_to_keep:
+            if cde in code_dict.keys():
+                f.write(cde+','+ str(code_dict[cde][0]).replace(",",";")+'\n')
+        f.close()
+    #return df
+def top_k_codes(df: pd.DataFrame, column_names: list[str], k: int) -> set[str]:
+    """Get the top k most frequent codes from a dataframe"""
+    df = df.copy()
+    counter = Counter()
+    for col in column_names:
+        list(map(counter.update, df[col]))
+    top_k = counter.most_common(k)
+    outfile = "top_k.txt"
+    f = open(output_dir_icd10 / outfile, "a")
+    for cde in top_k:
+        if cde[0] in code_dict.keys():
+            f.write(cde[0]+', '+str(cde[1])+'\t'+code_dict[cde[0]][0]+'\n')
+        #else: print(str(cde)+'\n')
+    f.close()
