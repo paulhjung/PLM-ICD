@@ -160,16 +160,15 @@ m10 = m10.drop(columns=["icd_code"])
 
 ##### Save files to disk
 # code.interact(local=locals())
-trainrows = int(numrows*.84)
+#trainrows = int(numrows*.84)
 valrows = int(numrows*.92)
-train10 = m10[:trainrows]
-val10 = m10[trainrows:valrows]
+train10 = m10[:valrows]
 test10 = m10[valrows:]
 trainfile = 'CHSmimic4icd10train'+str(time.strftime("%d-%H%M"))+'.csv'
-valfile = 'CHSmimic4icd10validation'+str(time.strftime("%d-%H%M"))+'.csv'
+#valfile = 'CHSmimic4icd10validation'+str(time.strftime("%d-%H%M"))+'.csv'
 testfile = 'CHSmimic4icd10test'+str(time.strftime("%d-%H%M"))+'.csv'
 train10.to_csv(output_dir_icd10 / trainfile, index=False)#, quoting=csv.QUOTE_NONE) 
-val10.to_csv(output_dir_icd10 / valfile, index=False)#, quoting=csv.QUOTE_NONE) 
+#val10.to_csv(output_dir_icd10 / valfile, index=False)#, quoting=csv.QUOTE_NONE) 
 test10.to_csv(output_dir_icd10 / testfile, index=False)#, quoting=csv.QUOTE_NONE) 
 
 #########################

@@ -57,7 +57,7 @@ def main():
         data_files["train"] = args.train_file
     if args.validation_file is not None:
         data_files["validation"] = args.validation_file 
-    # validation set is for hyperparameters; learning rate (.00005 in Edin), minibatch (8 or 16 in Edin), Decision boundary cutoff theshold (default in Edin is .5), Dropout is .2 in Edin
+    # validation set is for hyperparameters; learning rate (.00005 in Edin), minibatch 4?(8 or 16 in Edin), Decision boundary cutoff theshold (default in Edin is .5), Dropout is .2 in Edin, Chunksize
     datafiletype = (args.train_file if args.train_file is not None else args.validation_file).split(".")[-1]
     
     raw_datasets = load_dataset(datafiletype, data_files=data_files) #data_files (str or Sequence or Mapping, optional) — Path(s) to source data file(s).
@@ -82,7 +82,6 @@ def main():
     ### default model_name_or_path is "../models/roberta-mimic3-50", need to change this for ICD-10
     config = AutoConfig.from_pretrained(args.model_name_or_path, num_labels=num_labels)#, finetuning_task=args.task_name)
     config.model_mode = args.model_mode ### different modes implemented by PLM-ICD, default is "laat"; args.model_type = "roberta"
-    #code.interact(local=locals())
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer_path,use_fast=not args.use_slow_tokenizer,do_lower_case=not args.cased)
     model_class = RobertaForMultilabelClassification ### from modeling_roberta
     ### This is where model is trained or loaded
@@ -96,16 +95,23 @@ def main():
 
     ##### Tokenize the texts
     logger.info("Tokenizing")
-    def preprocess_function(examples):
+    def tokenizing_function(examples):
+        logger.info("in tokenizer function")
+        ### tokenizer returns a dict with keys 'input_ids' and 'attention_mask'
         result = tokenizer(examples["TEXT"], padding=False, max_length=args.max_length, truncation=True, add_special_tokens=True)
+        ### examples keys are 'SUBJECT_ID', 'HADM_ID', 'TEXT', 'LABELS', 'length'
+        #code.interact(local=locals())
         if "LABELS" in examples:
             result["labels"] = examples["LABELS"]
-            result["label_ids"] = [[label_to_id[label.strip()] for label in labels.strip().split(';') if label.strip() != ""] if labels is not None else [] for labels in examples["LABELS"]]
+            label_ids = []
+            result["label_ids"] = [[label_to_id.get(label.strip()) for label in labels.strip().split(';') if label.strip() != ""] if labels is not None else [] for labels in examples["LABELS"]]
         return result
-    columns_names = raw_datasets["train"].column_names if args.train_file is not None else raw_datasets["validation"].column_names
-    processed_datasets = raw_datasets.map(preprocess_function, batched=True, remove_columns=columns_names)
-    eval_dataset = processed_datasets["validation"]
-    train_dataset = processed_datasets["train"]
+    column_names = raw_datasets["train"].column_names if args.train_file is not None else raw_datasets["validation"].column_names
+    tokenized_datasets = raw_datasets.map(tokenizing_function, batched=True, remove_columns=column_names)
+    ### note: tokenized_datasets has many copies of None in the "label_ids" lists due to use of .get method
+    ### for documentation on map() see https://huggingface.co/docs/datasets/v1.1.1/processing.html default batch is 1000
+    eval_dataset = tokenized_datasets["validation"]
+    train_dataset = tokenized_datasets["train"]
     logger.info("Finished tokenizing")
     ### https://huggingface.co/docs/datasets/en/process
     ### for testing: code.interact(local=locals())
@@ -113,6 +119,7 @@ def main():
     ##### Collate data
     def data_collator(features):
         batch = dict()
+        code.interact(local=locals())
         max_length = max([len(f["input_ids"]) for f in features])
         if max_length % args.chunk_size != 0:
             max_length = max_length - (max_length % args.chunk_size) + args.chunk_size
@@ -138,6 +145,15 @@ def main():
         return batch
     
     ##### DataLoaders
+    #!!!!
+    # /opt/anaconda3/envs/plm/lib/python3.10/site-packages/transformers/optimization.py:591: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
+    # warnings.warn(
+    # 08/19/2024 16:20:36 - INFO - __main__ -   Distributed environment: NO
+    # Num processes: 1
+    # Process index: 0
+    # Local process index: 0
+    # Device: mps
+    # Mixed precision type: no
     eval_dataloader = DataLoader(eval_dataset, collate_fn=data_collator, batch_size=args.per_device_eval_batch_size) #default batch size is 8
     train_dataloader = DataLoader(train_dataset, shuffle=True, collate_fn=data_collator, batch_size=args.per_device_train_batch_size)
     # Note -> the training dataloader needs to be prepared before we grab his length below (cause its length will be
@@ -156,9 +172,11 @@ def main():
             "weight_decay": 0.0,
         },
     ]
+    logger.info("Setting optimizer")
     optimizer = AdamW(optimizer_grouped_parameters, lr=args.learning_rate)
 
     ##### Scheduler (and math around the number of training steps)
+    # Set next to 3 to test checkpointing
     num_update_steps_per_epoch = 3 #math.ceil(len(train_dataloader) / args.gradient_accumulation_steps)
     if args.max_train_steps is None:
         args.max_train_steps = args.num_train_epochs * num_update_steps_per_epoch
@@ -193,8 +211,8 @@ def main():
 
     ##### Train!
     # Get the metric function
-    if args.task_name is not None:
-        metric = load_metric("glue", args.task_name)
+    #if args.task_name is not None:
+    #    metric = load_metric("glue", args.task_name)
     if args.num_train_epochs > 0:
         # Log a few random samples from the training set:
         for index in random.sample(range(len(train_dataset)), 1):
@@ -214,7 +232,10 @@ def main():
         progress_bar = tqdm(range(args.max_train_steps), disable=not accelerator.is_local_main_process)
         completed_steps = 0
 
+        i = 0
         for epoch in tqdm(range(args.num_train_epochs)):
+            i += 1
+            logger.info(f"Epoch = {i}")
             model.train()
             epoch_loss = 0.0
             for step, batch in enumerate(train_dataloader):
@@ -235,6 +256,7 @@ def main():
                     break
             accelerator.save_state(args.output_dir)
 
+            logger.info(f"Done with training for Epoch{i}")
             model.eval()
             all_preds = []
             all_preds_raw = []
