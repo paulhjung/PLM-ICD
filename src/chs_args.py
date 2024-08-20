@@ -27,7 +27,7 @@ from evaluation import all_metrics
 def parse_args():
     parser = argparse.ArgumentParser(description="Finetune a transformers model on a text classification task")
     parser.add_argument("--task_name", type=str, default=None, help="The name of the GLUE task to train on.")
-    parser.add_argument("--train_file", type=str, default="../data/mimic4/CHSmimic4icd10train15-1424.csv", help="A csv or a json file containing the training data.")
+    parser.add_argument("--train_file", type=str, default="../data/mimic4/CHSmimic4icd10train", help="A csv or a json file containing the training data.")
     parser.add_argument("--validation_file", type=str, default="../data/mimic4/CHSmimic4icd10test15-1424.csv", help="A csv or a json file containing the validation data.")
     parser.add_argument("--code_file", type=str, default=None, help="A txt file containing all codes.")
     parser.add_argument("--max_length", type=int, default=4092, help="The maximum total input sequence length after tokenization. Seq longer than this are truncated, seq shorter are padded if `--pad_to_max_lengh` is passed.")
@@ -43,7 +43,7 @@ def parse_args():
     parser.add_argument("--per_device_eval_batch_size", type=int, default=1, help="Batch size (per device) for the evaluation dataloader.")
     parser.add_argument("--learning_rate", type=float, default=5e-5, help="Initial learning rate (after the potential warmup period) to use.")
     parser.add_argument("--weight_decay", type=float, default=0.0, help="Weight decay to use.")
-    parser.add_argument("--num_train_epochs", type=int, default=2, help="Total number of training epochs to perform.")
+    parser.add_argument("--num_train_epochs", type=int, default=20, help="Total number of training epochs to perform.")
     parser.add_argument("--max_train_steps", type=int, default=None, help="Total number of training steps to perform. If provided, overrides num_train_epochs.")
     parser.add_argument("--gradient_accumulation_steps", type=int, default=1, help="Number of updates steps to accumulate before performing a backward/update pass.")
     parser.add_argument("--lr_scheduler_type", type=str, default="linear", help="The scheduler type to use.", choices=["linear", "cosine", "cosine_with_restarts", "polynomial", "constant", "constant_with_warmup"])
@@ -57,9 +57,9 @@ def parse_args():
     if args.task_name is None and args.train_file is None and args.validation_file is None:
         raise ValueError("Need either a task name or a training/validation file.")
     else:
-        if args.train_file is not None:
-            extension = args.train_file.split(".")[-1]
-            assert extension in ["csv", "json"], "`train_file` should be a csv or a json file."
+        #if args.train_file is not None:
+        #    extension = args.train_file.split(".")[-1]
+        #    assert extension in ["csv", "json"], "`train_file` should be a csv or a json file."
         if args.validation_file is not None:
             extension = args.validation_file.split(".")[-1]
             assert extension in ["csv", "json"], "`validation_file` should be a csv or a json file."

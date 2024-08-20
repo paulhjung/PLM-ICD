@@ -160,16 +160,19 @@ m10 = m10.drop(columns=["icd_code"])
 
 ##### Save files to disk
 # code.interact(local=locals())
-#trainrows = int(numrows*.84)
-valrows = int(numrows*.92)
-train10 = m10[:valrows]
-test10 = m10[valrows:]
-trainfile = 'CHSmimic4icd10train'+str(time.strftime("%d-%H%M"))+'.csv'
-#valfile = 'CHSmimic4icd10validation'+str(time.strftime("%d-%H%M"))+'.csv'
+k = int(numrows*.1)
+for i in range(9):
+    d = m10[i*k:(i+1)*k]
+    fn = f'CHSmimic4icd10train{i}.csv' 
+    d.to_csv(output_dir_icd10 / fn, index=False)
+test10 = m10[9*k:]
 testfile = 'CHSmimic4icd10test'+str(time.strftime("%d-%H%M"))+'.csv'
-train10.to_csv(output_dir_icd10 / trainfile, index=False)#, quoting=csv.QUOTE_NONE) 
-#val10.to_csv(output_dir_icd10 / valfile, index=False)#, quoting=csv.QUOTE_NONE) 
 test10.to_csv(output_dir_icd10 / testfile, index=False)#, quoting=csv.QUOTE_NONE) 
+#trainfile = 'CHSmimic4icd10train'+str(time.strftime("%d-%H%M"))+'.csv'
+#valfile = 'CHSmimic4icd10validation'+str(time.strftime("%d-%H%M"))+'.csv'
+#train10.to_csv(output_dir_icd10 / trainfile, index=False)#, quoting=csv.QUOTE_NONE) 
+#val10.to_csv(output_dir_icd10 / valfile, index=False)#, quoting=csv.QUOTE_NONE) 
+
 
 #########################
 # Functions for later use

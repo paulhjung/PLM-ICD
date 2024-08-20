@@ -13,7 +13,6 @@ import transformers
 import torch
 import numpy as np
 import accelerate
-#from accelerate import Accelerator, DistributedDataParallelKwargs
 from transformers import (
     AdamW,
     AutoConfig,
@@ -54,11 +53,12 @@ def main():
     # download the dataset.
     data_files = {}
     if args.train_file is not None:
-        data_files["train"] = args.train_file
+        for i in range(9):
+            data_files["train"+str(i)] = args.train_file+str(i)+".csv"
     if args.validation_file is not None:
         data_files["validation"] = args.validation_file 
     # validation set is for hyperparameters; learning rate (.00005 in Edin), minibatch 4?(8 or 16 in Edin), Decision boundary cutoff theshold (default in Edin is .5), Dropout is .2 in Edin, Chunksize
-    datafiletype = (args.train_file if args.train_file is not None else args.validation_file).split(".")[-1]
+    datafiletype = "csv"
     
     raw_datasets = load_dataset(datafiletype, data_files=data_files) #data_files (str or Sequence or Mapping, optional) — Path(s) to source data file(s).
     # More on loading datasets: https://huggingface.co/docs/datasets/v2.20.0/en/package_reference/loading_methods#datasets.load_dataset
@@ -100,46 +100,44 @@ def main():
         ### tokenizer returns a dict with keys 'input_ids' and 'attention_mask'
         result = tokenizer(examples["TEXT"], padding=False, max_length=args.max_length, truncation=True, add_special_tokens=True)
         ### examples keys are 'SUBJECT_ID', 'HADM_ID', 'TEXT', 'LABELS', 'length'
-        #code.interact(local=locals())
         if "LABELS" in examples:
             result["labels"] = examples["LABELS"]
-            label_ids = []
-            result["label_ids"] = [[label_to_id.get(label.strip()) for label in labels.strip().split(';') if label.strip() != ""] if labels is not None else [] for labels in examples["LABELS"]]
+            result["label_ids"] = [[label_to_id.get(label.strip()) for label in labels.strip().split(';') if label.strip() in label_to_id.keys() ] if labels is not None else [] for labels in examples["LABELS"]]
         return result
-    column_names = raw_datasets["train"].column_names if args.train_file is not None else raw_datasets["validation"].column_names
+    column_names = raw_datasets["train0"].column_names if args.train_file is not None else raw_datasets["validation"].column_names
     tokenized_datasets = raw_datasets.map(tokenizing_function, batched=True, remove_columns=column_names)
-    ### note: tokenized_datasets has many copies of None in the "label_ids" lists due to use of .get method
+    logger.info("Finished tokenizing")
     ### for documentation on map() see https://huggingface.co/docs/datasets/v1.1.1/processing.html default batch is 1000
     eval_dataset = tokenized_datasets["validation"]
-    train_dataset = tokenized_datasets["train"]
-    logger.info("Finished tokenizing")
+    train_dataset = tokenized_datasets["train0"]
+    for i in range(1,8):
+        train_dataset = datasets.concatenate_datasets([train_dataset, tokenized_datasets[f"train{i}"]])
+    #code.interact(local=locals())
     ### https://huggingface.co/docs/datasets/en/process
-    ### for testing: code.interact(local=locals())
  
-    ##### Collate data
-    def data_collator(features):
+    ##### Collate data of the mini-batches https://pytorch.org/docs/stable/data.html
+    def data_collator(results):
         batch = dict()
-        code.interact(local=locals())
-        max_length = max([len(f["input_ids"]) for f in features])
+        max_length = max([len(row["input_ids"]) for row in results]) ### max lenth of the batch; less or equal to --max_length
         if max_length % args.chunk_size != 0:
             max_length = max_length - (max_length % args.chunk_size) + args.chunk_size
         batch["input_ids"] = torch.tensor([
-            f["input_ids"] + [tokenizer.pad_token_id] * (max_length - len(f["input_ids"]))
-            for f in features
-        ]).contiguous().view((len(features), -1, args.chunk_size))
-        if "attention_mask" in features[0]:
+            row["input_ids"] + [tokenizer.pad_token_id] * (max_length - len(row["input_ids"]))
+            for row in results
+        ]).contiguous().view((len(results), -1, args.chunk_size))
+        if "attention_mask" in results[0]:
             batch["attention_mask"] = torch.tensor([
-                f["attention_mask"] + [0] * (max_length - len(f["attention_mask"]))
-                for f in features
-            ]).contiguous().view((len(features), -1, args.chunk_size))
-        if "token_type_ids" in features[0]:
+                row["attention_mask"] + [0] * (max_length - len(row["attention_mask"]))
+                for row in results
+            ]).contiguous().view((len(results), -1, args.chunk_size))
+        if "token_type_ids" in results[0]:
             batch["token_type_ids"] = torch.tensor([
-                f["token_type_ids"] + [0] * (max_length - len(f["token_type_ids"]))
-                for f in features
-            ]).contiguous().view((len(features), -1, args.chunk_size))
-        label_ids = torch.zeros((len(features), len(label_list)))
-        for i, f in enumerate(features):
-            for label in f["label_ids"]:
+                row["token_type_ids"] + [0] * (max_length - len(row["token_type_ids"]))
+                for row in results
+            ]).contiguous().view((len(results), -1, args.chunk_size))
+        label_ids = torch.zeros((len(results), len(label_list)))
+        for i, row in enumerate(results):
+            for label in row["label_ids"]:
                 label_ids[i, label] = 1
         batch["labels"] = label_ids
         return batch
@@ -154,7 +152,7 @@ def main():
     # Local process index: 0
     # Device: mps
     # Mixed precision type: no
-    eval_dataloader = DataLoader(eval_dataset, collate_fn=data_collator, batch_size=args.per_device_eval_batch_size) #default batch size is 8
+    eval_dataloader = DataLoader(eval_dataset, collate_fn=data_collator, batch_size=args.per_device_eval_batch_size) #default batch size is 8, should we use drop_last argument in DataLoader??
     train_dataloader = DataLoader(train_dataset, shuffle=True, collate_fn=data_collator, batch_size=args.per_device_train_batch_size)
     # Note -> the training dataloader needs to be prepared before we grab his length below (cause its length will be
     # shorter in multiprocess)    
@@ -177,7 +175,7 @@ def main():
 
     ##### Scheduler (and math around the number of training steps)
     # Set next to 3 to test checkpointing
-    num_update_steps_per_epoch = 3 #math.ceil(len(train_dataloader) / args.gradient_accumulation_steps)
+    num_update_steps_per_epoch = math.ceil(len(train_dataloader) / args.gradient_accumulation_steps)
     if args.max_train_steps is None:
         args.max_train_steps = args.num_train_epochs * num_update_steps_per_epoch
     else:
