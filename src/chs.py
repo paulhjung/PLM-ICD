@@ -199,6 +199,7 @@ def main():
     if not accelerator.is_local_main_process:
         logger.info("Accelerator NOT on")
     model, optimizer, eval_dataloader, train_dataloader = accelerator.prepare(model, optimizer, eval_dataloader, train_dataloader)
+    #accelerator.load_state("../models/CHSroberta-mimic4")
     # Register the LR scheduler
     accelerator.register_for_checkpointing(lr_scheduler)
     accelerate.utils.ProjectConfiguration(automatic_checkpoint_naming=True)
@@ -255,25 +256,25 @@ def main():
             accelerator.save_state(args.output_dir)
 
             logger.info(f"Done with training for Epoch{i}")
-            model.eval()
-            all_preds = []
-            all_preds_raw = []
-            all_labels = []
-            for step, batch in tqdm(enumerate(eval_dataloader)):
-                with torch.no_grad():
-                    outputs = model(**batch)
-                preds_raw = outputs.logits.sigmoid().cpu()
-                preds = (preds_raw > 0.5).int()
-                all_preds_raw.extend(list(preds_raw))
-                all_preds.extend(list(preds))
-                all_labels.extend(list(batch["labels"].cpu().numpy()))
+            # model.eval()
+            # all_preds = []
+            # all_preds_raw = []
+            # all_labels = []
+            # for step, batch in tqdm(enumerate(eval_dataloader)):
+            #     with torch.no_grad():
+            #         outputs = model(**batch)
+            #     preds_raw = outputs.logits.sigmoid().cpu()
+            #     preds = (preds_raw > 0.5).int()
+            #     all_preds_raw.extend(list(preds_raw))
+            #     all_preds.extend(list(preds))
+            #     all_labels.extend(list(batch["labels"].cpu().numpy()))
             
-            all_preds_raw = np.stack(all_preds_raw)
-            all_preds = np.stack(all_preds)
-            all_labels = np.stack(all_labels)
-            metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw)
-            logger.info(f"epoch {epoch} finished")
-            logger.info(f"metrics: {metrics}")
+            # all_preds_raw = np.stack(all_preds_raw)
+            # all_preds = np.stack(all_preds)
+            # all_labels = np.stack(all_labels)
+            # metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw)
+            # logger.info(f"epoch {epoch} finished")
+            # logger.info(f"metrics: {metrics}")
     
     ##### Test!
     if args.num_train_epochs == 0 and accelerator.is_local_main_process:
