@@ -43,6 +43,7 @@ def main():
     if args.seed is not None:
         set_seed(args.seed)
 
+    """
     ##### Load datasets
     # For CSV/JSON files, this script will use as labels the column called 'label' and as pair of sentences
     # the sentences in columns called 'sentence1' and 'sentence2' if such column exists or the first two columns not named
@@ -108,10 +109,17 @@ def main():
     tokenized_datasets = raw_datasets.map(tokenizing_function, batched=True, remove_columns=column_names)
     logger.info("Finished tokenizing")
     ### for documentation on map() see https://huggingface.co/docs/datasets/v1.1.1/processing.html default batch is 1000
+    """
+    tokenized_datasets = datasets.load_from_disk('tokenized_datasets')
     eval_dataset = tokenized_datasets["validation"]
     train_dataset = tokenized_datasets["train0"]
     for i in range(1,8):
         train_dataset = datasets.concatenate_datasets([train_dataset, tokenized_datasets[f"train{i}"]])
+
+
+    #length = [len(x) for x in examples["attention_mask"]]
+    #totsum = [sum(x) for x in examples["attention_mask"]]
+    # the above give the same output so attention is pointless
     #code.interact(local=locals())
     ### https://huggingface.co/docs/datasets/en/process
  
@@ -190,7 +198,7 @@ def main():
 
     ##### Accelerator
     # Initialize the accelerator. We will let the accelerator handle device placement for us in this example.
-    accelerator = accelerate.Accelerator(kwargs_handlers=[accelerate.DistributedDataParallelKwargs(find_unused_parameters=True)], project_dir=args.output_dir)
+    accelerator = accelerate.Accelerator(kwargs_handlers=[accelerate.DistributedDataParallelKwargs(find_unused_parameters=True)], mixed_precision=args.mixed_precision, project_dir=args.output_dir)
     # Make one log on every process with the configuration for debugging.
     # Setup logging, we only want one process per machine to log things on the screen.
     # accelerator.is_local_main_process is only True for one process per machine.
@@ -290,6 +298,7 @@ def main():
             preds_raw = outputs.logits.sigmoid().cpu()
             #preds = (preds_raw > 0.5).int()
             all_preds_raw.extend(list(preds_raw))
+            if i==10: print(all_preds_raw)
             #all_preds.extend(list(preds))
             all_labels.extend(list(batch["labels"].cpu().numpy()))
             #if i == 50: break
@@ -301,7 +310,7 @@ def main():
         logger.info(f"evaluation finished")
         #logger.info(f"metrics: {metrics}")
         #code.interact(local=locals())
-        for t in [0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5]: #these are the cutoffs of the logits
+        for t in [0.2, 0.225, 0.25, 0.275, 0.3, 0.325]: #these are the cutoffs of the logits
             all_preds = (all_preds_raw > t).astype(int)
             metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw, k=[5,8,15])
             logger.info(f"metrics for threshold {t}: {metrics}")

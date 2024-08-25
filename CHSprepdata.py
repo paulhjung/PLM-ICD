@@ -155,7 +155,7 @@ m10 = m10.sample(frac = 1)
 ##### Old filter codes (now just find top codes) 
 #codes2keep(m10, ["icd_code"], MIN_TARGET_COUNT)
 #top_k_codes(m10, ["icd_code"], 120)
-m10 = m10.drop(columns=["icd_code"])
+m10 = m10.drop(columns=["icd_code","SUBJECT_ID","HADM_ID"])
 #logging.info(f"filter_codes: Num rows is {numrows}")
 
 ##### Save files to disk

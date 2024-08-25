@@ -55,7 +55,13 @@ class TextPreprocessor:
             )
         if self.remove_digits:
             df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("(\s\d+)+\s", " ", regex=True)
-
+        df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("name", "", regex=True)
+        df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("unit", "", regex=True)
+        df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("no admission", "", regex=True)
+        df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("admission", "", regex=True)
+        df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("date of birth", "", regex=True)        
+        df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("date", "", regex=True)
+        df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("discharge", "", regex=True)
         df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.replace("\s+", " ", regex=True)
         df.loc[:,(TEXT_COLUMN)] = df[TEXT_COLUMN].str.strip()
         return df

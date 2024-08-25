@@ -43,7 +43,7 @@ class RobertaForMultilabelClassification(RobertaPreTrainedModel):
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
         if "cls" in self.model_mode:
             self.classifier = nn.Linear(config.hidden_size, config.num_labels)
-        elif "laat" in self.model_mode:
+        elif "laat" in self.model_mode: #This is the one that CHS uses
             self.first_linear = nn.Linear(config.hidden_size, config.hidden_size, bias=False)
             self.second_linear = nn.Linear(config.hidden_size, config.num_labels, bias=False)
             self.third_linear = nn.Linear(config.hidden_size, config.num_labels)
