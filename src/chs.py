@@ -27,7 +27,7 @@ from evaluation import all_metrics
 from chs_args import parse_args
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(
+logging.basicConfig(filename='log.log',
     format="%(asctime)s - %(levelname)s - %(name)s -   %(message)s",
     datefmt="%m/%d/%Y %H:%M:%S",
     level=logging.INFO,
@@ -43,7 +43,7 @@ def main():
     if args.seed is not None:
         set_seed(args.seed)
 
-    """
+    
     ##### Load datasets
     # For CSV/JSON files, this script will use as labels the column called 'label' and as pair of sentences
     # the sentences in columns called 'sentence1' and 'sentence2' if such column exists or the first two columns not named
@@ -52,17 +52,21 @@ def main():
     # single column. You can easily tweak this behavior (see below)
     # In distributed training, the load_dataset function guarantee that only one local process can concurrently
     # download the dataset.
+    """
     data_files = {}
-    if args.train_file is not None:
-        for i in range(9):
-            data_files["train"+str(i)] = args.train_file+str(i)+".csv"
+    if args.devmode:
+        data_files["train"+str(0)] = args.train_file+str(0)+".csv"
+    else:
+        if args.train_file is not None:
+            for i in range(9):
+                data_files["train"+str(i)] = args.train_file+str(i)+".csv"
     if args.validation_file is not None:
         data_files["validation"] = args.validation_file 
     # validation set is for hyperparameters; learning rate (.00005 in Edin), minibatch 4?(8 or 16 in Edin), Decision boundary cutoff theshold (default in Edin is .5), Dropout is .2 in Edin, Chunksize
     datafiletype = "csv"
-    
     raw_datasets = load_dataset(datafiletype, data_files=data_files) #data_files (str or Sequence or Mapping, optional) — Path(s) to source data file(s).
     # More on loading datasets: https://huggingface.co/docs/datasets/v2.20.0/en/package_reference/loading_methods#datasets.load_dataset
+    """
 
     ##### Load labels
     # A useful fast method: https://huggingface.co/docs/datasets/package_reference/main_classes.html#datasets.Dataset.unique
@@ -94,6 +98,7 @@ def main():
     else:
         model = model_class.from_pretrained(args.output_dir, config=config)
 
+    """
     ##### Tokenize the texts
     logger.info("Tokenizing")
     def tokenizing_function(examples):
@@ -110,17 +115,23 @@ def main():
     logger.info("Finished tokenizing")
     ### for documentation on map() see https://huggingface.co/docs/datasets/v1.1.1/processing.html default batch is 1000
     """
-    tokenized_datasets = datasets.load_from_disk('tokenized_datasets')
+    DIRECTORY_PLM = "/Users/paulj/Documents/Github/PLM-ICD/data/mimic4" #data for PLM-ICD
+    if args.devmode:
+        save_path = DIRECTORY_PLM + f'tokensdata_nodigits{args.remove_digits}_noFW{args.remove_firstwords}_max'+str(args.max_length)+'DEV'
+    else:
+        save_path = DIRECTORY_PLM + f'tokensdata_nodigits{args.remove_digits}_noFW{args.remove_firstwords}_max'+str(args.max_length)
+    tokenized_datasets = datasets.load_from_disk(save_path)
     eval_dataset = tokenized_datasets["validation"]
     train_dataset = tokenized_datasets["train0"]
-    for i in range(1,8):
-        train_dataset = datasets.concatenate_datasets([train_dataset, tokenized_datasets[f"train{i}"]])
+    if not args.devmode:
+        for i in range(1,8):
+            train_dataset = datasets.concatenate_datasets([train_dataset, tokenized_datasets[f"train{i}"]])
 
-
-    #length = [len(x) for x in examples["attention_mask"]]
-    #totsum = [sum(x) for x in examples["attention_mask"]]
+    # Check if attention mask is being used
+    #length = [len(x) for x in train_dataset["attention_mask"]]
+    #totsum = [sum(x) for x in train_dataset["attention_mask"]]
     # the above give the same output so attention is pointless
-    #code.interact(local=locals())
+    #ßcode.interact(local=locals())
     ### https://huggingface.co/docs/datasets/en/process
  
     ##### Collate data of the mini-batches https://pytorch.org/docs/stable/data.html
@@ -182,8 +193,8 @@ def main():
     optimizer = AdamW(optimizer_grouped_parameters, lr=args.learning_rate)
 
     ##### Scheduler (and math around the number of training steps)
-    # Set next to 3 to test checkpointing
-    num_update_steps_per_epoch = math.ceil(len(train_dataloader) / args.gradient_accumulation_steps)
+    # Set next to small number to test checkpointing
+    num_update_steps_per_epoch =  math.ceil(len(train_dataloader) / args.gradient_accumulation_steps)
     if args.max_train_steps is None:
         args.max_train_steps = args.num_train_epochs * num_update_steps_per_epoch
     else:
@@ -198,7 +209,10 @@ def main():
 
     ##### Accelerator
     # Initialize the accelerator. We will let the accelerator handle device placement for us in this example.
-    accelerator = accelerate.Accelerator(kwargs_handlers=[accelerate.DistributedDataParallelKwargs(find_unused_parameters=True)], mixed_precision=args.mixed_precision, project_dir=args.output_dir)
+    accelerator = accelerate.Accelerator(
+        kwargs_handlers=[accelerate.DistributedDataParallelKwargs(find_unused_parameters=True)], 
+        mixed_precision=args.mixed_precision, 
+        project_dir=args.output_dir)
     # Make one log on every process with the configuration for debugging.
     # Setup logging, we only want one process per machine to log things on the screen.
     # accelerator.is_local_main_process is only True for one process per machine.
@@ -206,10 +220,13 @@ def main():
     logger.setLevel(logging.INFO if accelerator.is_local_main_process else logging.ERROR)
     if not accelerator.is_local_main_process:
         logger.info("Accelerator NOT on")
-    model, optimizer, eval_dataloader, train_dataloader = accelerator.prepare(model, optimizer, eval_dataloader, train_dataloader)
-    #accelerator.load_state("../models/CHSroberta-mimic4")
+    model, optimizer, eval_dataloader, train_dataloader, lr_scheduler = accelerator.prepare(model, optimizer, eval_dataloader, train_dataloader, lr_scheduler)
+    if args.fromcheckpoint:
+        logger.info("Loading checkpoint")
+        accelerator.load_state("../models/nodigitsTrue-128-4epochs-32batch-dev")
     # Register the LR scheduler
-    accelerator.register_for_checkpointing(lr_scheduler)
+    #accelerator.register_for_checkpointing(lr_scheduler)
+    #accelerator = Accelerator(project_dir="my/save/path")
     accelerate.utils.ProjectConfiguration(automatic_checkpoint_naming=True)
     
     ### I don't know if this is necessary, but just in case
@@ -235,6 +252,8 @@ def main():
         logger.info(f"  Total train batch size (w. parallel, distributed & accumulation) = {total_batch_size}")
         logger.info(f"  Gradient Accumulation steps = {args.gradient_accumulation_steps}")
         logger.info(f"  Total optimization steps = {args.max_train_steps}")
+        logger.info(f"  Max lentgh = {args.max_length}")
+        logger.info(f"  Remove digits = {args.remove_digits}")
         # Only show the progress bar once on each machine.
         progress_bar = tqdm(range(args.max_train_steps), disable=not accelerator.is_local_main_process)
         completed_steps = 0
@@ -310,7 +329,7 @@ def main():
         logger.info(f"evaluation finished")
         #logger.info(f"metrics: {metrics}")
         #code.interact(local=locals())
-        for t in [0.2, 0.225, 0.25, 0.275, 0.3, 0.325]: #these are the cutoffs of the logits
+        for t in [.2, 0.225, 0.25, 0.275, 0.3, 0.325, .35, .375]: #these are the cutoffs of the logits
             all_preds = (all_preds_raw > t).astype(int)
             metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw, k=[5,8,15])
             logger.info(f"metrics for threshold {t}: {metrics}")
