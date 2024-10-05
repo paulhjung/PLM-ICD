@@ -1,0 +1,149 @@
+{
+  "builder_name": "csv",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "csv",
+  "dataset_size": 1226467475,
+  "description": "",
+  "download_checksums": {
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHSmimic4icd10train0_nodigitsTrue_nofirstwordsFalse.csv": {
+      "num_bytes": 121507926,
+      "checksum": null
+    },
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHSmimic4icd10train1_nodigitsTrue_nofirstwordsFalse.csv": {
+      "num_bytes": 121654383,
+      "checksum": null
+    },
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHSmimic4icd10train2_nodigitsTrue_nofirstwordsFalse.csv": {
+      "num_bytes": 122794477,
+      "checksum": null
+    },
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHSmimic4icd10train3_nodigitsTrue_nofirstwordsFalse.csv": {
+      "num_bytes": 121301719,
+      "checksum": null
+    },
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHSmimic4icd10train4_nodigitsTrue_nofirstwordsFalse.csv": {
+      "num_bytes": 121732485,
+      "checksum": null
+    },
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHSmimic4icd10train5_nodigitsTrue_nofirstwordsFalse.csv": {
+      "num_bytes": 122070515,
+      "checksum": null
+    },
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHSmimic4icd10train6_nodigitsTrue_nofirstwordsFalse.csv": {
+      "num_bytes": 122095281,
+      "checksum": null
+    },
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHSmimic4icd10train7_nodigitsTrue_nofirstwordsFalse.csv": {
+      "num_bytes": 122605118,
+      "checksum": null
+    },
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHSmimic4icd10train8_nodigitsTrue_nofirstwordsFalse.csv": {
+      "num_bytes": 122194828,
+      "checksum": null
+    },
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHSmimic4icd10test29-1010_nodigitsFalse_nofirstwordsFalse.csv": {
+      "num_bytes": 127391444,
+      "checksum": null
+    }
+  },
+  "download_size": 1225348176,
+  "features": {
+    "input_ids": {
+      "feature": {
+        "dtype": "int32",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    },
+    "attention_mask": {
+      "feature": {
+        "dtype": "int8",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    },
+    "labels": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "label_ids": {
+      "feature": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 2451815651,
+  "splits": {
+    "train0": {
+      "name": "train0",
+      "num_bytes": 121619848,
+      "num_examples": 12230,
+      "dataset_name": "csv"
+    },
+    "train1": {
+      "name": "train1",
+      "num_bytes": 121766305,
+      "num_examples": 12230,
+      "dataset_name": "csv"
+    },
+    "train2": {
+      "name": "train2",
+      "num_bytes": 122906408,
+      "num_examples": 12230,
+      "dataset_name": "csv"
+    },
+    "train3": {
+      "name": "train3",
+      "num_bytes": 121413748,
+      "num_examples": 12230,
+      "dataset_name": "csv"
+    },
+    "train4": {
+      "name": "train4",
+      "num_bytes": 121844484,
+      "num_examples": 12230,
+      "dataset_name": "csv"
+    },
+    "train5": {
+      "name": "train5",
+      "num_bytes": 122182519,
+      "num_examples": 12230,
+      "dataset_name": "csv"
+    },
+    "train6": {
+      "name": "train6",
+      "num_bytes": 122207270,
+      "num_examples": 12230,
+      "dataset_name": "csv"
+    },
+    "train7": {
+      "name": "train7",
+      "num_bytes": 122717142,
+      "num_examples": 12230,
+      "dataset_name": "csv"
+    },
+    "train8": {
+      "name": "train8",
+      "num_bytes": 122306817,
+      "num_examples": 12230,
+      "dataset_name": "csv"
+    },
+    "validation": {
+      "name": "validation",
+      "num_bytes": 127502934,
+      "num_examples": 12230,
+      "dataset_name": "csv"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
