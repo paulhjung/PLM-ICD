@@ -12,6 +12,8 @@ import logging
 
 from utils import TextPreprocessor
 from typing import Optional
+from chs_args import parse_args
+args = parse_args()
 
 ##### Set constants
 ID_COLUMN = "HADM_ID"
@@ -131,10 +133,11 @@ preprocessor = TextPreprocessor(
     lower=True,
     remove_special_characters_mullenbach=True,
     remove_special_characters=True,
-    remove_digits=False,
+    remove_digits=args.remove_digits,
     remove_accents=True,
     remove_brackets=False,
     convert_danish_characters=True,
+    remove_firstwords=args.remove_firstwords
 )
 m10pp = preprocesser(df=m, preprocessor=preprocessor)
 # preprocesser changes icd10_code from list to string joined by semicolon
@@ -163,10 +166,10 @@ m10 = m10.drop(columns=["icd_code","SUBJECT_ID","HADM_ID"])
 k = int(numrows*.1)
 for i in range(9):
     d = m10[i*k:(i+1)*k]
-    fn = f'CHSmimic4icd10train{i}.csv' 
+    fn = f'CHSmimic4icd10train{i}_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}.csv' 
     d.to_csv(output_dir_icd10 / fn, index=False)
 test10 = m10[9*k:]
-testfile = 'CHSmimic4icd10test'+str(time.strftime("%d-%H%M"))+'.csv'
+testfile = 'CHSmimic4icd10test'+str(time.strftime("%d-%H%M"))+f'_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}.csv'
 test10.to_csv(output_dir_icd10 / testfile, index=False)#, quoting=csv.QUOTE_NONE) 
 #trainfile = 'CHSmimic4icd10train'+str(time.strftime("%d-%H%M"))+'.csv'
 #valfile = 'CHSmimic4icd10validation'+str(time.strftime("%d-%H%M"))+'.csv'

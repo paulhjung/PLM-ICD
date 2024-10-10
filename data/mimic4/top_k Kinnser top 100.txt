@@ -1,0 +1,25 @@
+I10, 51704 (60)		Essential (primary) hypertension
+I2510, 25396 (105)	Athscl heart disease of native coronary artery w/o ang pctrs
+N179, 20215 (93)	Acute kidney failure, unspecified
+E039, 17089 (34)	Hypothyroidism, unspecified
+E119, 16621 (16)	Type 2 diabetes mellitus without complications
+I4891, 13370 (49)	Unspecified atrial fibrillation
+D649, 13302 (13)	Anemia, unspecified
+J449, 11249 (49)	Chronic obstructive pulmonary disease, unspecified
+N390, 10586 (159)	Urinary tract infection, site not specified
+D62, 10227 (41)		Acute posthemorrhagic anemia
+I129, 10178 (41)	Hypertensive chronic kidney disease w stg 1-4/unsp chr kdny
+G8929, 8633 (58)	Other chronic pain
+I110, 8176 (154)	Hypertensive heart disease with heart failure
+I480, 7475 (38) 	Paroxysmal atrial fibrillation
+J189, 5999 (71)		Pneumonia, unspecified organism
+J9601, 5930 (74)	Acute respiratory failure with hypoxia
+E1165, 5458 (39)	Type 2 diabetes mellitus with hyperglycemia
+A419, 4516 (31) 	Sepsis, unspecified organism
+E1140, 4021 (14)	Type 2 diabetes mellitus with diabetic neuropathy, unsp
+G40909, 3979 (27)	Epilepsy, unsp, not intractable, without status epilepticus
+F0390, 3822 (18)	Unsp dementia, unsp severity, without beh/psych/mood/anx
+I214, 3578 (67) 	Non-ST elevation (NSTEMI) myocardial infarction
+E870, 3427 (25) 	Hyperosmolality and hypernatremia
+R1310, 3165 (30)	Dysphagia, unspecified
+I951, 3063 (24) 	Orthostatic hypotension

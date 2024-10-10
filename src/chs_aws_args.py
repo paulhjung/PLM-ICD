@@ -6,7 +6,7 @@ import json
 import random
 #import code #interact inside for debugging
 import datasets
-from datasets import load_dataset
+from datasets import load_dataset, load_metric
 from torch.utils.data.dataloader import DataLoader
 from tqdm.auto import tqdm
 import transformers
@@ -24,26 +24,25 @@ from transformers import (
 )
 from modeling_roberta import RobertaForMultilabelClassification
 from evaluation import all_metrics
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Finetune a transformers model on a text classification task")
     parser.add_argument("--fromcheckpoint", type=bool, default=False, help="Set true if using checkpoint")
     parser.add_argument("--devmode", type=bool, default=False, help="Use much smaller data set for training")
     parser.add_argument("--remove_digits", type=bool, default=True, help="Remove digits in text preprocessing")
-    parser.add_argument("--remove_firstwords", type=bool, default=False, help="Remove first words in text preprocessing")
-    parser.add_argument("--train_file", type=str, default="../data/mimic4/CHSmimic4icd10train", help="first part of title of csv or a json file containing the training data.")
-    parser.add_argument("--validation_file", type=str, default="../data/mimic4/CHSmimic4icd10test29-1010_nodigitsFalse_nofirstwordsFalse.csv", help="A csv or a json file containing the validation data.")
-    parser.add_argument("--output_dir", type=str, default="../models/nodigitsTrue-1024-4epochs-32batch-dev", help="Where to store the final model.")
-    parser.add_argument("--max_length", type=int, default=2048, help="The maximum total input sequence length after tokenization. Seq longer than this are truncated, seq shorter are padded if `--pad_to_max_lengh` is passed.")
-    parser.add_argument("--num_train_epochs", type=int, default=0, help="Total number of training epochs to perform.")
+    parser.add_argument("--remove_firstwords", type=bool, default=False, help="Remove first words in text prep")
+    parser.add_argument("--model_dir", type=str, type=str, default=os.environ['SM_MODEL_DIR'])
+    #parser.add_argument("--output_dir", type=str, default="plm_model", help="Where to store the final model.")
+    parser.add_argument("--max_length", type=int, default=1024, help="The maximum total input sequence length after tokenization. Seq longer than this are truncated, seq shorter are padded if `--pad_to_max_lengh` is passed.")
+    parser.add_argument("--num_train_epochs", type=int, default=1, help="Total number of training epochs to perform.")
     parser.add_argument("--per_device_train_batch_size", type=int, default=32, help="Batch size (per device) for the training dataloader.")
     #Should only be changing above while testing
     parser.add_argument("--chunk_size", type=int, default=128, help="The size of chunks that we'll split the inputs into")
     parser.add_argument("--learning_rate", type=float, default=5e-5, help="Initial learning rate (after the potential warmup period) to use.")
     parser.add_argument("--weight_decay", type=float, default=0.0, help="Weight decay to use.")
-    parser.add_argument("--code_file", type=str, default="../data/mimic4/top25codes.txt", help="A txt file containing all codes.")
+    parser.add_argument("--code_file", type=str, default="top25codes.txt", help="A txt file containing all codes.")
     #parser.add_argument("--pad_to_max_length", type=bool, default=False, help="If passed, pad all samples to `max_length`. Otherwise, dynamic padding is used.")
-    parser.add_argument("--tokenizer_path", type=str, default="../models/RoBERTa-base-PM-M3-Voc-hf", help="Path to pretrained model or model identifier from huggingface.co/models.")
-    parser.add_argument("--model_name_or_path", type=str, default="../models/RoBERTa-base-PM-M3-Voc-hf", help="Path to pretrained model or model identifier from huggingface.co/models.")
+    parser.add_argument("--roberta_path", type=str, default="roberta_model/RoBERTa-base-PM-M3-Voc-hf", help="Path to pretrained model or model identifier from huggingface.co/models.")
     parser.add_argument("--model_type", type=str, default="roberta", help="The type of model")
     parser.add_argument("--model_mode", type=str, default="laat", help="Specify how to aggregate output in the model", choices=["cls-sum", "cls-max", "laat", "laat-split"])
     parser.add_argument("--use_slow_tokenizer", type=bool, default=False, help="If passed, will use a slow tokenizer (not backed by the 🤗 Tokenizers library).")
@@ -53,10 +52,10 @@ def parse_args():
     parser.add_argument("--gradient_accumulation_steps", type=int, default=1, help="Number of updates steps to accumulate before performing a backward/update pass.")
     parser.add_argument("--lr_scheduler_type", type=str, default="linear", help="The scheduler type to use.", choices=["linear", "cosine", "cosine_with_restarts", "polynomial", "constant", "constant_with_warmup"])
     parser.add_argument("--num_warmup_steps", type=int, default=2000, help="Number of steps for the warmup in the lr scheduler.")
-    parser.add_argument("--", type=str, default="no", help="Mixed precision training.")
+    parser.add_argument("--mixed_precision", type=str, default="no", help="Mixed precision training.")
     parser.add_argument("--task_name", type=str, default=None, help="The name of the GLUE task to train on.")
     parser.add_argument("--seed", type=int, default=None, help="A seed for reproducible training.")
-    parser.add_argument("--bucket", type=int, default="ai-studio-chs", help="Name of s3 bucket.")
+    parser.add_argument("--bucket", type=int, default="s3://ai-studio-chs/", help="Name of s3 bucket.")
     #Mixed precision type
     args = parser.parse_args()
 

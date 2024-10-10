@@ -1,0 +1,91 @@
+I10, 51704 (60)		Essential (primary) hypertension
+E785, 48579	Hyperlipidemia, unspecified
+K219, 33736	Gastro-esophageal reflux disease without esophagitis 
+F329, 28787	Major depressive disorder, single episode, unspecified
+I2510, 25396 (105)	Athscl heart disease of native coronary artery w/o ang pctrs
+F419, 22699	Anxiety disorder, unspecified
+N179, 20215 (93)	Acute kidney failure, unspecified
+E039, 17089 (34)	Hypothyroidism, unspecified
+E119, 16621 (16)	Type 2 diabetes mellitus without complications
+F17210, 14726	Nicotine dependence, cigarettes, uncomplicated
+G4733, 13763	Obstructive sleep apnea (adult) (pediatric)
+E669, 13499	Obesity, unspecified
+I4891, 13370 (49)	Unspecified atrial fibrillation
+D649, 13302 (13)	Anemia, unspecified
+J45909, 12992	Unspecified asthma, uncomplicated
+J449, 11249 (49)	Chronic obstructive pulmonary disease, unspecified
+N390, 10586 (159)	Urinary tract infection, site not specified
+D62, 10227 (41)		Acute posthemorrhagic anemia
+I129, 10178 (41)	Hypertensive chronic kidney disease w stg 1-4/unsp chr kdny
+E1122, 10003	Type 2 diabetes mellitus w diabetic chronic kidney disease
+I252, 9719	Old myocardial infarction
+N189, 9370	Chronic kidney disease, unspecified
+E871, 8863	Hypo-osmolality and hyponatremia
+G8929, 8633 (58)	Other chronic pain
+E872, 8293	Acidosis
+I110, 8176 (154)	Hypertensive heart disease with heart failure
+I480, 7475 (38) 	Paroxysmal atrial fibrillation
+N400, 7323	Benign prostatic hyperplasia without lower urinary tract symptoms
+K5900, 7274	Constipation, unspecified
+N183, 7165	Chronic kidney disease, stage 3 (moderate)
+I130, 6890	Hyp hrt & chr kdny dis w hrt fail and stg 1-4/unsp chr kdny
+G4700, 6752	Insomnia, unspecified
+D696, 6662	Thrombocytopenia, unspecified
+M109, 6622	Gout, unspecified
+J189, 5999 (71)		Pneumonia, unspecified organism
+J9601, 5930 (74)	Acute respiratory failure with hypoxia
+I5032, 5921	Chronic diastolic (congestive) heart failure
+E875, 5690	Hyperkalemia
+E860, 5469	Dehydration
+E1165, 5458 (39)	Type 2 diabetes mellitus with hyperglycemia
+M810, 5403	Age-related osteoporosis w/o current pathological fracture
+D72829, 5368	Elevated white blood cell count, unspecified
+D509, 5336	Iron deficiency anemia, unspecified
+Y838, 5229	Oth surgical procedures cause abn react/compl, w/o misadvnt
+N186, 5131	End stage renal disease
+R45851, 5097	Suicidal ideations
+E7800, 5061	Pure hypercholesterolemia, unspecified
+E876, 4992	Hypokalemia
+G92, 4988	Toxic encephalopathy
+I959, 4941	Hypotension, unspecified
+M1990, 4737	Unspecified osteoarthritis, unspecified site
+I5033, 4736	Acute on chronic diastolic (congestive) heart failure
+A419, 4516 (31) 	Sepsis, unspecified organism
+R0902, 4429	Hypoxemia
+R339, 4270	Retention of urine, unspecified
+I5022, 4242	Chronic systolic (congestive) heart failure
+E861, 4210	Hypovolemia
+F4310, 4180	Post-traumatic stress disorder, unspecified
+E43, 4179	Unspecified severe protein-calorie malnutrition
+F319, 4038	Bipolar disorder, unspecified
+E1140, 4021 (14)	Type 2 diabetes mellitus with diabetic neuropathy, unsp
+E6601, 4019	Morbid (severe) obesity due to excess calories
+G40909, 3979 (27)	Epilepsy, unsp, not intractable, without status epilepticus
+R197, 3906	Diarrhea, unspecified
+F0390, 3822 (18)	Unsp dementia, unsp severity, without beh/psych/mood/anx
+D631, 3784	Anemia in chronic kidney disease
+R740, 3758	Nonspec elev of levels of transamns & lactic acid dehydrgnse
+R000, 3664	Tachycardia, unspecified
+B1920, 3579	Unspecified viral hepatitis C without hepatic coma
+I214, 3578 (67) 	Non-ST elevation (NSTEMI) myocardial infarction
+H409, 3576	Unspecified glaucoma
+I739, 3572	Peripheral vascular disease, unspecified
+F10129, 3552	Alcohol abuse with intoxication, unspecified
+E559, 3538	Vitamin D deficiency, unspecified
+R079, 3535	Chest pain, unspecified
+G43909, 3501	Migraine, unsp, not intractable, without status migrainosus
+T451X5A, 3481	Adverse effect of antineoplastic and immunosup drugs, init
+D6959, 3464	Other secondary thrombocytopenia
+E870, 3427 (25) 	Hyperosmolality and hypernatremia
+B9620, 3340	Unsp Escherichia coli as the cause of diseases classd elswhr
+I5023, 3310	Acute on chronic systolic (congestive) heart failure
+G629, 3288	Polyneuropathy, unspecified
+E8339, 3220	Other disorders of phosphorus metabolism
+R1310, 3165 (30)	Dysphagia, unspecified
+I120, 3153	Hyp chr kidney disease w stage 5 chr kidney disease or ESRD
+M549, 3124	Dorsalgia, unspecified
+Y848, 3117	Oth medical procedures cause abn react/compl, w/o misadvnt
+R112, 3114	Nausea with vomiting, unspecified
+K766, 3105	Portal hypertension
+I951, 3063 (24) 	Orthostatic hypotension
+R0789, 3045	Other chest pain
