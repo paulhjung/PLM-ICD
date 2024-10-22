@@ -151,6 +151,11 @@ logging.info(f"Remove empty text: Num rows is {numrows}")
 m10 = m10pp[m10pp["length"].apply(lambda x: x < 10000)]
 numrows = m10.shape[0]
 logging.info(f"Remove long text: Num rows is {numrows}")
+LIMIT = 2048
+m10 = m10pp[m10pp["length"].apply(lambda x: x < LIMIT+1)]
+numrows = m10.shape[0]
+logging.info(f"Limit text to {LIMIT}: Num rows is {numrows}")
+
 
 # Shuffle df
 m10 = m10.sample(frac = 1)
@@ -166,10 +171,10 @@ m10 = m10.drop(columns=["icd_code","SUBJECT_ID","HADM_ID"])
 k = int(numrows*.1)
 for i in range(9):
     d = m10[i*k:(i+1)*k]
-    fn = f'CHSmimic4icd10train{i}_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}.csv' 
+    fn = f'CHSmimic4icd10train{i}_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_2048.csv' 
     d.to_csv(output_dir_icd10 / fn, index=False)
 test10 = m10[9*k:]
-testfile = 'CHSmimic4icd10test'+str(time.strftime("%d-%H%M"))+f'_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}.csv'
+testfile = 'CHSmimic4icd10test'+str(time.strftime("%d-%H%M"))+f'_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_2048.csv'
 test10.to_csv(output_dir_icd10 / testfile, index=False)#, quoting=csv.QUOTE_NONE) 
 #trainfile = 'CHSmimic4icd10train'+str(time.strftime("%d-%H%M"))+'.csv'
 #valfile = 'CHSmimic4icd10validation'+str(time.strftime("%d-%H%M"))+'.csv'

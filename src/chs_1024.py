@@ -24,7 +24,7 @@ from transformers import (
 )
 from modeling_roberta import RobertaForMultilabelClassification
 from evaluation import all_metrics
-from chs_args import parse_args
+from chs_args_1024 import parse_args
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename='log.log',
@@ -119,12 +119,12 @@ def main():
     if args.devmode:
         save_path = DIRECTORY_PLM + f'tokensdata_nodigits{args.remove_digits}_noFW{args.remove_firstwords}_max'+str(args.max_length)+'DEV'
     else:
-        save_path = DIRECTORY_PLM + f'tokensdata_nodigits{args.remove_digits}_noFW{args.remove_firstwords}_max'+str(args.max_length)
+        save_path = DIRECTORY_PLM + f'tokensdata_nodigits{args.remove_digits}_noFW{args.remove_firstwords}_data_maxedat'+str(args.max_length)
     tokenized_datasets = datasets.load_from_disk(save_path)
     eval_dataset = tokenized_datasets["validation"]
     train_dataset = tokenized_datasets["train0"]
     if not args.devmode:
-        for i in range(1,8):
+        for i in range(1,9):
             train_dataset = datasets.concatenate_datasets([train_dataset, tokenized_datasets[f"train{i}"]])
 
     # Check if attention mask is being used
@@ -314,7 +314,7 @@ def main():
             with torch.no_grad():
                 outputs = model(**batch)
             preds_raw = outputs.logits.sigmoid().cpu()
-            preds = (preds_raw > 0.5).int()
+            #preds = (preds_raw > 0.5).int()
             all_preds_raw.extend(list(preds_raw))
             if i==10: print(all_preds_raw)
             #all_preds.extend(list(preds))
@@ -328,7 +328,7 @@ def main():
         logger.info(f"evaluation finished")
         #logger.info(f"metrics: {metrics}")
         #code.interact(local=locals())
-        for t in [.2, 0.225, 0.25, 0.275, 0.3, 0.325, .35, .375]: #these are the cutoffs of the logits
+        for t in [.175, 0.225, 0.275, 0.325, .375, .425, .475, .525, .575, .625]: #these are the cutoffs of the logits
             all_preds = (all_preds_raw > t).astype(int)
             metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw, k=[5,8,15])
             logger.info(f"metrics for threshold {t}: {metrics}")
