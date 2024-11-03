@@ -29,7 +29,7 @@ def parse_args():
     parser.add_argument("--fromcheckpoint", type=bool, default=False, help="Set true if using checkpoint")
     parser.add_argument("--devmode", type=bool, default=False, help="Use much smaller data set for training")
     parser.add_argument("--remove_digits", type=bool, default=True, help="Remove digits in text preprocessing")
-    parser.add_argument("--remove_firstwords", type=bool, default=False, help="Remove first words in text preprocessing")
+    parser.add_argument("--remove_firstwords", type=bool, default=True, help="Remove first words in text preprocessing")
     parser.add_argument("--train_file", type=str, default="../data/mimic4/CHSmimic4icd10train", help="first part of title of csv or a json file containing the training data.")
     parser.add_argument("--train_file_ending", type=str, default="", help="ending of title of csv or a json file containing the training data.")
     parser.add_argument("--validation_file", type=str, default="../data/mimic4/CHSmimic4icd10test29-1020_nodigitsTrue_nofirstwordsFalse.csv", help="A csv or a json file containing the validation data.")
