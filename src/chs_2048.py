@@ -66,9 +66,9 @@ def main():
     raw_datasets = load_dataset(datafiletype, data_files=data_files) #data_files (str or Sequence or Mapping, optional) — Path(s) to source data file(s).
     # More on loading datasets: https://huggingface.co/docs/datasets/v2.20.0/en/package_reference/loading_methods#datasets.load_dataset
     
-    #!!!!!raw_datasets["validation"] = raw_datasets["validation"].filter(lambda example: example["length"]<1793)
-    #for i in range(9):
-    #    raw_datasets[f"train{i}"] = raw_datasets[f"train{i}"].filter(lambda example: example["length"]<1793)
+    raw_datasets["validation"] = raw_datasets["validation"].filter(lambda example: example["length"]<1793)
+    for i in range(9):
+        raw_datasets[f"train{i}"] = raw_datasets[f"train{i}"].filter(lambda example: example["length"]<1793)
     logger.info(f"Loaded raw datasets")
 
     ##### Load labels
