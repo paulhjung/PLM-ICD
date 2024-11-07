@@ -24,7 +24,7 @@ from transformers import (
 )
 from modeling_roberta import RobertaForMultilabelClassification
 from evaluation import all_metrics
-from chs_args_1024 import parse_args
+from chs_args_3_2048 import parse_args
 
 DIRECTORY_PLM = "/Users/paulj/Documents/Github/PLM-ICD/data/mimic4" #data for PLM-ICD
 
@@ -55,11 +55,11 @@ def main():
     data_files = {}
     if args.devmode:
         logger.info("Dev Mode")
-        data_files["train"+str(0)] = args.train_file+str(0)+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_1024.csv"
+        data_files["train"+str(0)] = args.train_file+str(0)+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_2048.csv"
     elif args.train_file is not None:
         for i in range(9):
             logger.info(f"Loading {i}")
-            data_files["train"+str(i)] = args.train_file+str(i)+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_1024.csv"
+            data_files["train"+str(i)] = args.train_file+str(i)+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_2048.csv"
     if args.validation_file is not None:
         data_files["validation"] = args.validation_file 
     # validation set is for hyperparameters; learning rate (.00005 in Edin), minibatch 4?(8 or 16 in Edin), Decision boundary cutoff theshold (default in Edin is .5), Dropout is .2 in Edin, Chunksize
@@ -72,7 +72,7 @@ def main():
     ##### Load labels
     # A useful fast method: https://huggingface.co/docs/datasets/package_reference/main_classes.html#datasets.Dataset.unique
     labels = set()
-    all_codes_file = "../data/mimic4/top25codes.txt" #if not args.code_50 else "../data/mimic3/ALL_CODES_50.txt"
+    all_codes_file = "../data/mimic4/top3codes.txt" #if not args.code_50 else "../data/mimic3/ALL_CODES_50.txt"
     with open(all_codes_file, "r") as f:
         for line in f:
             if line.strip() != "":
@@ -109,15 +109,12 @@ def main():
     ### for documentation on map() see https://huggingface.co/docs/datasets/v1.1.1/processing.html default batch is 1000
     eval_dataset = tokenized_datasets["validation"]
     train_dataset = tokenized_datasets["train0"]
-    if not args.devmode:
-        for i in range(1,8):
-            train_dataset = datasets.concatenate_datasets([train_dataset, tokenized_datasets[f"train{i}"]])
     #code.interact(local=locals())
+    #if not args.devmode:
+    #    for i in range(1,8):
+    #        train_dataset = datasets.concatenate_datasets([train_dataset, tokenized_datasets[f"train{i}"]])
     ### https://huggingface.co/docs/datasets/en/process
-    if args.devmode:
-        save_path = DIRECTORY_PLM + f'tokensdata_nodigits{args.remove_digits}_noFW{args.remove_firstwords}_datamaxedat1024max'+str(args.max_length)+'DEV'
-    else:
-            save_path = DIRECTORY_PLM + f'tokensdata_nodigits{args.remove_digits}_noFW{args.remove_firstwords}_data_maxedat1024'
+    save_path = DIRECTORY_PLM + f'tokensdata_nodigits{args.remove_digits}_noFW{args.remove_firstwords}_data_maxed_at2048_top3'
     tokenized_datasets.save_to_disk(save_path)
 
 if __name__ == "__main__":

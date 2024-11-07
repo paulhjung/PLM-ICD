@@ -3,9 +3,8 @@ import logging
 import math 
 import os
 import random
-#import pyarrow.feather as fthr
-import code ### interact inside for debugging
-import datasets ### Hugging Face
+import code ## code.interact(local=locals())
+import datasets ## Hugging Face
 from datasets import load_dataset, load_metric
 from torch.utils.data.dataloader import DataLoader
 from tqdm.auto import tqdm
@@ -13,6 +12,7 @@ import transformers
 import torch
 import numpy as np
 import accelerate
+import time
 from transformers import (
     AdamW,
     AutoConfig,
@@ -24,7 +24,7 @@ from transformers import (
 )
 from modeling_roberta import RobertaForMultilabelClassification
 from evaluation import all_metrics
-from chs_args_3_2048 import parse_args
+from chs2_args import parse_args
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename='log.log',
@@ -33,12 +33,15 @@ logging.basicConfig(filename='log.log',
     level=logging.INFO,
 )
 datasets.utils.logging.set_verbosity_warning()
-transformers.utils.logging.set_verbosity_error() ###changed from info which outputs the config.json
-
-##### Args
+transformers.utils.logging.set_verbosity_error() ## changed from info which outputs the config.json
 args = parse_args()
+
+#def get_hidden_output(module, input, output):
+#    print("Hidden layer output:", output)
+
 def main():
-    # If passed along, set the training seed now.
+    output_dir = f"{args.output_prefix}top{args.num_codes}_max{args.max_length}_epochs{args.num_train_epochs}"
+    os.makedirs(output_dir, exist_ok=True)
     if args.seed is not None:
         set_seed(args.seed)
 
@@ -48,33 +51,30 @@ def main():
     # label if at least two columns are provided.
     # If the CSVs/JSONs contain only one non-label column, the script does single sentence classification on this
     # single column. You can easily tweak this behavior (see below)
-    # In distributed training, the load_dataset function guarantee that only one local process can concurrently
-    # download the dataset.
     data_files = {}
     if args.devmode:
-        logger.info("Dev Mode")
-        data_files["train"+str(0)] = args.train_file+str(0)+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}2048.csv"
+        data_files["train"+str(0)] = args.train_file+str(0)+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_wordlim{args.wordlimit}.csv"
     elif args.train_file is not None:
         for i in range(9):
-            logger.info(f"Loading {i}")
-            data_files["train"+str(i)] = args.train_file+str(i)+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}2048.csv"
+            data_files["train"+str(i)] = args.train_file+str(i)+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_wordlim{args.wordlimit}.csv"
     if args.validation_file is not None:
-        data_files["validation"] = args.validation_file 
-    # validation set is for hyperparameters; learning rate (.00005 in Edin), minibatch 4?(8 or 16 in Edin), Decision boundary cutoff theshold (default in Edin is .5), Dropout is .2 in Edin, Chunksize
+        data_files["validation"] = args.validation_file+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_wordlim{args.wordlimit}.csv"
+    ## validation set is for hyperparameters; learning rate (.00005 in Edin), minibatch 4?(8 or 16 in Edin), Decision boundary cutoff theshold (default in Edin is .5), Dropout is .2 in Edin, Chunksize
     datafiletype = "csv"
-    logger.info(f"Loaded data files")
-    raw_datasets = load_dataset(datafiletype, data_files=data_files) #data_files (str or Sequence or Mapping, optional) — Path(s) to source data file(s).
-    # More on loading datasets: https://huggingface.co/docs/datasets/v2.20.0/en/package_reference/loading_methods#datasets.load_dataset
-    
-    raw_datasets["validation"] = raw_datasets["validation"].filter(lambda example: example["length"]<1793)
-    for i in range(9):
-        raw_datasets[f"train{i}"] = raw_datasets[f"train{i}"].filter(lambda example: example["length"]<1793)
+    raw_datasets = load_dataset(datafiletype, data_files=data_files) #data_files is the path to source data file(s).
+    raw_datasets["validation"] = raw_datasets["validation"].filter(lambda example: example["length"] <= args.max_length)
+    raw_datasets["train0"] = raw_datasets["train0"].filter(lambda example: example["length"] <= args.max_length)
+    if not args.devmode:
+        for i in range(1,9):
+            raw_datasets[f"train{i}"] = raw_datasets[f"train{i}"].filter(lambda example: example["length"] <= args.max_length)
     logger.info(f"Loaded raw datasets")
+    logger.info(f"Loaded data files")
+    # More on loading datasets: https://huggingface.co/docs/datasets/v2.20.0/en/package_reference/loading_methods#datasets.load_dataset
 
     ##### Load labels
     # A useful fast method: https://huggingface.co/docs/datasets/package_reference/main_classes.html#datasets.Dataset.unique
     labels = set()
-    all_codes_file = args.code_file #if not args.code_50 else "../data/mimic3/ALL_CODES_50.txt"
+    all_codes_file = args.code_file
     with open(all_codes_file, "r") as f:
         for line in f:
             if line.strip() != "":
@@ -82,30 +82,25 @@ def main():
     label_list = sorted(list(labels))
     label_to_id = {v: i for i, v in enumerate(label_list)}
     num_labels = len(label_list)
-    logger.info(f"Loaded labels")
 
     ##### Load pretrained model and tokenizer
     # In distributed training, the .from_pretrained methods guarantee that only one local process can concurrently download model & vocab.
-    ### This next line outputs the Model config when verbosity is set to "info" level
-    ### default model_name_or_path is "../models/roberta-mimic3-50", need to change this for ICD-10
-    config = AutoConfig.from_pretrained(args.model_name_or_path, num_labels=num_labels)#, finetuning_task=args.task_name)
+    config = AutoConfig.from_pretrained(args.model_name_or_path, num_labels=num_labels, output_hidden_states=True)#, finetuning_task=args.task_name)
     config.model_mode = args.model_mode ### different modes implemented by PLM-ICD, default is "laat"; args.model_type = "roberta"
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer_path,use_fast=not args.use_slow_tokenizer,do_lower_case=not args.cased)
     model_class = RobertaForMultilabelClassification ### from modeling_roberta
 
-    ### This is where model is trained or loaded
-    #!!!! Revisit checkpointing
+    """ !!!Revisit checkpointing"""
     if args.num_train_epochs > 0:
         model = model_class.from_pretrained(args.model_name_or_path,from_tf=bool(".ckpt" in args.model_name_or_path),config=config)
     else:
-        model = model_class.from_pretrained(args.output_dir, config=config)
+        model = model_class.from_pretrained(output_dir, config=config)
 
     ##### Tokenize the texts
     logger.info("Tokenizing")
     def tokenizing_function(examples):
-        logger.info("in tokenizer function")
         ### tokenizer returns a dict with keys 'input_ids' and 'attention_mask'
-        result = tokenizer(examples["TEXT"], padding=False, max_length=args.max_length, truncation=True, add_special_tokens=True)
+        result = tokenizer(examples["TEXT"], padding=False, truncation=True, add_special_tokens=True, max_length=args.maxtoken_length)
         ### examples keys are 'SUBJECT_ID', 'HADM_ID', 'TEXT', 'LABELS', 'length'
         if "LABELS" in examples:
             result["labels"] = examples["LABELS"]
@@ -113,38 +108,18 @@ def main():
         return result
     column_names = raw_datasets["train0"].column_names if args.train_file is not None else raw_datasets["validation"].column_names
     tokenized_datasets = raw_datasets.map(tokenizing_function, batched=True, remove_columns=column_names)
-    logger.info("Finished tokenizing")
-    ### for documentation on map() see https://huggingface.co/docs/datasets/v1.1.1/processing.html default batch is 1000
+    ## for documentation on map() see https://huggingface.co/docs/datasets/v1.1.1/processing.html default batch is 1000
     eval_dataset = tokenized_datasets["validation"]
     train_dataset = tokenized_datasets["train0"]
-    #code.interact(local=locals())
-    #if not args.devmode:
-    #    for i in range(1,8):
-    #        train_dataset = datasets.concatenate_datasets([train_dataset, tokenized_datasets[f"train{i}"]])
-    ### https://huggingface.co/docs/datasets/en/process
-    DIRECTORY_PLM = "/Users/paulj/Documents/Github/PLM-ICD/data/mimic4" #data for PLM-ICD
-    save_path = DIRECTORY_PLM + f'tokensdata_nodigits{args.remove_digits}_noFW{args.remove_firstwords}_data_maxed_at2048limit1792_top3'
-    tokenized_datasets.save_to_disk(save_path)
 
-    if args.devmode:
-        save_path = DIRECTORY_PLM + f'tokensdata_nodigits{args.remove_digits}_noFW{args.remove_firstwords}_max'+str(args.max_length)+'DEV'
-    else:
-        save_path = DIRECTORY_PLM + f'tokensdata_nodigits{args.remove_digits}_noFW{args.remove_firstwords}_data_maxed_at2048limit1792_top3'
-        print(f'tokensdata_nodigits{args.remove_digits}_noFW{args.remove_firstwords}_data_maxed_at2048limit1792_top3')
-    tokenized_datasets = datasets.load_from_disk(save_path)
-    eval_dataset = tokenized_datasets["validation"]
-    train_dataset = tokenized_datasets["train0"]
+    DIRECTORY_PLM = "/Users/paulj/Documents/Github/PLM-ICD/data/mimic4"+str(time.strftime("%d-%H%M")) #data for PLM-ICD
+    save_path = DIRECTORY_PLM + f'tokens_noDig{args.remove_digits}_noFW{args.remove_firstwords}_max{args.max_length}'
+    tokenized_datasets.save_to_disk(save_path)
     if not args.devmode:
         for i in range(1,9):
             train_dataset = datasets.concatenate_datasets([train_dataset, tokenized_datasets[f"train{i}"]])
 
-    # Check if attention mask is being used
-    #length = [len(x) for x in train_dataset["attention_mask"]]
-    #totsum = [sum(x) for x in train_dataset["attention_mask"]]
-    # the above give the same output so attention is pointless
-    #ßcode.interact(local=locals())
     ### https://huggingface.co/docs/datasets/en/process
- 
     ##### Collate data of the mini-batches https://pytorch.org/docs/stable/data.html
     def data_collator(results):
         batch = dict()
@@ -221,7 +196,7 @@ def main():
     ##### Accelerator
     # Initialize the accelerator. We will let the accelerator handle device placement for us in this example.
     accelerator = accelerate.Accelerator(
-        kwargs_handlers=[accelerate.DistributedDataParallelKwargs(find_unused_parameters=True)], mixed_precision=args.mixed_precision, project_dir=args.output_dir)
+        kwargs_handlers=[accelerate.DistributedDataParallelKwargs(find_unused_parameters=True)], mixed_precision=args.mixed_precision, project_dir=output_dir)
     # Make one log on every process with the configuration for debugging.
     # Setup logging, we only want one process per machine to log things on the screen.
     # accelerator.is_local_main_process is only True for one process per machine.
@@ -232,7 +207,7 @@ def main():
     model, optimizer, eval_dataloader, train_dataloader, lr_scheduler = accelerator.prepare(model, optimizer, eval_dataloader, train_dataloader, lr_scheduler)
     if args.fromcheckpoint:
         logger.info("Loading checkpoint")
-        accelerator.load_state("../models/nodigitsTrue-128-4epochs-32batch-dev")
+        accelerator.load_state(output_dir)
     # Register the LR scheduler
     #accelerator.register_for_checkpointing(lr_scheduler)
     #accelerator = Accelerator(project_dir="my/save/path")
@@ -249,7 +224,7 @@ def main():
     if args.num_train_epochs > 0:
         # Log a few random samples from the training set:
         for index in random.sample(range(len(train_dataset)), 1):
-            logger.info(f"Sample {index} of the training set: {train_dataset[index]}.")
+            logger.info(f"Sample {index} of the training set: {train_dataset[index]['labels']}.")
             logger.info(f"Original tokens: {tokenizer.decode(train_dataset[index]['input_ids'])}")
         
         total_batch_size = args.per_device_train_batch_size * accelerator.num_processes * args.gradient_accumulation_steps
@@ -268,6 +243,26 @@ def main():
         completed_steps = 0
 
         i = 0
+        if args.fromcheckpoint:
+            model.eval()
+            #code.interact(local=locals())
+            all_preds = []
+            all_preds_raw = []
+            all_labels = []
+            for step, batch in tqdm(enumerate(eval_dataloader)):
+                with torch.no_grad():
+                    outputs = model(**batch)
+                preds_raw = outputs.logits.sigmoid().cpu()
+                preds = (preds_raw > 0.4).int()
+                all_preds_raw.extend(list(preds_raw))
+                all_preds.extend(list(preds))
+                all_labels.extend(list(batch["labels"].cpu().numpy()))
+            all_preds_raw = np.stack(all_preds_raw)
+            all_preds = np.stack(all_preds)
+            all_labels = np.stack(all_labels)
+            metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw)
+            logger.info(f"epoch {i} finished")
+            logger.info(f"metrics: {metrics}")
         for epoch in tqdm(range(args.num_train_epochs)):
             i += 1
             logger.info(f"Epoch = {i}")
@@ -289,28 +284,27 @@ def main():
 
                 if completed_steps >= args.max_train_steps:
                     break
-            accelerator.save_state(args.output_dir)
+            accelerator.save_state(output_dir)
 
             logger.info(f"Done with training for Epoch{i}")
-            # model.eval()
-            # all_preds = []
-            # all_preds_raw = []
-            # all_labels = []
-            # for step, batch in tqdm(enumerate(eval_dataloader)):
-            #     with torch.no_grad():
-            #         outputs = model(**batch)
-            #     preds_raw = outputs.logits.sigmoid().cpu()
-            #     preds = (preds_raw > 0.5).int()
-            #     all_preds_raw.extend(list(preds_raw))
-            #     all_preds.extend(list(preds))
-            #     all_labels.extend(list(batch["labels"].cpu().numpy()))
-            
-            # all_preds_raw = np.stack(all_preds_raw)
-            # all_preds = np.stack(all_preds)
-            # all_labels = np.stack(all_labels)
-            # metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw)
-            # logger.info(f"epoch {epoch} finished")
-            # logger.info(f"metrics: {metrics}")
+            model.eval()
+            all_preds = []
+            all_preds_raw = []
+            all_labels = []
+            for step, batch in tqdm(enumerate(eval_dataloader)):
+                with torch.no_grad():
+                    outputs = model(**batch)
+                preds_raw = outputs.logits.sigmoid().cpu()
+                preds = (preds_raw > 0.4).int()
+                all_preds_raw.extend(list(preds_raw))
+                all_preds.extend(list(preds))
+                all_labels.extend(list(batch["labels"].cpu().numpy()))
+            all_preds_raw = np.stack(all_preds_raw)
+            all_preds = np.stack(all_preds)
+            all_labels = np.stack(all_labels)
+            metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw)
+            logger.info(f"epoch {epoch} finished")
+            logger.info(f"metrics: {metrics}")
     
     ##### Test!
     if args.num_train_epochs == 0 and accelerator.is_local_main_process:
@@ -339,16 +333,18 @@ def main():
         logger.info(f"evaluation finished")
         #logger.info(f"metrics: {metrics}")
         #code.interact(local=locals())
+        logger.info(f"model: {output_dir}")
+        logger.info(f"testfile:"+args.validation_file+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_wordlim{args.wordlimit}.csv")
         for t in [.175, 0.225, 0.275, 0.325, .375, .425, .475, .525, .575, .625]: #these are the cutoffs of the logits
             all_preds = (all_preds_raw > t).astype(int)
             metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw, k=[5,8,15])
             logger.info(f"metrics for threshold {t}: {metrics}")
 
-    if args.output_dir is not None and args.num_train_epochs > 0:
+    if output_dir is not None and args.num_train_epochs > 0:
         accelerator.wait_for_everyone()
         unwrapped_model = accelerator.unwrap_model(model)
         logger.info("Saving model")
-        unwrapped_model.save_pretrained(args.output_dir,is_main_process=accelerator.is_main_process, save_function=accelerator.save)
+        unwrapped_model.save_pretrained(output_dir,is_main_process=accelerator.is_main_process, save_function=accelerator.save)
 
 if __name__ == "__main__":
     main()
