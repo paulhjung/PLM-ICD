@@ -12,7 +12,7 @@ import logging
 
 from utils import TextPreprocessor
 from typing import Optional
-from chs_args import parse_args
+from chs2_args import parse_args
 args = parse_args()
 
 ##### Set constants
@@ -31,7 +31,6 @@ output_dir_icd10 = Path(DIRECTORY_PLM)
 output_dir_icd10.mkdir(parents=True, exist_ok=True) # if folder doesn't exist, make it
 
 ##### Create dict that converts icd-codes to text
-#!!!
 code_dict={}
 with open(output_dir_icd10 / 'icd10code2text.csv') as f:
     dreader = csv.reader(f)
@@ -104,7 +103,7 @@ numrows = mimic_diag.shape[0]
 logging.info(f"Numrows codes is {numrows}, Numrows notes is {numrows_notes}")
 logging.info("Finished loading data")
 
-###### Process the data 
+##### Process the data 
 # Drop na, duplicates, rename columns, group codes, drop icd9
 mimic_diag = parse_codes_dataframe(mimic_diag)
 mimic_notes = parse_notes_dataframe(mimic_notes)
@@ -151,7 +150,7 @@ logging.info(f"Remove empty text: Num rows is {numrows}")
 m10 = m10pp[m10pp["length"].apply(lambda x: x < 10000)]
 numrows = m10.shape[0]
 logging.info(f"Remove long text: Num rows is {numrows}")
-LIMIT = 1824
+LIMIT = args.wordlimit
 m10 = m10pp[m10pp["length"].apply(lambda x: x < LIMIT+1)]
 numrows = m10.shape[0]
 logging.info(f"Limit text to {LIMIT}: Num rows is {numrows}")
@@ -163,22 +162,20 @@ m10 = m10.sample(frac = 1)
 ##### Old filter codes (now just find top codes) 
 #codes2keep(m10, ["icd_code"], MIN_TARGET_COUNT)
 #top_k_codes(m10, ["icd_code"], 120)
-m10 = m10.drop(columns=["icd_code","SUBJECT_ID","HADM_ID"])
 #logging.info(f"filter_codes: Num rows is {numrows}")
+m10 = m10.drop(columns=["icd_code","SUBJECT_ID","HADM_ID"])
+
 
 ##### Save files to disk
-# code.interact(local=locals())
 k = int(numrows*.1)
 for i in range(9):
     d = m10[i*k:(i+1)*k]
-    fn = f'CHSmimic4icd10train{i}_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_{LIMIT}.csv' 
+    fn = f'CHStrain{i}_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_wordlim{LIMIT}.csv' 
     d.to_csv(output_dir_icd10 / fn, index=False)
 test10 = m10[9*k:]
-testfile = 'CHSmimic4icd10test'+str(time.strftime("%d-%H%M"))+f'_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_{LIMIT}.csv'
+testfile = f'CHStest_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_wordlim{LIMIT}.csv'
 test10.to_csv(output_dir_icd10 / testfile, index=False)#, quoting=csv.QUOTE_NONE) 
-#trainfile = 'CHSmimic4icd10train'+str(time.strftime("%d-%H%M"))+'.csv'
 #valfile = 'CHSmimic4icd10validation'+str(time.strftime("%d-%H%M"))+'.csv'
-#train10.to_csv(output_dir_icd10 / trainfile, index=False)#, quoting=csv.QUOTE_NONE) 
 #val10.to_csv(output_dir_icd10 / valfile, index=False)#, quoting=csv.QUOTE_NONE) 
 
 

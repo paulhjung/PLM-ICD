@@ -2961,3 +2961,783 @@ Mixed precision type: no
 11/03/2024 09:38:32 - INFO - __main__ -     Max lentgh = 1792
 11/03/2024 09:38:32 - INFO - __main__ -     Remove digits = True
 11/03/2024 09:38:32 - INFO - __main__ -   Epoch = 1
+11/03/2024 09:43:29 - INFO - __main__ -   Loading 0
+11/03/2024 09:43:29 - INFO - __main__ -   Loading 1
+11/03/2024 09:43:29 - INFO - __main__ -   Loading 2
+11/03/2024 09:43:29 - INFO - __main__ -   Loading 3
+11/03/2024 09:43:29 - INFO - __main__ -   Loading 4
+11/03/2024 09:43:29 - INFO - __main__ -   Loading 5
+11/03/2024 09:43:29 - INFO - __main__ -   Loading 6
+11/03/2024 09:43:29 - INFO - __main__ -   Loading 7
+11/03/2024 09:43:29 - INFO - __main__ -   Loading 8
+11/03/2024 09:43:29 - INFO - __main__ -   Loaded data files
+11/03/2024 09:43:30 - INFO - __main__ -   Loaded raw datasets
+11/03/2024 09:43:30 - INFO - __main__ -   Loaded labels
+11/03/2024 09:43:31 - INFO - __main__ -   Tokenizing
+11/03/2024 09:43:31 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:32 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:32 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:33 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:34 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:35 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:35 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:36 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:37 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:38 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:38 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:39 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:40 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:41 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:42 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:42 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:43 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:44 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:45 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:45 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:46 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:47 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:48 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:49 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:49 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:50 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:51 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:52 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:52 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:53 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:54 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:55 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:56 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:56 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:57 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:58 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:59 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:43:59 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:00 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:01 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:02 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:03 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:03 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:04 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:05 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:05 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:06 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:07 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:08 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:09 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:09 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:10 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:11 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:12 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:12 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:13 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:14 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:15 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:16 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:16 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:17 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:18 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:19 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:19 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:20 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:21 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:22 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:22 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:23 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:24 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:25 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:26 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:26 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:27 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:28 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:29 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:29 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:30 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:31 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:32 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:33 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:33 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:34 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:35 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:35 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:36 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:37 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:38 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:39 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:39 - INFO - __main__ -   in tokenizer function
+11/03/2024 09:44:40 - INFO - __main__ -   Finished tokenizing
+11/03/2024 09:44:43 - INFO - __main__ -   Setting optimizer
+11/03/2024 09:44:43 - INFO - __main__ -   Distributed environment: NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: mps
+
+Mixed precision type: no
+
+11/03/2024 09:44:44 - INFO - __main__ -   Sample 4530 of the training set: {'input_ids': [0, 14228, 289, 5275, 2001, 25854, 689, 1672, 25854, 3574, 1285, 3872, 11664, 21308, 5168, 10436, 281, 15603, 2623, 1429, 2735, 397, 5148, 2647, 9450, 2324, 39917, 2886, 86, 291, 91, 6506, 268, 1372, 1606, 2819, 281, 821, 5051, 345, 280, 7211, 2473, 21969, 2771, 358, 807, 1588, 10878, 2623, 41230, 1351, 609, 1477, 363, 4225, 914, 2223, 17062, 470, 807, 261, 2000, 276, 4225, 15603, 2623, 358, 343, 5476, 329, 8853, 23347, 5176, 470, 4894, 3511, 491, 2647, 382, 1135, 2267, 11153, 1957, 29147, 270, 5159, 1238, 3085, 5148, 8226, 324, 261, 1432, 9062, 290, 626, 29147, 270, 2647, 343, 8400, 382, 261, 1139, 2824, 31360, 35162, 491, 1238, 481, 2916, 2001, 720, 343, 9680, 324, 28836, 2593, 358, 290, 2968, 646, 3774, 918, 345, 9150, 302, 1222, 2222, 290, 7719, 1099, 470, 646, 689, 1996, 281, 9790, 470, 4185, 3857, 442, 12757, 13343, 46359, 49052, 10923, 397, 19842, 4141, 2186, 2819, 4141, 2186, 2819, 4021, 275, 3011, 6330, 2526, 2819, 2102, 2819, 689, 5712, 3039, 7802, 324, 18713, 2760, 324, 17430, 6899, 414, 25655, 74, 3130, 405, 1058, 2226, 830, 277, 1703, 5222, 2321, 915, 2321, 915, 459, 23561, 2591, 721, 22, 16645, 398, 85, 85, 2212, 80, 27907, 366, 689, 3965, 8494, 551, 71, 2414, 848, 18173, 848, 899, 1859, 13169, 273, 291, 1971, 1421, 689, 8819, 9295, 918, 15686, 22029, 738, 27907, 551, 71, 17411, 277, 268, 1894, 534, 281, 17403, 1323, 274, 15212, 1894, 290, 4924, 5879, 302, 270, 2324, 4464, 39917, 290, 15093, 7335, 329, 261, 7856, 270, 2113, 7612, 1697, 2170, 5395, 10323, 6830, 12263, 1051, 270, 13440, 1819, 281, 26609, 7856, 290, 17377, 280, 292, 2246, 68, 27907, 551, 71, 17411, 324, 1894, 534, 281, 17403, 2421, 2324, 39917, 1894, 2379, 481, 4384, 270, 26609, 1972, 3762, 17377, 290, 2454, 3002, 3708, 3978, 270, 12580, 340, 918, 340, 2475, 13315, 517, 1096, 270, 2735, 7075, 960, 365, 1457, 302, 2223, 2001, 689, 14559, 7856, 397, 2315, 2170, 5395, 12862, 7948, 2144, 3444, 289, 85, 1846, 302, 453, 947, 15042, 405, 363, 329, 261, 9450, 2324, 39917, 470, 11092, 270, 2647, 918, 1351, 3130, 22895, 3712, 9802, 5778, 329, 1298, 5571, 690, 261, 7948, 290, 26747, 6917, 276, 270, 9329, 88, 270, 1092, 343, 5363, 302, 270, 13179, 329, 1298, 1139, 9802, 2533, 26609, 7856, 363, 270, 1092, 343, 45085, 3173, 12757, 290, 1901, 470, 3511, 261, 27907, 5685, 363, 324, 10547, 1894, 270, 1894, 29147, 1238, 481, 4384, 270, 15093, 340, 270, 934, 15912, 329, 7856, 343, 673, 270, 1092, 343, 3137, 302, 270, 7259, 3683, 329, 261, 3247, 22174, 280, 5395, 23283, 343, 986, 290, 261, 7382, 343, 3958, 841, 270, 2647, 31653, 343, 1281, 290, 270, 1092, 343, 6459, 363, 3606, 4516, 5711, 1879, 4252, 290, 25473, 363, 270, 1092, 10179, 302, 547, 288, 305, 16265, 2104, 764, 281, 270, 1258, 83, 7382, 2997, 27907, 5685, 343, 1280, 363, 358, 343, 7335, 329, 261, 7856, 270, 17737, 19722, 6336, 352, 28107, 290, 363, 261, 17062, 343, 986, 530, 8287, 270, 7856, 290, 280, 268, 1372, 1606, 343, 3958, 690, 270, 2647, 470, 807, 609, 2180, 276, 288, 305, 29737, 4826, 414, 270, 1258, 83, 7382, 470, 807, 2997, 27907, 5685, 363, 358, 925, 18096, 8925, 3790, 15317, 276, 4225, 17411, 270, 1391, 1811, 470, 17317, 302, 329, 7382, 8529, 470, 343, 14366, 1526, 363, 290, 358, 925, 280, 2421, 2180, 276, 270, 1445, 281, 270, 15317, 470, 6521, 302, 10719, 6263, 290, 470, 343, 9016, 6459, 363, 17172, 262, 530, 470, 1213, 8198, 3416, 270, 1092, 343, 7006, 312, 5061, 3416, 470, 807, 5570, 281, 7719, 1099, 290, 3287, 276, 4225, 5395, 1901, 479, 1315, 4208, 270, 1092, 302, 2706, 86, 290, 9871, 302, 261, 4891, 2222, 290, 470, 11092, 358, 1351, 1377, 4815, 363, 270, 1811, 281, 470, 343, 3612, 696, 261, 4891, 2222, 28315, 290, 14004, 296, 7503, 3063, 5139, 290, 4225, 1901, 343, 3459, 363, 280, 3147, 1901, 7379, 2202, 15859, 1948, 270, 496, 5395, 1901, 290, 13220, 12757, 4225, 3147, 3781, 343, 1786, 2567, 966, 270, 7856, 343, 1281, 8533, 343, 28107, 329, 260, 19128, 578, 86, 290, 2838, 3152, 343, 1280, 270, 1092, 3899, 363, 260, 19128, 3416, 405, 491, 2233, 470, 343, 5469, 2551, 956, 2361, 260, 19128, 290, 4225, 20670, 70, 352, 16159, 2235, 1901, 343, 918, 3459, 363, 260, 593, 15975, 290, 42954, 329, 23486, 1901, 26048, 270, 1092, 3899, 3269, 414, 261, 3783, 37099, 8280, 5044, 352, 9899, 5853, 2212, 80, 270, 1092, 3899, 3269, 414, 261, 3635, 37099, 3105, 9412, 343, 9899, 5853, 470, 807, 2551, 3635, 31299, 704, 340, 1660, 35173, 290, 23286, 28898, 352, 14561, 3978, 8395, 1966, 270, 1092, 343, 28315, 1351, 7779, 3978, 8395, 5562, 4826, 343, 5853, 340, 1788, 13617, 270, 1092, 2499, 7850, 9549, 290, 24827, 3543, 2297, 841, 491, 6917, 470, 343, 14561, 302, 6669, 885, 290, 7503, 2563, 340, 1660, 340, 1645, 270, 1092, 345, 1804, 291, 363, 14067, 1795, 621, 721, 363, 270, 1092, 343, 291, 302, 3217, 405, 470, 343, 3612, 696, 261, 4891, 2222, 17206, 1518, 1813, 28315, 290, 7503, 3063, 5139, 470, 1213, 803, 885, 276, 270, 5207, 276, 2267, 491, 1411, 343, 34898, 302, 270, 1092, 2764, 2128, 302, 1139, 2735, 3130, 841, 11779, 1139, 9802, 42029, 24252, 277, 268, 4382, 87, 1139, 9802, 42029, 7616, 2533, 324, 4382, 87, 1821, 266, 4618, 1529, 2535, 26609, 7856, 42723, 1350, 35162, 20515, 2581, 2977, 749, 73, 2315, 5621, 6553, 2977, 302, 17676, 690, 288, 42553, 291, 26482, 2315, 5621, 6553, 7616, 324, 288, 42553, 6830, 291, 89, 87, 6080, 11812, 6330, 2526, 4815, 6573, 261, 5698, 276, 5698, 276, 5610, 281, 3796, 7779, 1266, 3159, 6774, 366, 2144, 23855, 2241, 281, 10128, 5405, 329, 3796, 2241, 281, 10128, 5405, 329, 8741, 6597, 2102, 481, 3590, 506, 302, 5271, 1092, 2492, 10997, 1457, 302, 11054, 14957, 27945, 431, 5061, 2535, 689, 2526, 1155, 7880, 276, 5698, 281, 6597, 363, 270, 453, 4838, 5101, 345, 4832, 290, 2657, 13287, 46745, 1764, 956, 3243, 6597, 26209, 23255, 42436, 1082, 1764, 956, 34654, 2781, 1500, 398, 91, 26209, 941, 23255, 308, 34076, 1764, 1764, 16063, 382, 10962, 5377, 261, 1811, 5446, 18037, 1044, 5028, 19, 43634, 4080, 1764, 608, 3243, 398, 91, 43634, 1764, 4656, 4972, 261, 1811, 5446, 16776, 1044, 5028, 19, 42954, 7370, 2681, 1764, 956, 4594, 22, 75, 3227, 81, 1901, 3762, 398, 91, 42954, 1764, 16063, 382, 10962, 3364, 1551, 2802, 5446, 18037, 1044, 5028, 19, 13287, 46745, 1764, 956, 3243, 23855, 3217, 1798, 5168, 10436, 281, 15603, 2623, 2256, 3936, 2105, 2706, 290, 15524, 640, 281, 16285, 19742, 290, 14808, 892, 2105, 15425, 2188, 6424, 412, 295, 5896, 352, 7683, 302, 270, 2144, 690, 261, 9450, 2324, 39917, 329, 2735, 2533, 281, 9913, 2623, 5454, 5896, 547, 6943, 414, 491, 2647, 290, 5896, 404, 3886, 18856, 302, 5570, 3217, 22895, 7374, 9913, 7719, 1099, 5137, 5896, 684, 397, 684, 481, 547, 807, 261, 7719, 4506, 2128, 302, 530, 345, 8206, 1957, 537, 345, 1169, 358, 5896, 547, 261, 7719, 4506, 276, 270, 4186, 1500, 690, 7639, 537, 345, 481, 11905, 329, 496, 302, 547, 1153, 2180, 276, 7719, 1099, 720, 5896, 1334, 481, 547, 5939, 19842, 1957, 5896, 684, 547, 22722, 14004, 290, 17206, 281, 1284, 5000, 281, 5601, 4013, 18195, 1249, 1534, 5896, 13444, 358, 5896, 404, 17206, 12486, 1622, 1249, 324, 7719, 7098, 397, 3173, 1501, 5000, 281, 22722, 14004, 1351, 3287, 22895, 3366, 270, 14991, 397, 2768, 302, 270, 6377, 3683, 1267, 5469, 47454, 1901, 6597, 5896, 404, 405, 989, 329, 19842, 22895, 4787, 280, 786, 270, 4781, 14004, 36662, 789, 271, 853, 340, 706, 763, 5896, 547, 9450, 2735, 33467, 363, 9913, 12580, 530, 404, 7553, 324, 3220, 19156, 537, 345, 1169, 358, 5896, 7374, 647, 2240, 329, 5044, 290, 1996, 281, 1529, 1140, 1999, 36673, 281, 270, 10593, 2183, 3920, 4330, 7389, 8505, 308, 976, 3843, 10323, 900, 1901, 405, 270, 10593, 900, 9295, 399, 281, 270, 2873, 405, 270, 10593, 397, 9554, 281, 270, 1819, 5896, 684, 526, 271, 1360, 270, 33467, 5069, 324, 261, 15357, 303, 1120, 481, 11454, 1534, 5896, 547, 3992, 76, 18775, 270, 1284, 3920, 18775, 1106, 1213, 5238, 2377, 786, 797, 22895, 1120, 481, 7159, 1955, 22895, 1120, 481, 4787, 261, 11372, 397, 11720, 3416, 17370, 382, 270, 2735, 5103, 1901, 345, 2698, 690, 2001, 491, 1213, 8058, 1634, 786, 270, 1024, 1572, 397, 1091, 5896, 404, 3217, 5896, 1334, 8198, 302, 4787, 6037, 3681, 260, 593, 15975, 329, 1901, 3364, 2802, 3185, 270, 11811, 22895, 1120, 481, 4787, 700, 644, 15961, 6103, 281, 260, 593, 15975, 276, 2802, 397, 1377, 691, 6597, 358, 4365, 260, 593, 15975, 853, 340, 6452, 4838, 1120, 481, 10865, 3692, 1267, 5469, 260, 593, 15975, 5896, 684, 626, 4787, 2358, 337, 31135, 9539, 6103, 3364, 2802, 329, 1500, 22895, 4787, 2358, 337, 324, 2452, 1534, 647, 6597, 404, 481, 6324, 9913, 1901, 302, 261, 2233, 1020, 5896, 500, 7503, 2563, 290, 769, 4824, 5707, 5896, 1334, 4787, 261, 1843, 281, 270, 47454, 1901, 4838, 31264, 22895, 1120, 481, 4787, 4910, 696, 6597, 10865, 3692, 397, 9118, 1267, 5469, 270, 47454, 1901, 4838, 5896, 404, 1804, 291, 3217, 363, 1795, 621, 721, 8159, 302, 2690, 1249, 37250, 690, 2001, 5896, 1213, 4787, 491, 4838, 329, 261, 1111, 281, 1500, 1140, 3788, 276, 2144, 22895, 40232, 270, 4121, 9634, 22895, 7374, 329, 1377, 5044, 281, 5712, 3912, 2581, 1086, 46917, 7719, 7098, 5395, 1901, 32625, 2330, 14472, 30479, 397, 3697, 1534, 5896, 547, 1377, 281, 647, 1996, 22895, 3366, 875, 14991, 397, 7848, 2186, 3943, 5154, 22895, 3596, 1377, 3706, 892, 290, 4787, 6037, 13167, 302, 3596, 16521, 1267, 5469, 1795, 621, 721, 5896, 684, 8603, 3697, 397, 4288, 764, 329, 885, 302, 2267, 690, 2001, 1120, 481, 27533, 1970, 644, 261, 9000, 265, 281, 5547, 329, 2267, 405, 9913, 1139, 947, 23722, 9913, 2735, 5103, 1213, 2706, 5896, 329, 27035, 3423, 276, 270, 47628, 5896, 684, 5783, 69, 46203, 290, 2768, 6174, 290, 5949, 22895, 3596, 32453, 1226, 8115, 3416, 5896, 26805, 324, 9913, 2735, 5103, 405, 9913, 1139, 947, 6633, 33206, 5896, 329, 6250, 402, 302, 6059, 276, 9913, 1265, 479, 20373, 5896, 668, 270, 3036, 28551, 6424, 2], 'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'labels': 'C182;E43;F419;I10;K632;K651;K9189;T8140XA;Y836;Y92239;Z6827;Z87891', 'label_ids': []}.
+11/03/2024 09:44:44 - INFO - __main__ -   Original tokens: <s>sex m service surgery allergies no known allergies adverse drug reactions attending complaint malignant neoplasm of ascending colon major surgical or invasive procedure laparoscopic right colectomy sils dx lap ovesco history of present illness is an otherwise healthy gentleman that had previously undergone colonoscopies without significant findings on his most recent colonoscopy he had a mass in his ascending colon that was referred for endoscopic submucosal resection he successfully underwent this procedure by dr weeks ago however unfortunately the biopsy did demonstrate invasive adenocarcinoma with a positive margin and also unfortunately the procedure was complicated by a post polypectomy bleed this did not require surgery but was managed with clips since that and she has done well is returned to normal diet and bowel function he has no symptoms of anemia he currently denies nausea vomiting fevers chills diarrhea or constipation past medical history past medical history hypertension psh none social history family history no bleeding disorders mom with fathers side with father died from cabg complications at age uncles w multiple mis physical exam physical exam gen nad axox3 card rrr pulm ctab no respiratory distress abd soft non tender non distended wounds c d i ext no edema warm well perfused pertinent results ct abd pelvis w o contrast study of impression extraluminal contrast and gas adjacent to the right partial colectomy and anastomosis concerning for a leak the left frontal approach intra abdominal drainage catheter courses through the aforementioned area of anastomotic leak and ascites anasarca ct abd pelvis with contrast study of impression interval right colectomy contrast does not reach the anastomotic site moderate ascites and free air noted throughout the abdomen as well as fat stranding within the surgical bed could be related to recent surgery no definite leak or acute intra abdominal abnormality brief hospital course mr presented to pre op holding at on for a laparoscopic right colectomy he tolerated the procedure well without complications please see operative note for further details after a brief and uneventful stay in the pacu the patient was transferred to the floor for further post operative management anastomotic leak on the patient was intermittently having nausea and pain he underwent a ct scan on with rectal contrast the contrast unfortunately did not reach the anastomosis as the clinical suspicion for leak was high the patient was taken to the operating room for a diagnostic laparoscopy an abdominal washout was performed and a drain was placed during the procedure pus was identified and the patient was started on broad spectrum antibiotics zosyn and fluconazole on the patient began to have feculent material out of the jp drain another ct scan was obtained on that was concerning for a leak the interventional gastroenterologists were consulted and on a colonoscopy was performed which visualized the leak and an ovesco was placed after the procedure he had significant decrease in feculant output from the jp drain he had another ct scan on that showed rim enhancing fluid collections in his pelvis the following day he went to for drain placement he was scanned again on and that showed an interval decrease in the size of the collections he continued to slowly progress and he was ultimately started on augmentin which he will continue until the patient was kept npo until he had return of bowel function and improvement in his abdominal pain we then advanced the patient to clears and eventually to a regular diet and he tolerated that without any issues on the day of he was tolerating a regular diet voiding and stooling ambulating independently and his pain was controlled on an oral pain regimen severe malnutrition given the patients abdominal pain and intermittent nausea his oral intake was very poor when the leak was identified nutrition was consulted for tpn recs and central access was obtained the patient remained on tpn until at this point he was taking good po therefore tpn and his picc were discontinued neuro pain was well controlled on tylenol and oxycodone for breakthrough pain cv the patient remained stable from a cardiovascular standpoint vital signs were routinely monitored pulm the patient remained stable from a pulmonary standpoint oxygen saturation was routinely monitored he had good pulmonary toileting as early ambulation and incentive spirometry were encouraged throughout hospitalization gu the patient was voiding without difficulty throughout hospitalization urine output was monitored as indicated heme the patient received subcutaneous heparin and dyne boots during this stay he was encouraged to get up and ambulate as early as possible the patient is being d on prophylactic lovenox on the patient was d to home at he was tolerating a regular diet passing flatus voiding and ambulating independently he will follow up in the clinic in weeks this information was communicated to the patient directly prior to post surgical complications during inpatient post operative ileus resolving w o ngt post operative ileus requiring management with ngt uti wound infection x anastomotic leak staple line bleed congestive heart failure arf acute urinary retention failure to void after foley d cd acute urinary retention requiring with foley catheter dvt pneumonia abscess none social issues causing a delay in delay in organization of services difficulty finding appropriate rehab hospital disposition lack of insurance coverage for services lack of insurance coverage for prescribed medications family not agreeable to plan patient knowledge deficit related to ileostomy delaying dispo x no social factors contributing in delay of medications on the pre medication list is accurate and complete hydrochlorothiazide mg po daily medications amoxicillin clavulanic acid mg po bid duration days rx amoxicillin pot clavulanate mg mg tablets by mouth twice a day disp tablet refills0 enoxaparin sodium mg sc daily rx enoxaparin mg ml once a day disp syringe refills0 oxycodone immediate release mg po q3hprn pain moderate rx oxycodone mg tablets by mouth every four hours disp tablet refills0 hydrochlorothiazide mg po daily disposition home diagnosis malignant neoplasm of ascending colon condition mental status clear and coherent level of consciousness alert and interactive activity status ambulatory independent instructions dear you were admitted to the hospital after a laparoscopic right colectomy for surgical management of your colon polyp you have recovered from this procedure and you are now ready to return home please monitor your bowel function closely you may or may not have had a bowel movement prior to which is acceptable however it is important that you have a bowel movement in the next days after anesthesia it is not uncommon for patients to have some decrease in bowel function but you should not have prolonged constipation however you may have loose stool and passing of small amounts of dark old appearing blood if you notice that you are passing bright red blood with bowel movements or having large amounts of loose stool without improvement please call the office or go to the emergency room while taking narcotic pain medications you are at risk for constipation please take an over the counter stool softener such as colace you have laparoscopic surgical incisions on your abdomen which are closed with internal sutures it is important that you monitor these areas for signs and symptoms of infection including increasing redness of the incision lines white green yellow foul smelling drainage increased pain at the incision increased warmth of the skin at the incision or swelling of the area you may shower pat the incisions dry with a towel do not rub if you have steri strips the small white strips they will fall off over time please do not remove them please do not take a bath or swim until cleared by the surgical team pain is expected after surgery this will gradually improve over the first week or so you are home you should continue to take extra strength tylenol for pain every hours around the clock please do not take more than 3000mg of tylenol in hours or any other medications that contain tylenol such as cold medication do not drink alcohol while taking tylenol you may also take advil ibuprofen 600mg every hours for days please take advil with food if these medications are not controlling your pain to a point where you can ambulate and perform minor tasks you should take a dose of the narcotic pain medication tramadol please do not take sedating medications drink alcohol or drive while taking the narcotic pain medication you are being d home on lovenox injections to prevent blood clots after surgery you will take this medication for a total of days including doses in hospital please finish the entire prescription please monitor for any signs of bleeding fast heart rate bloody bowel movements abdominal pain bruising feeling faint or weak if you have any of these symptoms please call our office or seek medical attention immediately please avoid any contact activity and take extra caution to avoid falling while taking lovenox you may feel weak or washed out for up to weeks after surgery do not lift greater than a gallon of milk for weeks at your post op appointment your surgical team will clear you for heavier exercise in the meantime you may climb stairs and go outside and walk please avoid traveling long distances until you speak with your surgical team at your post op visit thank you for allowing us to participate in your care we wish you all the best followup instructions</s>
+11/03/2024 09:44:44 - INFO - __main__ -   ***** Running training *****
+11/03/2024 09:44:44 - INFO - __main__ -     Num examples = 77421
+11/03/2024 09:44:44 - INFO - __main__ -     Num Epochs = 7
+11/03/2024 09:44:44 - INFO - __main__ -     Instantaneous batch size per device = 32
+11/03/2024 09:44:44 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 32
+11/03/2024 09:44:44 - INFO - __main__ -     Gradient Accumulation steps = 1
+11/03/2024 09:44:44 - INFO - __main__ -     Total optimization steps = 16940
+11/03/2024 09:44:44 - INFO - __main__ -     Max lentgh = 1792
+11/03/2024 09:44:44 - INFO - __main__ -     Remove digits = True
+11/03/2024 09:44:44 - INFO - __main__ -   Epoch = 1
+11/03/2024 14:11:53 - INFO - accelerate.accelerator -   Saving current state to ../models/top3_datamax2048limit1792
+11/03/2024 14:11:55 - INFO - accelerate.checkpointing -   Model weights saved in ../models/top3_datamax2048limit1792/model.safetensors
+11/03/2024 14:11:57 - INFO - accelerate.checkpointing -   Optimizer state saved in ../models/top3_datamax2048limit1792/optimizer.bin
+11/03/2024 14:11:57 - INFO - accelerate.checkpointing -   Scheduler state saved in ../models/top3_datamax2048limit1792/scheduler.bin
+11/03/2024 14:11:57 - INFO - accelerate.checkpointing -   Sampler state for dataloader 0 saved in ../models/top3_datamax2048limit1792/sampler.bin
+11/03/2024 14:11:57 - INFO - accelerate.checkpointing -   Sampler state for dataloader 1 saved in ../models/top3_datamax2048limit1792/sampler_1.bin
+11/03/2024 14:11:57 - INFO - accelerate.checkpointing -   Random states saved in ../models/top3_datamax2048limit1792/random_states_0.pkl
+11/03/2024 14:11:57 - INFO - __main__ -   Done with training for Epoch1
+11/03/2024 14:11:57 - INFO - __main__ -   Epoch = 2
+11/03/2024 17:03:27 - INFO - __main__ -   Loading 0
+11/03/2024 17:03:27 - INFO - __main__ -   Loading 1
+11/03/2024 17:03:27 - INFO - __main__ -   Loading 2
+11/03/2024 17:03:27 - INFO - __main__ -   Loading 3
+11/03/2024 17:03:27 - INFO - __main__ -   Loading 4
+11/03/2024 17:03:27 - INFO - __main__ -   Loading 5
+11/03/2024 17:03:27 - INFO - __main__ -   Loading 6
+11/03/2024 17:03:27 - INFO - __main__ -   Loading 7
+11/03/2024 17:03:27 - INFO - __main__ -   Loading 8
+11/03/2024 17:03:27 - INFO - __main__ -   Loaded data files
+11/03/2024 17:03:27 - INFO - __main__ -   Loaded raw datasets
+11/03/2024 17:03:27 - INFO - __main__ -   Loaded labels
+11/03/2024 17:03:27 - INFO - __main__ -   Tokenizing
+11/03/2024 17:03:27 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:29 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:29 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:30 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:31 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:32 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:33 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:34 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:35 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:35 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:36 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:37 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:38 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:39 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:40 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:41 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:41 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:42 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:43 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:44 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:45 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:45 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:46 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:47 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:48 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:49 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:50 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:50 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:51 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:52 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:53 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:54 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:55 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:56 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:56 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:57 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:58 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:03:59 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:00 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:01 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:01 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:02 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:03 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:04 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:05 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:05 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:06 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:07 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:08 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:09 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:10 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:10 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:11 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:12 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:13 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:13 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:14 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:15 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:16 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:17 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:18 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:19 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:19 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:20 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:21 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:22 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:22 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:23 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:24 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:25 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:26 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:27 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:27 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:28 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:29 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:30 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:31 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:32 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:33 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:33 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:34 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:35 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:36 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:37 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:37 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:38 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:39 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:40 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:41 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:42 - INFO - __main__ -   in tokenizer function
+11/03/2024 17:04:42 - INFO - __main__ -   Finished tokenizing
+11/03/2024 17:04:45 - INFO - __main__ -   Setting optimizer
+11/03/2024 17:04:45 - INFO - __main__ -   Distributed environment: NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: mps
+
+Mixed precision type: no
+
+11/03/2024 17:04:46 - INFO - __main__ -   Sample 45343 of the training set: {'input_ids': [0, 14228, 289, 5275, 5234, 25854, 4080, 10103, 661, 274, 10103, 661, 274, 11664, 21944, 21308, 3037, 30881, 1429, 2735, 397, 5148, 2647, 6330, 2819, 281, 821, 5051, 345, 261, 2520, 4013, 779, 324, 13025, 7294, 363, 3578, 997, 345, 7683, 414, 270, 1759, 690, 5694, 30881, 33394, 3708, 36475, 91, 5923, 3699, 7801, 2000, 363, 4225, 3635, 7706, 1092, 807, 260, 546, 276, 405, 530, 797, 470, 343, 3708, 302, 547, 24244, 82, 363, 23739, 534, 445, 1092, 1896, 276, 270, 3444, 281, 4225, 699, 329, 13025, 7294, 470, 3511, 5694, 6107, 30881, 17542, 270, 2000, 470, 343, 7406, 276, 302, 270, 1759, 276, 270, 1759, 2327, 1770, 352, 1901, 260, 8114, 6383, 398, 85, 268, 21, 7991, 356, 2327, 33978, 352, 12733, 329, 277, 29454, 311, 3292, 535, 87, 8445, 568, 311, 1606, 22, 1440, 276, 85, 15205, 273, 91, 85, 925, 689, 2315, 980, 1770, 2128, 302, 352, 260, 8114, 6383, 398, 85, 268, 21, 8437, 356, 363, 15629, 302, 270, 13179, 1092, 1137, 1713, 918, 2198, 290, 646, 641, 3121, 8510, 470, 345, 3612, 696, 3754, 7405, 918, 470, 2379, 1896, 13220, 2284, 608, 331, 3341, 14938, 885, 302, 1262, 32952, 470, 646, 647, 45085, 329, 261, 927, 281, 1147, 290, 1106, 404, 1102, 302, 270, 608, 331, 3341, 470, 807, 2128, 302, 12739, 24338, 340, 261, 10287, 1106, 684, 365, 700, 4735, 786, 270, 3207, 4590, 690, 5757, 38133, 470, 626, 16473, 13220, 742, 24971, 8551, 276, 1655, 4525, 530, 470, 17118, 302, 4525, 1450, 290, 900, 6744, 23958, 786, 270, 3207, 1559, 1500, 7211, 689, 24338, 689, 46359, 397, 49052, 689, 25677, 1285, 878, 689, 2130, 266, 1996, 689, 42126, 689, 44819, 12234, 689, 25767, 689, 312, 347, 291, 470, 345, 21809, 614, 22100, 349, 3207, 293, 80, 491, 649, 689, 2385, 6878, 689, 1244, 4477, 1901, 397, 9554, 3323, 4225, 260, 546, 276, 1846, 324, 2385, 7563, 546, 470, 343, 6428, 10574, 43323, 290, 7203, 340, 68, 329, 1393, 2267, 23807, 1568, 21463, 1508, 281, 2249, 261, 2657, 2233, 1508, 281, 2249, 343, 986, 290, 343, 1844, 11448, 7211, 3708, 276, 270, 25382, 4141, 2186, 2819, 13025, 7294, 293, 441, 260, 546, 276, 450, 75, 71, 317, 87, 2344, 7482, 4586, 276, 6879, 2526, 2819, 2102, 2819, 17430, 1774, 290, 2018, 405, 4320, 1603, 1294, 405, 15716, 28704, 9847, 20541, 11032, 2997, 9847, 7007, 3354, 311, 268, 16843, 7625, 689, 1672, 2102, 2819, 281, 1249, 4580, 397, 1249, 3039, 2321, 915, 2321, 1770, 260, 8114, 6383, 398, 85, 5155, 268, 21, 363, 944, 1880, 29907, 7503, 3063, 13179, 276, 23561, 5583, 280, 294, 334, 294, 608, 299, 12997, 445, 946, 300, 35248, 3813, 49678, 2706, 1351, 4154, 1258, 89, 71, 481, 3346, 3783, 4891, 1086, 290, 10892, 689, 27532, 80, 4408, 11454, 86, 397, 9000, 12544, 9845, 11202, 3965, 3835, 276, 689, 3965, 8494, 2706, 302, 45136, 33808, 20532, 689, 18369, 830, 21720, 11171, 397, 5141, 265, 15297, 6733, 1222, 7719, 16242, 17002, 489, 1859, 2414, 848, 87, 11023, 1351, 24426, 397, 1966, 2855, 689, 4402, 19202, 689, 34591, 9595, 78, 10098, 29558, 1566, 9295, 918, 15686, 16360, 1351, 1198, 14684, 8819, 1222, 7602, 2235, 19742, 13684, 273, 81, 26510, 2535, 3030, 5886, 4480, 290, 3033, 3681, 276, 668, 16360, 39441, 81, 5886, 1222, 9788, 2873, 689, 609, 398, 18068, 12916, 689, 5152, 31075, 45126, 31185, 26540, 689, 609, 4380, 5535, 9131, 1615, 70, 555, 3826, 833, 8280, 5044, 3269, 290, 4589, 276, 300, 6547, 19312, 1880, 918, 18195, 290, 276, 689, 2315, 8494, 26048, 398, 85, 85, 689, 27532, 80, 4408, 11454, 86, 397, 9000, 12544, 1222, 269, 20, 269, 21, 27459, 8585, 273, 3923, 20532, 848, 1640, 1750, 11047, 14994, 6744, 5542, 551, 71, 2414, 848, 18173, 276, 668, 30771, 848, 899, 1859, 689, 24426, 397, 1966, 2855, 1421, 277, 90, 83, 689, 8819, 2235, 8773, 1378, 298, 5788, 14994, 1222, 9788, 22029, 738, 33978, 42502, 2293, 4849, 1249, 277, 29454, 43021, 38360, 69, 311, 3292, 289, 42695, 289, 483, 289, 483, 70, 46546, 90, 46546, 90, 25650, 535, 87, 42502, 2293, 4849, 1249, 2892, 86, 1959, 86, 28111, 300, 316, 1214, 82, 426, 1402, 809, 342, 1402, 12319, 1402, 39082, 551, 396, 316, 1402, 34062, 82, 42502, 2293, 4849, 1249, 275, 3219, 42502, 2293, 4849, 1249, 2430, 5518, 283, 5067, 8445, 568, 518, 311, 1606, 22, 2051, 503, 33978, 39705, 1164, 346, 1249, 277, 29454, 43021, 38360, 69, 311, 3292, 289, 42695, 289, 483, 289, 483, 70, 46546, 90, 46546, 90, 25650, 535, 87, 39705, 1164, 346, 1249, 275, 3219, 39705, 1164, 346, 1249, 2430, 5518, 283, 5067, 8445, 568, 518, 311, 1606, 22, 2051, 503, 39705, 1164, 346, 1249, 3771, 579, 316, 1764, 771, 273, 3923, 6744, 17403, 689, 1541, 281, 3635, 17332, 397, 6222, 12862, 4405, 2421, 2180, 276, 1445, 281, 270, 1672, 19700, 2000, 340, 918, 340, 5495, 8287, 15567, 290, 24041, 26540, 2593, 270, 2128, 915, 276, 3269, 2058, 16154, 276, 270, 2324, 4715, 9113, 2593, 7948, 2144, 3444, 345, 261, 2520, 4013, 779, 324, 13025, 7294, 363, 3578, 997, 343, 7683, 414, 270, 1759, 690, 5694, 30881, 33394, 3708, 36475, 91, 5923, 3699, 7801, 2000, 363, 4225, 3635, 7706, 3016, 2000, 36475, 3699, 7801, 2000, 363, 12742, 2760, 281, 3635, 7706, 4358, 4639, 15705, 3932, 34082, 1307, 15350, 21149, 690, 261, 6110, 324, 1559, 3464, 281, 875, 34552, 5103, 537, 345, 5093, 358, 1655, 261, 2243, 72, 397, 261, 3016, 289, 377, 1463, 2539, 4152, 270, 1798, 2519, 261, 3016, 289, 377, 1463, 4694, 365, 270, 4186, 979, 281, 4935, 470, 345, 481, 18621, 290, 646, 689, 1996, 273, 277, 21149, 470, 646, 689, 691, 1996, 281, 6744, 1901, 397, 39742, 281, 11990, 261, 273, 3923, 281, 270, 6744, 343, 3774, 302, 8030, 764, 3635, 36513, 530, 343, 7956, 33589, 1844, 470, 1213, 803, 885, 324, 1135, 302, 2872, 1298, 2897, 397, 39353, 699, 340, 280, 8806, 13025, 7294, 363, 30702, 346, 41943, 19184, 273, 21, 71, 20, 363, 3612, 696, 918, 6521, 3217, 38133, 13591, 1265, 324, 40866, 20235, 47216, 421, 10522, 1298, 11201, 445, 8806, 5103, 21890, 4815, 288, 1821, 2798, 2253, 281, 273, 3923, 6744, 288, 1821, 1249, 3897, 1534, 1432, 1463, 1797, 1279, 302, 2253, 1739, 329, 5244, 281, 5711, 8806, 6110, 3323, 1548, 281, 1298, 2897, 3016, 289, 377, 397, 39353, 699, 329, 15350, 1092, 343, 2455, 290, 2036, 290, 345, 3269, 329, 1970, 644, 4019, 352, 9080, 276, 6658, 290, 8801, 6597, 363, 270, 453, 4838, 5101, 345, 4832, 290, 2657, 38133, 1764, 956, 3243, 40866, 20235, 1764, 956, 34654, 3227, 81, 12757, 12864, 1764, 956, 340, 71, 380, 47216, 1764, 956, 34654, 3227, 81, 12757, 336, 7062, 663, 10522, 1764, 956, 4594, 27, 75, 3227, 81, 12757, 2966, 306, 373, 4080, 1764, 956, 34654, 3227, 81, 19842, 4812, 285, 17421, 14834, 956, 3243, 6597, 38133, 1764, 956, 3243, 12864, 1764, 956, 340, 71, 380, 2966, 306, 373, 4080, 1764, 956, 34654, 3227, 81, 19842, 40866, 20235, 1764, 956, 34654, 3227, 81, 12757, 4812, 285, 17421, 14834, 956, 3243, 47216, 1764, 956, 34654, 3227, 81, 12757, 336, 7062, 663, 10522, 1764, 956, 4594, 27, 75, 3227, 81, 12757, 23855, 3217, 1798, 3635, 7706, 2000, 2256, 3936, 2105, 2706, 290, 15524, 640, 281, 16285, 19742, 290, 14808, 892, 2105, 15425, 2188, 6424, 412, 295, 289, 85, 5896, 352, 7683, 1492, 9913, 30881, 925, 261, 1284, 2000, 363, 818, 281, 9913, 2581, 19805, 9913, 2212, 12926, 7706, 537, 345, 5093, 3680, 491, 2000, 345, 2519, 1153, 13248, 2474, 261, 1284, 1249, 14149, 397, 280, 1529, 479, 1238, 261, 27907, 5685, 281, 9913, 6744, 530, 1238, 481, 526, 1377, 691, 1541, 281, 1249, 37250, 276, 9913, 8585, 5896, 626, 547, 689, 1996, 281, 3173, 280, 1529, 281, 9913, 2581, 5519, 21149, 479, 7203, 3897, 414, 9913, 1249, 302, 3675, 18328, 871, 404, 689, 3230, 5346, 290, 647, 1213, 365, 2798, 753, 276, 270, 4186, 2346, 1500, 5896, 1334, 803, 885, 324, 9913, 5439, 8909, 1135, 1298, 14076, 1393, 3680, 1334, 365, 3774, 302, 2564, 397, 4028, 491, 2000, 537, 343, 261, 34160, 5469, 1265, 281, 5896, 269, 1269, 315, 323, 9913, 1265, 5103, 28551, 6424, 2], 'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'labels': 'C8290;H53459;I378;R590;R911;R931;Z808;Z8249;Z8673', 'label_ids': []}.
+11/03/2024 17:04:46 - INFO - __main__ -   Original tokens: <s>sex m service medicine allergies sodium pentothal pentothal attending chief complaint abnormal echocardiogram major surgical or invasive procedure none history of present illness is a year old man with follicular lymphoma on br who is admitted from the ed after routine echocardiogram incidentally noted 07x07cm mobile mass on his pulmonary valve patient had tia in at which time he was noted to have pfo on bubble study per patient report in the course of his treatment for follicular lymphoma he underwent routine repeat echocardiogram noting the mass he was directed in to the ed in the ed initial vs were pain t hr bp rr o2 98ra initial labs were notable for wbc hct plt na k hco3 cr inr fibrinogen cxr showed no acute process vs prior to were t hr bp rr o2 97ra on arrival to the floor patient feels well overall and has been rather asymptomatic he is tolerating chemotherapy quite well he does report intermittent visual scotomas lasting up to 20minutes he has these intermittently for a number of years and they are similar to the scotomas he had prior to migraine headaches as a youth they may be more frequent over the last month after starting allopurinol he also notes intermittent blurry vision in either eye which he relates to eye strain and increased chest congestion over the last several days otherwise no headaches no fevers or chills no illicit drug use no urti symptoms no sob no frank cough no cp no n v d he is mildly constipated last bm this am no dysuria no new leg pain or swelling regarding his tia in presented with dysarthia he was never anticoagulated and took asa for about weeks afterwards before stopping review of systems a complete point review of systems was performed and was negative unless otherwise noted in the hpi past medical history follicular lymphoma bph tia in adhd lt breast cyst removal in childhood social history family history father mi and death at mother brain tumor at sister meningioma son ulcerative colitis another son psychiatric problem h o suicidal attempt no known family history of blood cancers or blood disorders physical exam physical vs t hr bp rr sat o2 on ra general pleasant ambulating floor in nad eyes anicteric sclerea perll eomi ent oropharynx clear without lesion jvd not elevated cardiovascular regular rate and rhythm no murmurs rubs or gallops radial pulses respiratory appears in no respiratory distress clear to auscultation bilaterally no crackles wheezes or rhonchi gastrointestinal normal bowel sounds nondistended soft nontender without rebound or guarding no hepatomegaly no splenomegaly muskuloskelatal warm well perfused extremities without lower extremity edema normal bulk neuro alert oriented cn iii xii intact equal and full strength in all extremities ftn intact normal gait skin no significant rashes lymphatic no cervical supraclavicular submandibular lymphadenopathy no significant ecchymoses physcial vitals vital signs stable and reviewed in eflowsheet general well appearing and in no acute distress cv rrr no murmurs rubs or gallops normal s1 s2 resp lungs cta bilaterally non labored breathing symmetric chest expansion abd soft non tender in all quadrants non distended no rebound or guarding ext wwp no edema neuro speech fluent face symmetric normal gait pertinent results labs 0637pm blood wbc rbc hgb hct mcv mch mchc rdw rdwsd plt 0637pm blood neuts lymphs monos eos baso im absneut abslymp absmono abseos absbaso 0637pm blood ptt 0637pm blood glucose urean creat na k cl hco3 angap labs 0805am blood wbc rbc hgb hct mcv mch mchc rdw rdwsd plt 0805am blood ptt 0805am blood glucose urean creat na k cl hco3 angap 0805am blood calcium phos mg studies cta chest impression no evidence of pulmonary embolism or aortic abnormality mild interval decrease in size of the known mediastinal mass as well as partially visualized mesenteric and retroperitoneal lymphadenopathy since the prior exam in stable mm nodule in the right middle lobe since brief hospital course is a year old man with follicular lymphoma on br who was admitted from the ed after routine echocardiogram incidentally noted 07x07cm mobile mass on his pulmonary valve cardiac mass 07cm mobile mass on pa side of pulmonary valve differential includes papillary fibroelastoma thrombus endocarditis after a discussion with several members of our cardiology team it is unclear that either a tee or a cardiac mri would help establish the diagnosis although a cardiac mri would probably be the next test of choice he is not febrile and has no symptoms c w endocarditis he has no other symptoms of chest pain or shortness of breath a cta of the chest was done to rule out pulmonary emboli which was preliminarily negative he will follow up with dr to discuss further testing or empiric treatment as an outpatient follicular lymphoma on bendamustine rituximab c2d1 on tolerating well continued home allopurinol supportive care with lorazepam ondansetron compazine further plans per outpatient team transitional issues f u final read of cta chest f u blood cultures if positive would likely need to readmit for initiation of antibiotics outpatient discussion regarding value of further testing cardiac mri or empiric treatment for thrombus patient was seen and examined and is stable for greater than minutes were spent in planning and coordination medications on the pre medication list is accurate and complete allopurinol mg po daily lorazepam mg po bidprn nausea dexamethasone mg po asdir ondansetron mg po bidprn nausea prochlorperazine mg po q8hprn nausea docusate sodium mg po bidprn constipation multivitamins tab po daily medications allopurinol mg po daily dexamethasone mg po asdir docusate sodium mg po bidprn constipation lorazepam mg po bidprn nausea multivitamins tab po daily ondansetron mg po bidprn nausea prochlorperazine mg po q8hprn nausea disposition home diagnosis pulmonary valve mass condition mental status clear and coherent level of consciousness alert and interactive activity status ambulatory independent instructions dear mr you were admitted because your echocardiogram showed a small mass on one of your heart valves your pulmonic valve it is unclear what this mass is although some possibilities include a small blood clot or an infection we did a ct scan of your chest which did not show any other evidence of blood clots in your lungs you also have no symptoms of having an infection of your heart called endocarditis we took cultures from your blood to make sure there are no bacteria growing and these will be finalized in the next few days you should follow up with your oncologist dr further discussions about what should be done to evaluate or treat this mass it was a pleasure taking care of you sincerely your care team followup instructions</s>
+11/03/2024 17:04:46 - INFO - __main__ -   ***** Running training *****
+11/03/2024 17:04:46 - INFO - __main__ -     Num examples = 77421
+11/03/2024 17:04:46 - INFO - __main__ -     Num Epochs = 4
+11/03/2024 17:04:46 - INFO - __main__ -     Instantaneous batch size per device = 32
+11/03/2024 17:04:46 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 32
+11/03/2024 17:04:46 - INFO - __main__ -     Gradient Accumulation steps = 1
+11/03/2024 17:04:46 - INFO - __main__ -     Total optimization steps = 9680
+11/03/2024 17:04:46 - INFO - __main__ -     Max lentgh = 1792
+11/03/2024 17:04:46 - INFO - __main__ -     Remove digits = True
+11/03/2024 17:04:46 - INFO - __main__ -   Epoch = 1
+11/05/2024 07:33:04 - INFO - __main__ -   Loading 0
+11/05/2024 07:33:04 - INFO - __main__ -   Loading 1
+11/05/2024 07:33:04 - INFO - __main__ -   Loading 2
+11/05/2024 07:33:04 - INFO - __main__ -   Loading 3
+11/05/2024 07:33:04 - INFO - __main__ -   Loading 4
+11/05/2024 07:33:04 - INFO - __main__ -   Loading 5
+11/05/2024 07:33:04 - INFO - __main__ -   Loading 6
+11/05/2024 07:33:04 - INFO - __main__ -   Loading 7
+11/05/2024 07:33:04 - INFO - __main__ -   Loading 8
+11/05/2024 07:33:04 - INFO - __main__ -   Loaded data files
+11/05/2024 07:33:05 - INFO - __main__ -   Loaded raw datasets
+11/05/2024 07:33:05 - INFO - __main__ -   Loaded labels
+11/05/2024 07:33:05 - INFO - __main__ -   Tokenizing
+11/05/2024 07:33:05 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:06 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:07 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:08 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:08 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:09 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:10 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:11 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:12 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:12 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:13 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:14 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:15 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:16 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:17 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:18 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:18 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:19 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:20 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:21 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:22 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:23 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:23 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:24 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:25 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:26 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:27 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:27 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:28 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:29 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:30 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:31 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:32 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:32 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:33 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:34 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:35 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:36 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:36 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:37 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:38 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:39 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:40 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:41 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:42 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:42 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:43 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:44 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:45 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:46 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:46 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:47 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:48 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:49 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:49 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:50 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:51 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:52 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:53 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:54 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:55 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:55 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:56 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:57 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:58 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:58 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:33:59 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:00 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:01 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:02 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:03 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:04 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:04 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:05 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:06 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:07 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:08 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:08 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:09 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:10 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:11 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:12 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:12 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:13 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:14 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:15 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:16 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:17 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:18 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:18 - INFO - __main__ -   in tokenizer function
+11/05/2024 07:34:19 - INFO - __main__ -   Finished tokenizing
+11/05/2024 16:12:30 - INFO - __main__ -   Loaded data files
+11/05/2024 16:12:30 - INFO - __main__ -   Tokenizing
+11/05/2024 16:38:16 - INFO - __main__ -   Loaded raw datasets
+11/05/2024 16:38:16 - INFO - __main__ -   Loaded data files
+11/05/2024 16:38:16 - INFO - __main__ -   Tokenizing
+11/05/2024 16:38:29 - INFO - __main__ -   Setting optimizer
+11/05/2024 16:38:30 - INFO - __main__ -   Distributed environment: NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: mps
+
+Mixed precision type: no
+
+11/05/2024 16:38:30 - INFO - __main__ -   Sample 13997 of the training set: E119;E785;I10;I214;I2510;J449;Z006;Z8546;Z87891.
+11/05/2024 16:38:30 - INFO - __main__ -   Original tokens: <s>sex m service medicine allergies no known allergies adverse drug reactions attending chief complaint doe chest pain with exertion major surgical or invasive procedure preliminary report coronary anatomy dominance right the had distal stenosis the proximal lad had diffuse stenosis the cx had serial disease with proximal stenoses into a diffusely diseased om that had serial lesions not suitable for pci the distal cx had stenosis into lpl branch the rca was diffusely diseased with serial stenoses into the pda which had diffuse stenoses throughout the pl was short with origin stenosis history of present illness year old male who originally presented to on with complaints of doe fatigue and chest pain with exertion he reports he has been in good health doing work day before and was without symptoms on the day of to he awoke feeling unusually and fatigued short of breath dizzy and diaphoretic he presented to that evening and was found to have nstemi he was transferred to for cardiac catheterization and further evaluation upon cardiac catheterization he was found to have three vessel disease and is now being referred to cardiac surgery for revascularization past medical history iddm htn hlp prior mi per pt small mi prostate ca social history family history physical exam pe mental status clear and coherent level of consciousness alert and interactive activity status ambulatory independent pe vs general appears comfortable in nad chest lungs clear cv ap rrr abd soft ntnd ext peripheral pulses without edema access site rra di without hematoma radial pulse pertinent results 0500pm blood wbc rbc hgb hct mcv mch mchc rdw rdwsd plt 0500pm blood neuts monos eos baso im absneut abslymp absmono abseos absbaso 0500pm blood plt 0500pm blood 0500pm blood alt ast ldldh alkphos amylase totbili dirbili indbili 0500pm blood totprot albumin globuln 0500pm blood vitb12 0500pm blood hba1c eag brief hospital course mr was admitted to on with c o fatigue shortness of breath and exertional chest pain he ruled in for an nstemi peak troponin and had st segment depressions with inverted t waves in iavlv3 v6 he was transferred to for cardiac catheterization cardiac catheterization preliminary report coronary anatomy dominance right the lmca had distal stenosis the proximal lad had diffuse stenosis the cx had serial disease with proximal stenoses into a diffusely diseased om that had serial lesions not suitable for pci the distal cx had stenosis into lpl branch the rca was diffusely diseased with serial stenoses into the pda which had diffuse stenoses throughout the pl was short with origin stenosis impressions three vessel cad recommendations secondary prevention cad csurg consult pt underwent cardiac surgical evaluation and plan was made for pt to go home when stable and return for cabg with dr on medication adjustments made in the hospital included change from coreg to metoprolol tartrate mg twice daily hydralazine was increased to mg three times daily for optimal blood pressure control instructions included education of nstemi coronary artery disease medication regimen and activity restrictions he will return to for cabg with dr on medications on the pre medication list is accurate and complete amlodipine mg po hs aspirin ec mg po daily carvedilol mg po bid glipizide mg po bid hydralazine mg po tid lisinopril mg po qpm metformin glucophage mg po bid rosuvastatin calcium mg po qpm vitamin d po 1x week glargine s bedtime medications metoprolol tartrate mg po bid nitroglycerin sl mg sl q5minprn chest pain hydralazine mg po tid glargine s bedtime amlodipine mg po hs aspirin ec mg po daily glipizide mg po bid lisinopril mg po qpm metformin glucophage mg po bid rosuvastatin calcium mg po qpm vitamin d po 1x week disposition home diagnosis coronary artery disease nstemi diabetes insulin requiring hypertension hyperlipidemia prior prostate ca condition yo presented to with c o doe fatigue cp w exertion that was intermittent over hours he r i for nstemi peak tni and ekg at presentation showed new lateral st depression c t tracing preliminary report as above post mi recovery significant for htn when doing coreg stopped and metoprolol started hydralazine was increased to mg tid vs bp p rr 94ra lungs cta heart mrg pv rra without bleeding swelling vague ecchymosis minor swelling is improved since immediate post cath pleth plan for home today stop coreg and start metoprolol 100mg bid increase hydralazine to mg tid return for surgery with dr start nitroglycerin prn dr called to arrange f u for bp and symptom check mext week mental status clear and coherent level of consciousness alert and interactive activity status ambulatory independent pe vs general appears comfortable in nad chest lungs clear cv ap rrr abd soft ntnd ext peripheral pulses without edema access site rra di without hematoma radial pulse instructions you were transferred from for a heart cath after blood tests showed you had a heart attack the heart cath showed multiple areas of blockages in the heart arteries it s recommended that you have bypass surgery you have a scheduled for surgery on dr will call you the day before to tell you what time to come to the hospital activity restrictions and care of the wrist site as per printed instructions please follow instructions given by the physical therapist for activities for your days immediately after please continue all your current medicines confirmed that you are taking lisinopril 40mg tablets daily coreg has been stopped and replaced by metoprolol tartrate 100mg twice a day hydralazine was increased to mg three times daily resume your metformin tomorrow evening also use nitroglycerin if needed for chest pain take under the tongue and you can repeat twice if persists after doses call please have blood pressure checked and bring to appointment with your primary care physician to evaluate medication changes followup instructions</s>
+11/05/2024 16:38:30 - INFO - __main__ -   ***** Running training *****
+11/05/2024 16:38:30 - INFO - __main__ -     Num examples = 20443
+11/05/2024 16:38:30 - INFO - __main__ -     Num Epochs = 3
+11/05/2024 16:38:30 - INFO - __main__ -     Instantaneous batch size per device = 32
+11/05/2024 16:38:30 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 32
+11/05/2024 16:38:30 - INFO - __main__ -     Gradient Accumulation steps = 1
+11/05/2024 16:38:30 - INFO - __main__ -     Total optimization steps = 1917
+11/05/2024 16:38:30 - INFO - __main__ -     Max lentgh = 1024
+11/05/2024 16:38:30 - INFO - __main__ -     Remove digits = True
+11/05/2024 16:38:30 - INFO - __main__ -   Epoch = 1
+11/05/2024 16:48:20 - INFO - __main__ -   Loaded raw datasets
+11/05/2024 16:48:20 - INFO - __main__ -   Loaded data files
+11/05/2024 16:48:20 - INFO - __main__ -   Tokenizing
+11/05/2024 16:48:34 - INFO - __main__ -   Setting optimizer
+11/05/2024 16:48:34 - INFO - __main__ -   Distributed environment: NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: mps
+
+Mixed precision type: no
+
+11/05/2024 16:48:34 - INFO - __main__ -   Sample 10297 of the training set: E119;E669;F419;I10;K430;Z6835;Z794;Z86018.
+11/05/2024 16:48:34 - INFO - __main__ -   Original tokens: <s>sex f service surgery allergies house dust attending chief complaint incisional hernia major surgical or invasive procedure open incisional hernia repair with mesh history of present illness the patient is a female well known to dr service at she underwent transduodenal ampullectomy in and pancreaticoduodenectomy in after her operation patient developed incisional hernia at the apex of her extended right subcostal incision after lifting a heavy objects this hernia is painful and required repair patient was evaluated by dr agreed with surgical incision hernia repair which was scheduled on past medical history diabetes anxiety htn ampullary adenoma social history family history nc physical exam prior to vs ra gen pleasant with nad heent nc at perrl eomi no jvd neck supple cv rrr pulm ctab abd left aspect of subcostal incision with occlusive dressing and c d i the rest of the incision well healed abdomen soft normal tenderness around hernia repair site extr warm no c c e pertinent results 0340am blood wbc rbc hgb hct mcv mch mchc rdw rdwsd plt 0340am blood glucose urean creat na k cl hco3 angap 0340am blood calcium phos mg brief hospital course the patient was admitted to the general surgical service after elective open incisional hernia repair with mesh on she arrived on the floor and was started on clear liquid diet pain was well controlled with po oxycodone on pod patient diet was advanced to regular diabetic diet patient voided without difficulties and pain was well controlled she was d home in stable condition the patient received teaching and follow up instructions with understanding verbalized and agreement with the plan medications on acetaminophen mg po q8h creon lipase protease amylase oral tid w meals glargine s bedtime humalog s breakfast humalog s lunch humalog s dinner insulin sc sliding scale using hum insulin duloxetine mg po qam duloxetine mg po qpm lorazepam mg po q8hprn anxiety metformin glucophage mg po bid pantoprazole mg po q24h verapamil mg po q24h medications acetaminophen mg po q8hprn pain mild do not exceed more then mg day creon lipase protease amylase oral tid w meals docusate sodium mg po bid rx docusate sodium mg capsules by mouth twice a day disp capsule refills0 oxycodone immediate release mg po q4hprn pain moderate rx oxycodone mg tablets by mouth every six hours disp tablet refills0 senna mg po bid duloxetine mg po qhs duloxetine mg po qam glargine s bedtime novolog s breakfast novolog s lunch novolog s dinner pantoprazole mg po q24h rx pantoprazole mg tablets by mouth once a day disp tablet refills11 trazodone mg po qhsprn insomnia verapamil sr mg po q24h disposition home diagnosis incisional hernia condition mental status clear and coherent level of consciousness alert and interactive activity status ambulatory independent instructions ms you were admitted to the surgery service at for incisional hernia repair you have done well in the post operative period and are now safe to return home to complete your recovery with the following instructions please call dr office at if you have any questions or concerns please call your doctor or nurse practitioner if you experience the following you experience new chest pain pressure squeezing or tightness new or worsening cough shortness of breath or wheeze if you are vomiting and cannot keep down fluids or your medications you are getting dehydrated due to continued vomiting diarrhea or other reasons signs of dehydration include dry mouth rapid heartbeat or feeling dizzy or faint when standing you see blood or dark black material when you vomit or have a bowel movement you experience burning when you urinate have blood in your urine or experience a your pain is not improving within hours or is not gone within hours call or return immediately if your pain is getting worse or changes location or moving to your chest or back you have shaking chills or fever greater than degrees fahrenheit or degrees celsius any change in your symptoms or any new symptoms that concern you general instructions please resume all regular home medications unless specifically advised not to take a particular medication also please take any new medications as prescribed please get plenty of rest continue to ambulate several times per day and drink adequate amounts of fluids avoid lifting weights greater than lbs until you follow up with your surgeon who will instruct you further regarding activity restrictions avoid driving or operating heavy machinery while taking pain medications please follow up with your surgeon and primary care provider pcp as advised incision care remove occlusive dressing hours after surgery keep wound open to air can wear abdominal binder for comfort please call your doctor or nurse practitioner if you have increased pain swelling redness or drainage from the incision site avoid swimming and baths until your follow up appointment you may shower and wash surgical incisions with a mild soap and warm water gently pat the area dry if you have staples they will be removed at your follow up appointment if you have steri strips they will fall off on their own please remove any remaining strips days after surgery followup instructions</s>
+11/05/2024 16:48:34 - INFO - __main__ -   ***** Running training *****
+11/05/2024 16:48:34 - INFO - __main__ -     Num examples = 20443
+11/05/2024 16:48:34 - INFO - __main__ -     Num Epochs = 3
+11/05/2024 16:48:34 - INFO - __main__ -     Instantaneous batch size per device = 32
+11/05/2024 16:48:34 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 32
+11/05/2024 16:48:34 - INFO - __main__ -     Gradient Accumulation steps = 1
+11/05/2024 16:48:34 - INFO - __main__ -     Total optimization steps = 1917
+11/05/2024 16:48:34 - INFO - __main__ -     Max lentgh = 1024
+11/05/2024 16:48:34 - INFO - __main__ -     Remove digits = True
+11/05/2024 16:48:34 - INFO - __main__ -   Epoch = 1
+11/05/2024 16:57:24 - INFO - __main__ -   Loaded raw datasets
+11/05/2024 16:57:24 - INFO - __main__ -   Loaded data files
+11/05/2024 16:57:24 - INFO - __main__ -   Tokenizing
+11/05/2024 16:57:25 - INFO - __main__ -   Setting optimizer
+11/05/2024 16:57:25 - INFO - __main__ -   Distributed environment: NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: mps
+
+Mixed precision type: no
+
+11/05/2024 16:57:26 - INFO - __main__ -   Sample 573 of the training set: F419;I10;K436;M1A9XX1;M810.
+11/05/2024 16:57:26 - INFO - __main__ -   Original tokens: <s>sex m service surgery allergies aspirin attending chief complaint epigastric ventral hernia major surgical or invasive procedure ventral hernia repair with mesh history of present illness presented for elective repair of incarcerated ventral hernia he first noticed the hernia years ago he has since begun to experience abdominal pain and bloating which has limited his po intake secondary to that he has lost significant weight he was referred to dr elective past medical history htn gout anxiety depression social history family history famhx father deceased mother deceased siblings alive one sister at children alive daughter w myasthenia physical exam gen nad resp non labored cv well perfused abd s appropriate ttp nd incision c d i jp w serosanguinous output ext well perfused pertinent results none brief hospital course patient presented to preop holding area on in stable condition he underwent uncomplicated ventral hernia repair with mesh under general anesthesia a drain was placed to assist with extraperitoneal fluid drainage both his pacu and floor condition were stable and he was d in stable condition on drain removed day of for low output he is scheduled to follow up with dr on at 1pm neuro pain controlled on po acetaminophen po oxy and iv morphine fluoxetine and lorazepam home meds for anxiety depression cv po metoprolol lisinopril and amlodipine home meds stable resp encouraged use of is patient was encouraged to be oob stable gi abdominal exam stable placed on ppi omeprazole home med fluid remained serosanguinous in jp bulb gu allopurinol home med no foley heme sqh discontinued on id afebrile no wbc tld jpx1 drained q4h piv maintained until both discontinued upon medications on allopurinol mg po daily take tablets 450mg daily as previously prescribed amlodipine mg po daily fluoxetine mg po daily lisinopril mg po daily lorazepam mg po bidprn anxiety metoprolol succinate xl mg po daily omeprazole mg po daily medications acetaminophen mg po q4hprn pain mild oxycodone immediate release mg po q4hprn pain do not take before driving operating machinery or with alcohol discontinue when not needed allopurinol mg po daily take tablets 450mg daily as previously prescribed amlodipine mg po daily fluoxetine mg po daily lisinopril mg po daily lorazepam mg po bidprn anxiety metoprolol succinate xl mg po daily omeprazole mg po daily disposition home diagnosis status post epigastric ventral hernia repair with mesh condition level of consciousness alert and interactive mental status clear and coherent activity status ambulatory independent instructions you underwent repair of your epigastric hernia mesh was used in this repair a drain was also placed to assist with fluid removal until complete healing is achieved do not lift anything greater than 5lbs for the next weeks call to make an appointment with dr in days you will be set up with a nurse for drain care it should be drained every hours less if output decreases more often if needed followup instructions</s>
+11/05/2024 16:57:26 - INFO - __main__ -   ***** Running training *****
+11/05/2024 16:57:26 - INFO - __main__ -     Num examples = 1406
+11/05/2024 16:57:26 - INFO - __main__ -     Num Epochs = 3
+11/05/2024 16:57:26 - INFO - __main__ -     Instantaneous batch size per device = 32
+11/05/2024 16:57:26 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 32
+11/05/2024 16:57:26 - INFO - __main__ -     Gradient Accumulation steps = 1
+11/05/2024 16:57:26 - INFO - __main__ -     Total optimization steps = 132
+11/05/2024 16:57:26 - INFO - __main__ -     Max lentgh = 512
+11/05/2024 16:57:26 - INFO - __main__ -     Remove digits = True
+11/05/2024 16:57:26 - INFO - __main__ -   Epoch = 1
+11/05/2024 17:00:30 - INFO - __main__ -   Loaded raw datasets
+11/05/2024 17:00:30 - INFO - __main__ -   Loaded data files
+11/05/2024 17:00:30 - INFO - __main__ -   Tokenizing
+11/05/2024 17:00:31 - INFO - __main__ -   Setting optimizer
+11/05/2024 17:00:31 - INFO - __main__ -   Distributed environment: NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: mps
+
+Mixed precision type: no
+
+11/05/2024 17:00:31 - INFO - __main__ -   Sample 435 of the training set: E079;G35;L89153;M25812;S46012A;W19XXXA;Y929.
+11/05/2024 17:00:31 - INFO - __main__ -   Original tokens: <s>sex m service orthopaedics allergies amoxicillin pot clavulanate adhesive tape ibuprofen augmentin latex attending complaint w massive l rc tear major surgical or invasive procedure l shoulder arthroscopy open repair of massive rotator cuff tear open bankart repair biceps tenolysis tenodesis history of present illness w massive l rc tear past medical history ms social history family history na physical exam dressing c d i moving all fingers silt distally wwp pertinent results 1035am blood wbc rbc hgb hct mcv mch mchc rdw rdwsd plt brief hospital course patient underwent surgery on tolerated procedure well he was admitted for rehab screening he met all criteria for safe disposition on day of to rehab nwb lue okay for rom at elbow wrist fingers but not shoulder sling at all times daily wound care nursing care medications on the pre medication list is accurate and complete ketoconazole shampoo appl tp asdir clonazepam mg po times daily prn anxiety diphenhydramine mg po qhsprn sleep fenofibrate mg po daily baclofen mg po tablet at bedtime and tablet twice a day during day as needed tramadol mg po q6hprn pain levothyroxine sodium mcg po daily methenamine hippurate gram oral bid nitrofurantoin macrocrystal mg oral qhs ascorbic acid mg po bid hydrocodone acetaminophen 5mg 325mg tab po q4hprn pain medications ascorbic acid mg po bid ketoconazole shampoo appl tp asdir baclofen mg po tablet at bedtime and tablet twice a day during day as needed clonazepam mg po times daily prn anxiety diphenhydramine mg po qhsprn sleep fenofibrate mg po daily levothyroxine sodium mcg po daily methenamine hippurate gram oral bid nitrofurantoin macrocrystal mg oral qhs tramadol mg po q6hprn pain baclofen mg po bidprn back pain baclofen mg po qhs hydrocodone acetaminophen 5mg 325mg tab po q4hprn pain rx hydrocodone acetaminophen mg mg tablets by mouth every four hours disp tablet refills0 oxycodone immediate release mg po q4hprn pain rx oxycodone mg tablets by mouth every four hours disp tablet refills0 docusate sodium mg po bidprn constipation rx docusate sodium mg capsules by mouth twice a day disp capsule refills0 disposition extended care facility diagnosis massive rotator cuff tear left condition mental status clear and coherent level of consciousness alert and interactive activity status ambulatory requires assistance or aid walker or cane instructions no weight bearing left upper extremity in sling dressing off postoperative day okay to shower postoperative day no submersion in water until weeks after surgery follow up in clinic in weeks physical therapy nwb lue okay for rom at elbow wrist fingers but not shoulder sling at all times daily wound care nursing care treatments frequency nwb lue okay for rom at elbow wrist fingers but not shoulder sling at all times daily wound care nursing care followup instructions</s>
+11/05/2024 17:00:31 - INFO - __main__ -   ***** Running training *****
+11/05/2024 17:00:31 - INFO - __main__ -     Num examples = 1406
+11/05/2024 17:00:31 - INFO - __main__ -     Num Epochs = 3
+11/05/2024 17:00:31 - INFO - __main__ -     Instantaneous batch size per device = 32
+11/05/2024 17:00:31 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 32
+11/05/2024 17:00:31 - INFO - __main__ -     Gradient Accumulation steps = 1
+11/05/2024 17:00:31 - INFO - __main__ -     Total optimization steps = 132
+11/05/2024 17:00:31 - INFO - __main__ -     Max lentgh = 512
+11/05/2024 17:00:31 - INFO - __main__ -     Remove digits = True
+11/05/2024 17:00:31 - INFO - __main__ -   Epoch = 1
+11/05/2024 17:01:39 - INFO - __main__ -   Loaded raw datasets
+11/05/2024 17:01:39 - INFO - __main__ -   Loaded data files
+11/05/2024 17:01:40 - INFO - __main__ -   Tokenizing
+11/05/2024 17:01:44 - INFO - __main__ -   Setting optimizer
+11/05/2024 17:01:44 - INFO - __main__ -   Distributed environment: NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: mps
+
+Mixed precision type: no
+
+11/05/2024 17:01:44 - INFO - __main__ -   Sample 5300 of the training set: D649;E785;F418;G4733;H9191;I10;I4510;I723;M329;N289;N401;R39198.
+11/05/2024 17:01:44 - INFO - __main__ -   Original tokens: <s>sex m service surgery allergies no known allergies adverse drug reactions attending chief complaint bilateral iliac artery aneurysms major surgical or invasive procedure endovascular iliac aneurysm repair right internal iliac artery coil embolization right external iliac artery limb extension left iliac artery branched graft history of present illness this is a male with bilateral common iliac artery aneurysms as well as aneurysmal proximal right hypogastric given this he was brought to the operating room for evar with ibe on left and coil embolization and extension on right past medical history pmh hypertension hyperlipidemia anemia depression anxiety lupus psh bilateral carpal tunnel release social history family history non contributory physical exam vitals hr data last upd temp tm bp hr rr o2 sat o2 delivery ra general lying comfortably in bed in nad cv rrr pulm breathing comfortable on room air abd soft non tender non distended wound bilateral groin puncture sites soft without hematoma or active drainage extremities warm good capillary refill pulses r p p l p p pertinent results 0428am blood wbc rbc hgb hct mcv mch mchc rdw rdwsd plt 0428am blood glucose urean creat na k cl hco angap 0428am blood calcium phos mg brief hospital course patient is a y o male with htn hld lupus and bilateral iliac aneurysms who is s p endovascular iliac aneurysm repair right internal iliac coil embolization right external iliac artery extension and left iliac artery branched graft the patient tolerated the procedure and anesthesia well in pacu patient experienced intermittent hypertension that was treated with iv hydral with stabilization of his blood pressures as well some concern for over resuscitation cxr demonstrated asymmetric pulmonary edema for which he was given one dose of iv lasix with good effect the patient had no acute events overnight on the morning of pod1 the patients pain was well controlled he was eating voiding passing gas and ambulating without issue he had no shortness of breath or chest pain and his blood pressures were maintained in the 110s 120s on his home blood pressure regimen in this context he was deemed ready for he will follow up in vascular surgery clinic in one month with a cta he will continue on his aspirin and discuss the possibility of starting an statin with his pcp for ongoing vascular management medications on the pre medication list is accurate and complete folic acid mg po daily fluticasone propionate nasal spry nu bid fluticasone propionate 110mcg puff ih bid lisinopril mg po daily hydrochlorothiazide mg po daily paroxetine mg po daily bupropion sustained release mg po qam terazosin mg po qhs hydroxychloroquine sulfate mg po daily pramipexole mg po qpm cyanocobalamin mcg po daily ferrous sulfate mg po daily armodafinil mg oral daily medications acetaminophen mg po q6hprn pain mild fever armodafinil mg oral daily aspirin ec mg po daily bupropion sustained release mg po qam cyanocobalamin mcg po daily ferrous sulfate mg po daily fluticasone propionate 110mcg puff ih bid fluticasone propionate nasal spry nu bid folic acid mg po daily hydrochlorothiazide mg po daily hydroxychloroquine sulfate mg po daily lisinopril mg po daily paroxetine mg po daily pramipexole mg po qpm terazosin mg po qhs disposition home diagnosis bilateral common iliac artery aneurysms condition mental status clear and coherent level of consciousness alert and interactive activity status ambulatory independent followup instructions</s>
+11/05/2024 17:01:44 - INFO - __main__ -   ***** Running training *****
+11/05/2024 17:01:44 - INFO - __main__ -     Num examples = 6788
+11/05/2024 17:01:44 - INFO - __main__ -     Num Epochs = 3
+11/05/2024 17:01:44 - INFO - __main__ -     Instantaneous batch size per device = 32
+11/05/2024 17:01:44 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 32
+11/05/2024 17:01:44 - INFO - __main__ -     Gradient Accumulation steps = 1
+11/05/2024 17:01:44 - INFO - __main__ -     Total optimization steps = 639
+11/05/2024 17:01:44 - INFO - __main__ -     Max lentgh = 768
+11/05/2024 17:01:44 - INFO - __main__ -     Remove digits = True
+11/05/2024 17:01:44 - INFO - __main__ -   Epoch = 1
+11/05/2024 17:10:54 - INFO - __main__ -   Loaded raw datasets
+11/05/2024 17:10:54 - INFO - __main__ -   Loaded data files
+11/05/2024 17:10:54 - INFO - __main__ -   Tokenizing
+11/05/2024 17:10:55 - INFO - __main__ -   Setting optimizer
+11/05/2024 17:10:55 - INFO - __main__ -   Distributed environment: NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: mps
+
+Mixed precision type: no
+
+11/05/2024 17:10:55 - INFO - __main__ -   Sample 413 of the training set: E039;E872;F05;I10;I959;J449;J9602;S225XXA;S270XXA;W1830XA;Y92009;Z515;Z66;Z781;Z85118;Z87891;Z902;Z955;Z9981.
+11/05/2024 17:10:55 - INFO - __main__ -   Original tokens: <s>sex f service surgery allergies no known allergies adverse drug reactions attending chief complaint fall major surgical or invasive procedure none history of present illness ms is a year old female with history of cad s p stent l pneumonectomy for non small cell lung cancer copd who presented from osh after fall and found to have multiple rib fractures patient states she lives alone and was getting up to go to the bathroom and fell on the way there days prior to presentation she hit the side of her coffee table she is unsure of loc or headstrike she does not recall the entire event but denies any headache dizziness or weakness prior to the fall at the time of evaluation patient had increased work of breathing she mainly complains of right posterior chest pain and sob she denies any fever chills nausea vomiting or abdominal pain past medical history past medical history copd stage iii s p chemoxrt and l pneumonectomyfollowed by pulmonology at cad s p stent htn hypothyroidism past surgical history ex lap loa completion l pneumonectomy dr lul lobectomy bowel surgery many years ago social history family history noncontributory physical exam physical examination on vitals t hr bp rr sat gen in mild distress uncomfortable thin heent no scleral icterus mucus membranes dry at nc perrl cv rrr pulm no breath sounds on left chest right lung with crackles and wheezing abd soft mildly distended nontender no rebound or guarding no palpable masses previous midline incision well healed msk no c t l spine tenderness ext no edema warm and well perfused neuro bilateral upper and lower extremity sensation and motor intact brief hospital course ms is a year old female who presented from after fall and multiple rib fractures she continued to have sob at the time of evaluation and was placed on mask she was transferred to the trauma icu for further care and pain control she was placed on intermittent bipap and high flow oxygen she became more drowsy on hd and continued to have respiratory acidosis family discussion took place and concerns for prolonged intubation were address and it was found that prolonged intubation would not be in the patients goals of care and she was made comfort measures only the patient passed away on hd medications on fluticasone salmeterol diskus inh ih bid levothyroxine sodium mcg po daily albuterol inhaler puff ih q4hprn sob tiotropium bromide cap ih daily amlodipine mg po daily aspirin mg po daily atorvastatin mg po qpm lisinopril mg po daily metoprolol succinate xl mg po daily omeprazole mg po daily medications none disposition expired diagnosis fall rib fractures respiratory failure condition expired instructions expired followup instructions</s>
+11/05/2024 17:10:55 - INFO - __main__ -   ***** Running training *****
+11/05/2024 17:10:55 - INFO - __main__ -     Num examples = 1406
+11/05/2024 17:10:55 - INFO - __main__ -     Num Epochs = 3
+11/05/2024 17:10:55 - INFO - __main__ -     Instantaneous batch size per device = 32
+11/05/2024 17:10:55 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 32
+11/05/2024 17:10:55 - INFO - __main__ -     Gradient Accumulation steps = 1
+11/05/2024 17:10:55 - INFO - __main__ -     Total optimization steps = 132
+11/05/2024 17:10:55 - INFO - __main__ -     Max lentgh = 512
+11/05/2024 17:10:55 - INFO - __main__ -     Remove digits = True
+11/05/2024 17:10:55 - INFO - __main__ -   Epoch = 1
+11/05/2024 17:12:42 - INFO - accelerate.accelerator -   Saving current state to ../models/top3_max512_epochs3
+11/05/2024 17:12:42 - INFO - accelerate.checkpointing -   Model weights saved in ../models/top3_max512_epochs3/model.safetensors
+11/05/2024 17:12:44 - INFO - accelerate.checkpointing -   Optimizer state saved in ../models/top3_max512_epochs3/optimizer.bin
+11/05/2024 17:12:44 - INFO - accelerate.checkpointing -   Scheduler state saved in ../models/top3_max512_epochs3/scheduler.bin
+11/05/2024 17:12:44 - INFO - accelerate.checkpointing -   Sampler state for dataloader 0 saved in ../models/top3_max512_epochs3/sampler.bin
+11/05/2024 17:12:44 - INFO - accelerate.checkpointing -   Sampler state for dataloader 1 saved in ../models/top3_max512_epochs3/sampler_1.bin
+11/05/2024 17:12:44 - INFO - accelerate.checkpointing -   Random states saved in ../models/top3_max512_epochs3/random_states_0.pkl
+11/05/2024 17:12:44 - INFO - __main__ -   Done with training for Epoch1
+11/05/2024 17:12:47 - INFO - __main__ -   epoch 0 finished
+11/05/2024 17:12:47 - INFO - __main__ -   metrics: {'acc_macro': 0.01234567901233806, 'prec_macro': 0.01234567901233806, 'rec_macro': 0.3333333333333333, 'f1_macro': 0.02380952380950964, 'acc_micro': 0.03636363636363636, 'prec_micro': 0.037037037037037035, 'rec_micro': 0.6666666666666666, 'f1_micro': 0.07017543859649122, 'rec_at_8': 0.05555555555555555, 'prec_at_8': 0.018518518518518517, 'f1_at_8': 0.027777777777777776, 'auc_macro': 0.40497917440852227, 'auc_micro': 0.6375494991847194}
+11/05/2024 17:12:47 - INFO - __main__ -   Epoch = 2
+11/05/2024 17:14:23 - INFO - accelerate.accelerator -   Saving current state to ../models/top3_max512_epochs3
+11/05/2024 17:14:23 - INFO - accelerate.checkpointing -   Model weights saved in ../models/top3_max512_epochs3/model.safetensors
+11/05/2024 17:14:24 - INFO - accelerate.checkpointing -   Optimizer state saved in ../models/top3_max512_epochs3/optimizer.bin
+11/05/2024 17:14:24 - INFO - accelerate.checkpointing -   Scheduler state saved in ../models/top3_max512_epochs3/scheduler.bin
+11/05/2024 17:14:24 - INFO - accelerate.checkpointing -   Sampler state for dataloader 0 saved in ../models/top3_max512_epochs3/sampler.bin
+11/05/2024 17:14:24 - INFO - accelerate.checkpointing -   Sampler state for dataloader 1 saved in ../models/top3_max512_epochs3/sampler_1.bin
+11/05/2024 17:14:24 - INFO - accelerate.checkpointing -   Random states saved in ../models/top3_max512_epochs3/random_states_0.pkl
+11/05/2024 17:14:24 - INFO - __main__ -   Done with training for Epoch2
+11/05/2024 17:14:27 - INFO - __main__ -   epoch 1 finished
+11/05/2024 17:14:27 - INFO - __main__ -   metrics: {'acc_macro': 0.0, 'prec_macro': 0.0, 'rec_macro': 0.0, 'f1_macro': 0.0, 'acc_micro': 0.0, 'prec_micro': 0.0, 'rec_micro': 0.0, 'f1_micro': 0.0, 'rec_at_8': 0.05555555555555555, 'prec_at_8': 0.018518518518518517, 'f1_at_8': 0.027777777777777776, 'auc_macro': 0.5456591415830546, 'auc_micro': 0.6759841602608898}
+11/05/2024 17:14:27 - INFO - __main__ -   Epoch = 3
+11/05/2024 17:16:18 - INFO - accelerate.accelerator -   Saving current state to ../models/top3_max512_epochs3
+11/05/2024 17:16:18 - INFO - accelerate.checkpointing -   Model weights saved in ../models/top3_max512_epochs3/model.safetensors
+11/05/2024 17:16:19 - INFO - accelerate.checkpointing -   Optimizer state saved in ../models/top3_max512_epochs3/optimizer.bin
+11/05/2024 17:16:19 - INFO - accelerate.checkpointing -   Scheduler state saved in ../models/top3_max512_epochs3/scheduler.bin
+11/05/2024 17:16:19 - INFO - accelerate.checkpointing -   Sampler state for dataloader 0 saved in ../models/top3_max512_epochs3/sampler.bin
+11/05/2024 17:16:19 - INFO - accelerate.checkpointing -   Sampler state for dataloader 1 saved in ../models/top3_max512_epochs3/sampler_1.bin
+11/05/2024 17:16:19 - INFO - accelerate.checkpointing -   Random states saved in ../models/top3_max512_epochs3/random_states_0.pkl
+11/05/2024 17:16:19 - INFO - __main__ -   Done with training for Epoch3
+11/05/2024 17:16:23 - INFO - __main__ -   epoch 2 finished
+11/05/2024 17:16:23 - INFO - __main__ -   metrics: {'acc_macro': 0.0, 'prec_macro': 0.0, 'rec_macro': 0.0, 'f1_macro': 0.0, 'acc_micro': 0.0, 'prec_micro': nan, 'rec_micro': 0.0, 'f1_micro': nan, 'rec_at_8': 0.05555555555555555, 'prec_at_8': 0.018518518518518517, 'f1_at_8': 0.027777777777777776, 'auc_macro': 0.6768709852948983, 'auc_micro': 0.6864663405543908}
+11/05/2024 17:16:23 - INFO - __main__ -   Saving model
+11/06/2024 16:01:47 - INFO - __main__ -   Loaded raw datasets
+11/06/2024 16:01:47 - INFO - __main__ -   Loaded data files
+11/06/2024 16:01:48 - INFO - __main__ -   Tokenizing
+11/06/2024 16:01:49 - INFO - __main__ -   Setting optimizer
+11/06/2024 16:01:49 - INFO - __main__ -   Distributed environment: NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: mps
+
+Mixed precision type: no
+
+11/06/2024 16:01:49 - INFO - __main__ -   Sample 2604 of the training set: E039;E119;E785;F419;G919;H5442;I10;K219;T8509XA;Y929;Z8673;Z87891.
+11/06/2024 16:01:49 - INFO - __main__ -   Original tokens: <s>sex m service neurosurgery allergies allopurinol strawberry attending chief complaint hydrocephalus major surgical or invasive procedure right vp shunt revision of distal catheter history of present illness mr is a y o male who is s p placement of a right vp shunt on since that time he has experienced persistent ventriculomegaly with increasingly unstable gait he presents today to undergo a right vp shunt revision of distal catheter past medical history subarachnoid hemorrhage htn gerd gout hypothyroid anxiety left eye uveitis and blindness social history family history no family history of aneurysm or ich physical exam physical examination on gen nad neuro aox3 speech normal follows complex commands heent head ncat dressing on right side of head in place in c d i pupils left eye 2mm and cloudy known uveitis right 4mm 2mm reactive cn ii vii intact pulm breathing with no effort card warm and well perfused abd soft nontender incision sites in clean dry dressing msk mae strength pertinent results hematology complete blood count wbc rbc hgb hct mcv mch mchc rdw rdwsd plt ct 0540am basic coagulation ptt plt inr 0540am112 0540am blood fasting glucose urean creat na k cl hco3 angap 0540am blood calcium phos mg 0540am blood hba1c eag brief hospital course mr was taken to the operating room on the day of and underwent a right vp shunt revision of the distal catheter he tolerated the procedure well and was admitted to the floor for close monitoring on the evening of pod0 he was found to have high finger stick blood glucose in the 300s that peaked at he was given a total of s of insulin to bring his blood sugars back down to the range his am fasting blood glucose was and he was found to have dm with an hba1c of diabetes consult service advised that the patient begin taking metformin and glipizide at home for his diabetes patient was seen by and was d to his daughters home in good condition medications on hctz levothyroxine lisinopril ranitidine bid has run out of his multiple eye drops medications hydrochlorothiazide mg po daily levothyroxine sodium mcg po daily lisinopril mg po daily ranitidine mg po bid metformin glucophage mg po bid at breakfast at dinner week at brkfst at week at brkfst at freestyle lancets lancets gauge intradermal bid use with glucometer freestyle lite strips blood sugar diagnostic not applicable not applicable bid use with glucometer glipizide mg po bid take one with breakfast and one with dinner daily disposition home with service facility diagnosis hydrocephalus condition mental status clear and coherent level of consciousness alert and interactive activity status ambulatory requires assistance or aid walker or cane followup instructions</s>
+11/06/2024 16:01:49 - INFO - __main__ -   ***** Running training *****
+11/06/2024 16:01:49 - INFO - __main__ -     Num examples = 2670
+11/06/2024 16:01:49 - INFO - __main__ -     Num Epochs = 3
+11/06/2024 16:01:49 - INFO - __main__ -     Instantaneous batch size per device = 32
+11/06/2024 16:01:49 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 32
+11/06/2024 16:01:49 - INFO - __main__ -     Gradient Accumulation steps = 1
+11/06/2024 16:01:49 - INFO - __main__ -     Total optimization steps = 252
+11/06/2024 16:01:49 - INFO - __main__ -     Max lentgh = 612
+11/06/2024 16:01:49 - INFO - __main__ -     Remove digits = True
+11/06/2024 16:01:49 - INFO - __main__ -   Epoch = 1
+11/06/2024 16:05:09 - INFO - accelerate.accelerator -   Saving current state to ../models/top3_max612_epochs3
+11/06/2024 16:05:10 - INFO - accelerate.checkpointing -   Model weights saved in ../models/top3_max612_epochs3/model.safetensors
+11/06/2024 16:05:12 - INFO - accelerate.checkpointing -   Optimizer state saved in ../models/top3_max612_epochs3/optimizer.bin
+11/06/2024 16:05:12 - INFO - accelerate.checkpointing -   Scheduler state saved in ../models/top3_max612_epochs3/scheduler.bin
+11/06/2024 16:05:12 - INFO - accelerate.checkpointing -   Sampler state for dataloader 0 saved in ../models/top3_max612_epochs3/sampler.bin
+11/06/2024 16:05:12 - INFO - accelerate.checkpointing -   Sampler state for dataloader 1 saved in ../models/top3_max612_epochs3/sampler_1.bin
+11/06/2024 16:05:12 - INFO - accelerate.checkpointing -   Random states saved in ../models/top3_max612_epochs3/random_states_0.pkl
+11/06/2024 16:05:12 - INFO - __main__ -   Done with training for Epoch1
+11/06/2024 16:05:19 - INFO - __main__ -   epoch 0 finished
+11/06/2024 16:05:19 - INFO - __main__ -   metrics: {'acc_macro': 0.0, 'prec_macro': 0.0, 'rec_macro': 0.0, 'f1_macro': 0.0, 'acc_micro': 0.0, 'prec_micro': nan, 'rec_micro': 0.0, 'f1_micro': nan, 'rec_at_8': 0.07236842105263158, 'prec_at_8': 0.025219298245614034, 'f1_at_8': 0.03740390301596688, 'auc_macro': 0.5865085451779605, 'auc_micro': 0.6742309385239889}
+11/06/2024 16:05:19 - INFO - __main__ -   Epoch = 2
+11/06/2024 16:06:25 - INFO - __main__ -   Loaded raw datasets
+11/06/2024 16:06:25 - INFO - __main__ -   Loaded data files
+11/06/2024 16:06:25 - INFO - __main__ -   Tokenizing
+11/06/2024 16:06:27 - INFO - __main__ -   Setting optimizer
+11/06/2024 16:06:27 - INFO - __main__ -   Distributed environment: NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: mps
+
+Mixed precision type: no
+
+11/06/2024 16:06:27 - INFO - __main__ -   Loading checkpoint
+11/06/2024 16:10:00 - INFO - __main__ -   Loaded raw datasets
+11/06/2024 16:10:00 - INFO - __main__ -   Loaded data files
+11/06/2024 16:10:00 - INFO - __main__ -   Tokenizing
+11/06/2024 16:10:01 - INFO - __main__ -   Setting optimizer
+11/06/2024 16:10:01 - INFO - __main__ -   Distributed environment: NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: mps
+
+Mixed precision type: no
+
+11/06/2024 16:10:02 - INFO - __main__ -   Loading checkpoint
+11/06/2024 16:10:02 - INFO - accelerate.accelerator -   Loading states from ../models/top3_max612_epochs3
+11/06/2024 16:10:03 - INFO - accelerate.checkpointing -   All model weights loaded successfully
+11/06/2024 16:10:03 - INFO - accelerate.checkpointing -   All optimizer states loaded successfully
+11/06/2024 16:10:03 - INFO - accelerate.checkpointing -   All scheduler states loaded successfully
+11/06/2024 16:10:03 - INFO - accelerate.checkpointing -   All dataloader sampler states loaded successfully
+11/06/2024 16:10:03 - INFO - accelerate.checkpointing -   All random states loaded successfully
+11/06/2024 16:10:03 - INFO - accelerate.accelerator -   Loading in 0 custom states
+11/06/2024 16:10:03 - INFO - __main__ -   Sample 2380 of the training set: O133;O403XX0;Z3A35;Z8759.
+11/06/2024 16:10:03 - INFO - __main__ -   Original tokens: <s>sex f service obstetrics gynecology allergies erythromycin base attending chief complaint headache vision changes elevated bp major surgical or invasive procedure none history of present illness patient is a y o g3p1 at here with ha vision changes and elevated bp in the office to today she reports that she developed a strong headache at about 10am this morning which has since improved but is still present with tylenol she had vision changes floaters at the time of more severe headache but not currently no ruq or epigastric pain rare contractions not painful no lof or vaginal bleeding active fetal movement past medical history pnc a abs rprnr ri hepbsag hiv gbs unknown ob g3p1 tabx1 ltcs at term for nrfht at cm c b pre eclampsia with cr after delivery us with poly afi efw g pmh denies psh c s lumpectomy tonsillectomy social history family history non contributory physical exam on 1729bp 1730temp 981f 1740bp 1800bp 1820bp 1840bp 1900bp fht mod acc dec declined nst toco irritable sve deferred pertinent results wbc rbc hgb hct mcv plt creat alt ast uricacd urine blood neg nitrite neg protein tr glucose neg ketone neg bilirub neg urobiln neg ph leuks neg urine rbc wbc bacteri none yeast none epi urine hours random creat totprot prot cr urine 24creat 24prot r o group b beta strep final negative for group b beta strep brief hospital course y o g3p1 with gestational htn admitted at 35w6d with elevated blood pressures and headache on she had normal to mild range blood pressures and normal preeclampsia labs fetal testing was reassuring her headache resolved with tylenol she underwent a hour urine collection which was negative 193mg she was d home and will continue to have close outpatient follow up delivery at weeks was recommended by medications on baby aspirin pnv calcium medications aspirin mg po daily prenatal vitamins tab po daily disposition home diagnosis pregnancy at 36w1d gestational hypertension condition stable instructions you were admitted for observation due to elevated blood pressures although you have gestational hypertension there was no evidence of preeclampsia it was felt it was safe for you to be d home fetal testing was reassuring while you were here followup instructions</s>
+11/06/2024 16:10:03 - INFO - __main__ -   ***** Running training *****
+11/06/2024 16:10:03 - INFO - __main__ -     Num examples = 2670
+11/06/2024 16:10:03 - INFO - __main__ -     Num Epochs = 3
+11/06/2024 16:10:03 - INFO - __main__ -     Instantaneous batch size per device = 32
+11/06/2024 16:10:03 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 32
+11/06/2024 16:10:03 - INFO - __main__ -     Gradient Accumulation steps = 1
+11/06/2024 16:10:03 - INFO - __main__ -     Total optimization steps = 252
+11/06/2024 16:10:03 - INFO - __main__ -     Max lentgh = 612
+11/06/2024 16:10:03 - INFO - __main__ -     Remove digits = True
+11/06/2024 16:10:03 - INFO - __main__ -   Epoch = 1
+11/06/2024 16:13:23 - INFO - __main__ -   Loaded raw datasets
+11/06/2024 16:13:23 - INFO - __main__ -   Loaded data files
+11/06/2024 16:13:23 - INFO - __main__ -   Tokenizing
+11/06/2024 16:13:23 - INFO - __main__ -   Setting optimizer
+11/06/2024 16:13:24 - INFO - __main__ -   Distributed environment: NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: mps
+
+Mixed precision type: no
+
+11/06/2024 16:13:24 - INFO - __main__ -   Loading checkpoint
+11/06/2024 16:13:24 - INFO - accelerate.accelerator -   Loading states from ../models/top3_max612_epochs3
+11/06/2024 16:13:25 - INFO - accelerate.checkpointing -   All model weights loaded successfully
+11/06/2024 16:13:26 - INFO - accelerate.checkpointing -   All optimizer states loaded successfully
+11/06/2024 16:13:26 - INFO - accelerate.checkpointing -   All scheduler states loaded successfully
+11/06/2024 16:13:26 - INFO - accelerate.checkpointing -   All dataloader sampler states loaded successfully
+11/06/2024 16:13:26 - INFO - accelerate.checkpointing -   All random states loaded successfully
+11/06/2024 16:13:26 - INFO - accelerate.accelerator -   Loading in 0 custom states
+11/06/2024 16:13:26 - INFO - __main__ -   Sample 2380 of the training set: O133;O403XX0;Z3A35;Z8759.
+11/06/2024 16:13:26 - INFO - __main__ -   Original tokens: <s>sex f service obstetrics gynecology allergies erythromycin base attending chief complaint headache vision changes elevated bp major surgical or invasive procedure none history of present illness patient is a y o g3p1 at here with ha vision changes and elevated bp in the office to today she reports that she developed a strong headache at about 10am this morning which has since improved but is still present with tylenol she had vision changes floaters at the time of more severe headache but not currently no ruq or epigastric pain rare contractions not painful no lof or vaginal bleeding active fetal movement past medical history pnc a abs rprnr ri hepbsag hiv gbs unknown ob g3p1 tabx1 ltcs at term for nrfht at cm c b pre eclampsia with cr after delivery us with poly afi efw g pmh denies psh c s lumpectomy tonsillectomy social history family history non contributory physical exam on 1729bp 1730temp 981f 1740bp 1800bp 1820bp 1840bp 1900bp fht mod acc dec declined nst toco irritable sve deferred pertinent results wbc rbc hgb hct mcv plt creat alt ast uricacd urine blood neg nitrite neg protein tr glucose neg ketone neg bilirub neg urobiln neg ph leuks neg urine rbc wbc bacteri none yeast none epi urine hours random creat totprot prot cr urine 24creat 24prot r o group b beta strep final negative for group b beta strep brief hospital course y o g3p1 with gestational htn admitted at 35w6d with elevated blood pressures and headache on she had normal to mild range blood pressures and normal preeclampsia labs fetal testing was reassuring her headache resolved with tylenol she underwent a hour urine collection which was negative 193mg she was d home and will continue to have close outpatient follow up delivery at weeks was recommended by medications on baby aspirin pnv calcium medications aspirin mg po daily prenatal vitamins tab po daily disposition home diagnosis pregnancy at 36w1d gestational hypertension condition stable instructions you were admitted for observation due to elevated blood pressures although you have gestational hypertension there was no evidence of preeclampsia it was felt it was safe for you to be d home fetal testing was reassuring while you were here followup instructions</s>
+11/06/2024 16:13:26 - INFO - __main__ -   ***** Running training *****
+11/06/2024 16:13:26 - INFO - __main__ -     Num examples = 2670
+11/06/2024 16:13:26 - INFO - __main__ -     Num Epochs = 3
+11/06/2024 16:13:26 - INFO - __main__ -     Instantaneous batch size per device = 32
+11/06/2024 16:13:26 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 32
+11/06/2024 16:13:26 - INFO - __main__ -     Gradient Accumulation steps = 1
+11/06/2024 16:13:26 - INFO - __main__ -     Total optimization steps = 252
+11/06/2024 16:13:26 - INFO - __main__ -     Max lentgh = 612
+11/06/2024 16:13:26 - INFO - __main__ -     Remove digits = True
+11/06/2024 16:13:33 - INFO - __main__ -   epoch 0 finished
+11/06/2024 16:13:33 - INFO - __main__ -   metrics: {'acc_macro': 0.0, 'prec_macro': 0.0, 'rec_macro': 0.0, 'f1_macro': 0.0, 'acc_micro': 0.0, 'prec_micro': nan, 'rec_micro': 0.0, 'f1_micro': nan, 'rec_at_8': 0.07236842105263158, 'prec_at_8': 0.025219298245614034, 'f1_at_8': 0.03740390301596688, 'auc_macro': 0.5865085451779605, 'auc_micro': 0.6742309385239889}
+11/06/2024 16:13:33 - INFO - __main__ -   Epoch = 1
+11/06/2024 16:17:11 - INFO - accelerate.accelerator -   Saving current state to ../models/top3_max612_epochs3
+11/06/2024 16:17:12 - INFO - accelerate.checkpointing -   Model weights saved in ../models/top3_max612_epochs3/model.safetensors
+11/06/2024 16:17:13 - INFO - accelerate.checkpointing -   Optimizer state saved in ../models/top3_max612_epochs3/optimizer.bin
+11/06/2024 16:17:13 - INFO - accelerate.checkpointing -   Scheduler state saved in ../models/top3_max612_epochs3/scheduler.bin
+11/06/2024 16:17:13 - INFO - accelerate.checkpointing -   Sampler state for dataloader 0 saved in ../models/top3_max612_epochs3/sampler.bin
+11/06/2024 16:17:13 - INFO - accelerate.checkpointing -   Sampler state for dataloader 1 saved in ../models/top3_max612_epochs3/sampler_1.bin
+11/06/2024 16:17:13 - INFO - accelerate.checkpointing -   Random states saved in ../models/top3_max612_epochs3/random_states_0.pkl
+11/06/2024 16:17:13 - INFO - __main__ -   Done with training for Epoch1
+11/06/2024 16:17:23 - INFO - __main__ -   epoch 0 finished
+11/06/2024 16:17:23 - INFO - __main__ -   metrics: {'acc_macro': 0.0, 'prec_macro': 0.0, 'rec_macro': 0.0, 'f1_macro': 0.0, 'acc_micro': 0.0, 'prec_micro': nan, 'rec_micro': 0.0, 'f1_micro': nan, 'rec_at_8': 0.07236842105263158, 'prec_at_8': 0.025219298245614034, 'f1_at_8': 0.03740390301596688, 'auc_macro': 0.7128174786233258, 'auc_micro': 0.7390815278524967}
+11/06/2024 16:17:23 - INFO - __main__ -   Epoch = 2
+11/06/2024 16:22:13 - INFO - accelerate.accelerator -   Saving current state to ../models/top3_max612_epochs3
+11/06/2024 16:22:14 - INFO - accelerate.checkpointing -   Model weights saved in ../models/top3_max612_epochs3/model.safetensors
+11/06/2024 16:22:16 - INFO - accelerate.checkpointing -   Optimizer state saved in ../models/top3_max612_epochs3/optimizer.bin
+11/06/2024 16:22:16 - INFO - accelerate.checkpointing -   Scheduler state saved in ../models/top3_max612_epochs3/scheduler.bin
+11/06/2024 16:22:16 - INFO - accelerate.checkpointing -   Sampler state for dataloader 0 saved in ../models/top3_max612_epochs3/sampler.bin
+11/06/2024 16:22:16 - INFO - accelerate.checkpointing -   Sampler state for dataloader 1 saved in ../models/top3_max612_epochs3/sampler_1.bin
+11/06/2024 16:22:16 - INFO - accelerate.checkpointing -   Random states saved in ../models/top3_max612_epochs3/random_states_0.pkl
+11/06/2024 16:22:16 - INFO - __main__ -   Done with training for Epoch2
+11/06/2024 16:22:25 - INFO - __main__ -   epoch 1 finished
+11/06/2024 16:22:25 - INFO - __main__ -   metrics: {'acc_macro': 0.0, 'prec_macro': 0.0, 'rec_macro': 0.0, 'f1_macro': 0.0, 'acc_micro': 0.0, 'prec_micro': nan, 'rec_micro': 0.0, 'f1_micro': nan, 'rec_at_8': 0.07236842105263158, 'prec_at_8': 0.025219298245614034, 'f1_at_8': 0.03740390301596688, 'auc_macro': 0.7997761833369029, 'auc_micro': 0.7396195040837287}
+11/06/2024 16:22:25 - INFO - __main__ -   Epoch = 3
+11/06/2024 16:26:35 - INFO - __main__ -   Loaded raw datasets
+11/06/2024 16:26:35 - INFO - __main__ -   Loaded data files
+11/06/2024 16:26:36 - INFO - __main__ -   Tokenizing
+11/06/2024 16:26:36 - INFO - __main__ -   Setting optimizer
+11/06/2024 16:26:36 - INFO - __main__ -   Distributed environment: NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: mps
+
+Mixed precision type: no
+
+11/06/2024 16:26:37 - INFO - __main__ -   Loading checkpoint
+11/06/2024 16:26:37 - INFO - accelerate.accelerator -   Loading states from ../models/top3_max612_epochs3
+11/06/2024 16:26:37 - INFO - accelerate.checkpointing -   All model weights loaded successfully
+11/06/2024 16:26:38 - INFO - accelerate.checkpointing -   All optimizer states loaded successfully
+11/06/2024 16:26:38 - INFO - accelerate.checkpointing -   All scheduler states loaded successfully
+11/06/2024 16:26:38 - INFO - accelerate.checkpointing -   All dataloader sampler states loaded successfully
+11/06/2024 16:26:38 - INFO - accelerate.checkpointing -   All random states loaded successfully
+11/06/2024 16:26:38 - INFO - accelerate.accelerator -   Loading in 0 custom states
+11/06/2024 16:26:38 - INFO - __main__ -   Sample 2360 of the training set: M1712;Z96641.
+11/06/2024 16:26:38 - INFO - __main__ -   Original tokens: <s>sex m service orthopaedics allergies no known allergies adverse drug reactions attending chief complaint left knee ostoarthritis major surgical or invasive procedure left tka history of present illness m with history of left knee oa who has failed conservative measures and has elected to undergo definitive surgical management past medical history past medical history h o r hip replacement w multiple infectious complications past surgical history r thr r inguinal hernia social history family history non contributory physical exam well appearing in no acute distress afebrile with stable vital signs pain well controlled respiratory ctab cardiovascular rrr gastrointestinal nt nd genitourinary voiding independently neurologic intact with no focal deficits psychiatric pleasant ao x3 musculoskeletal lower extremity incision healing well with staples scant serosanguinous drainage thigh full but soft no calf tenderness strength silt nvi distally toes warm brief hospital course the patient was admitted to the orthopedic surgery service and was taken to the operating room for above described procedure please see separately dictated operative report for details the surgery was uncomplicated and the patient tolerated the procedure well patient received perioperative iv antibiotics postoperative course was remarkable for the following pod patient was orthostatic with bps and improved back up to laying down he was asymptomatic patient administered 500ml iv fluid bolus with appropriate response otherwise pain was controlled with a combination of iv and oral pain medications the patient received aspirin bid for dvt prophylaxis starting on the morning of pod1 the foley was removed and the patient was voiding independently thereafter the surgical dressing was changed on pod2 and the surgical incision was found to be clean and intact without erythema or abnormal drainage the patient was seen daily by physical therapy labs were checked throughout the hospital course and repleted accordingly at the time of the patient was tolerating a regular diet and feeling well the patient was afebrile with stable vital signs the patients hematocrit was acceptable and pain was adequately controlled on an oral regimen the operative extremity was neurovascularly intact and the wound was benign the patients weight bearing status is weight bearing as tolerated on the operative extremity mr is d to home with services in stable condition medications on ciprofloxacin hcl mg po q12h medications acetaminophen mg po q8h aspirin mg po bid docusate sodium mg po bid oxycodone immediate release mg po q4hprn pain moderate pantoprazole mg po q24h take daily while on aspirin x days senna mg po bid disposition home with service facility diagnosis left knee osteoarthritis condition mental status clear and coherent level of consciousness alert and interactive activity status ambulatory requires assistance or aid walker or cane followup instructions</s>
+11/06/2024 16:26:38 - INFO - __main__ -   ***** Running training *****
+11/06/2024 16:26:38 - INFO - __main__ -     Num examples = 2670
+11/06/2024 16:26:38 - INFO - __main__ -     Num Epochs = 3
+11/06/2024 16:26:38 - INFO - __main__ -     Instantaneous batch size per device = 32
+11/06/2024 16:26:38 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 32
+11/06/2024 16:26:38 - INFO - __main__ -     Gradient Accumulation steps = 1
+11/06/2024 16:26:38 - INFO - __main__ -     Total optimization steps = 252
+11/06/2024 16:26:38 - INFO - __main__ -     Max lentgh = 612
+11/06/2024 16:26:38 - INFO - __main__ -     Remove digits = True
+11/06/2024 16:57:08 - INFO - __main__ -   Loaded raw datasets
+11/06/2024 16:57:08 - INFO - __main__ -   Loaded data files
+11/06/2024 16:57:09 - INFO - __main__ -   Tokenizing
+11/06/2024 16:57:09 - INFO - __main__ -   Setting optimizer
+11/06/2024 16:57:09 - INFO - __main__ -   Distributed environment: NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: mps
+
+Mixed precision type: no
+
+11/06/2024 16:57:09 - INFO - __main__ -   Loading checkpoint
+11/06/2024 16:57:09 - INFO - accelerate.accelerator -   Loading states from ../models/top3_max350_epochs3
+11/06/2024 16:57:37 - INFO - __main__ -   Loaded raw datasets
+11/06/2024 16:57:37 - INFO - __main__ -   Loaded data files
+11/06/2024 16:57:37 - INFO - __main__ -   Tokenizing
+11/06/2024 16:57:37 - INFO - __main__ -   Setting optimizer
+11/06/2024 16:57:38 - INFO - __main__ -   Distributed environment: NO
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: mps
+
+Mixed precision type: no
+
+11/06/2024 16:57:38 - INFO - __main__ -   Sample 208 of the training set: F319;K5900;Z818.
+11/06/2024 16:57:38 - INFO - __main__ -   Original tokens: <s>sex f service medicine allergies no known allergies adverse drug reactions attending major surgical or invasive procedure none attach pertinent results 0447pm blood wbc rbc hgb hct mcv mch mchc rdw rdwsd plt 0620am blood glucose urean creat na k cl hco3 angap 0447pm blood alt ast alkphos totbili 0620am blood calcium phos mg 0822pm urine color yellow appear hazy sp 0822pm urine blood sm nitrite neg protein glucose neg ketone neg bilirub neg urobiln neg ph leuks neg 0822pm urine rbc wbc bacteri few yeast none epi 0822pm urine casthy 0822pm urine bnzodzp neg barbitr neg opiates neg cocaine neg amphetm neg oxycodn neg mthdone neg brief hospital course transitional issues none hospital course bipolar disorder with psychotic features acute decompensation without clear provoking factors no infectious signs unremarkable basic labs pt started on abilify during her prolonged ed holding which was continued on the floor continued in place sitter maintained no aggressive behavior noted or attempts at self harm but continues to be disorganized in speech and minimally engaging in answering questions generally answering questions in vague generalities inpatient bed available on day on the floor and transferred minutes spent on day of dc planning medications on the pre medication list is accurate and complete this patient is not taking any pre medications medications aripiprazole mg po daily disposition extended care facility diagnosis bipolar disorder with acute psychotic features condition mental status confused sometimes level of consciousness alert and interactive activity status ambulatory independent instructions you were admitted for an acute psychiatric decompensation there was not determined to be any underlying medical cause for this and you will now continue to inpatient psychiatric care to further work on management of this issue followup instructions</s>
+11/06/2024 16:57:38 - INFO - __main__ -   ***** Running training *****
+11/06/2024 16:57:38 - INFO - __main__ -     Num examples = 384
+11/06/2024 16:57:38 - INFO - __main__ -     Num Epochs = 3
+11/06/2024 16:57:38 - INFO - __main__ -     Instantaneous batch size per device = 32
+11/06/2024 16:57:38 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 32
+11/06/2024 16:57:38 - INFO - __main__ -     Gradient Accumulation steps = 1
+11/06/2024 16:57:38 - INFO - __main__ -     Total optimization steps = 36
+11/06/2024 16:57:38 - INFO - __main__ -     Max lentgh = 350
+11/06/2024 16:57:38 - INFO - __main__ -     Remove digits = True
+11/06/2024 16:57:38 - INFO - __main__ -   Epoch = 1
+11/06/2024 16:57:52 - INFO - accelerate.accelerator -   Saving current state to ../models/top3_max350_epochs3
+11/06/2024 16:57:53 - INFO - accelerate.checkpointing -   Model weights saved in ../models/top3_max350_epochs3/model.safetensors
+11/06/2024 16:57:54 - INFO - accelerate.checkpointing -   Optimizer state saved in ../models/top3_max350_epochs3/optimizer.bin
+11/06/2024 16:57:54 - INFO - accelerate.checkpointing -   Scheduler state saved in ../models/top3_max350_epochs3/scheduler.bin
+11/06/2024 16:57:54 - INFO - accelerate.checkpointing -   Sampler state for dataloader 0 saved in ../models/top3_max350_epochs3/sampler.bin
+11/06/2024 16:57:54 - INFO - accelerate.checkpointing -   Sampler state for dataloader 1 saved in ../models/top3_max350_epochs3/sampler_1.bin
+11/06/2024 16:57:54 - INFO - accelerate.checkpointing -   Random states saved in ../models/top3_max350_epochs3/random_states_0.pkl
+11/06/2024 16:57:54 - INFO - __main__ -   Done with training for Epoch1
+11/06/2024 16:57:55 - INFO - __main__ -   epoch 0 finished
+11/06/2024 16:57:55 - INFO - __main__ -   metrics: {'acc_macro': 0.007575757575740358, 'prec_macro': 0.007575757575740358, 'rec_macro': 0.3333333333333333, 'f1_macro': 0.014814814814781892, 'acc_micro': 0.020833333333333332, 'prec_micro': 0.022727272727272728, 'rec_micro': 0.2, 'f1_micro': 0.04081632653061225, 'rec_at_8': 0.11363636363636363, 'prec_at_8': 0.03787878787878787, 'f1_at_8': 0.056818181818181816, 'auc_macro': 0.44227012037562236, 'auc_micro': 0.4779527559055118}
+11/06/2024 16:57:55 - INFO - __main__ -   Epoch = 2
+11/06/2024 16:58:11 - INFO - accelerate.accelerator -   Saving current state to ../models/top3_max350_epochs3
+11/06/2024 16:58:11 - INFO - accelerate.checkpointing -   Model weights saved in ../models/top3_max350_epochs3/model.safetensors
+11/06/2024 16:58:12 - INFO - accelerate.checkpointing -   Optimizer state saved in ../models/top3_max350_epochs3/optimizer.bin
+11/06/2024 16:58:12 - INFO - accelerate.checkpointing -   Scheduler state saved in ../models/top3_max350_epochs3/scheduler.bin
+11/06/2024 16:58:12 - INFO - accelerate.checkpointing -   Sampler state for dataloader 0 saved in ../models/top3_max350_epochs3/sampler.bin
+11/06/2024 16:58:12 - INFO - accelerate.checkpointing -   Sampler state for dataloader 1 saved in ../models/top3_max350_epochs3/sampler_1.bin
+11/06/2024 16:58:12 - INFO - accelerate.checkpointing -   Random states saved in ../models/top3_max350_epochs3/random_states_0.pkl
+11/06/2024 16:58:12 - INFO - __main__ -   Done with training for Epoch2
+11/06/2024 16:58:13 - INFO - __main__ -   epoch 1 finished
+11/06/2024 16:58:13 - INFO - __main__ -   metrics: {'acc_macro': 0.007575757575740358, 'prec_macro': 0.007575757575740358, 'rec_macro': 0.3333333333333333, 'f1_macro': 0.014814814814781892, 'acc_micro': 0.020833333333333332, 'prec_micro': 0.022727272727272728, 'rec_micro': 0.2, 'f1_micro': 0.04081632653061225, 'rec_at_8': 0.11363636363636363, 'prec_at_8': 0.03787878787878787, 'f1_at_8': 0.056818181818181816, 'auc_macro': 0.4362513392575786, 'auc_micro': 0.48031496062992124}
+11/06/2024 16:58:13 - INFO - __main__ -   Epoch = 3
+11/06/2024 16:58:30 - INFO - accelerate.accelerator -   Saving current state to ../models/top3_max350_epochs3
+11/06/2024 16:58:30 - INFO - accelerate.checkpointing -   Model weights saved in ../models/top3_max350_epochs3/model.safetensors
+11/06/2024 16:58:31 - INFO - accelerate.checkpointing -   Optimizer state saved in ../models/top3_max350_epochs3/optimizer.bin
+11/06/2024 16:58:31 - INFO - accelerate.checkpointing -   Scheduler state saved in ../models/top3_max350_epochs3/scheduler.bin
+11/06/2024 16:58:31 - INFO - accelerate.checkpointing -   Sampler state for dataloader 0 saved in ../models/top3_max350_epochs3/sampler.bin
+11/06/2024 16:58:31 - INFO - accelerate.checkpointing -   Sampler state for dataloader 1 saved in ../models/top3_max350_epochs3/sampler_1.bin
+11/06/2024 16:58:31 - INFO - accelerate.checkpointing -   Random states saved in ../models/top3_max350_epochs3/random_states_0.pkl
+11/06/2024 16:58:31 - INFO - __main__ -   Done with training for Epoch3
+11/06/2024 16:58:31 - INFO - __main__ -   epoch 2 finished
+11/06/2024 16:58:31 - INFO - __main__ -   metrics: {'acc_macro': 0.007575757575740358, 'prec_macro': 0.007575757575740358, 'rec_macro': 0.3333333333333333, 'f1_macro': 0.014814814814781892, 'acc_micro': 0.020833333333333332, 'prec_micro': 0.022727272727272728, 'rec_micro': 0.2, 'f1_micro': 0.04081632653061225, 'rec_at_8': 0.11363636363636363, 'prec_at_8': 0.03787878787878787, 'f1_at_8': 0.056818181818181816, 'auc_macro': 0.44709144765866266, 'auc_micro': 0.4866141732283465}
+11/06/2024 16:58:31 - INFO - __main__ -   Saving model
