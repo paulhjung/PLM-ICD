@@ -270,7 +270,7 @@ def main():
             epoch_loss = 0.0
             for step, batch in enumerate(train_dataloader):
                 outputs = model(**batch)
-                loss = outputs.loss
+                loss = outputs[0]
                 loss = loss / args.gradient_accumulation_steps
                 accelerator.backward(loss)
                 epoch_loss += loss.item()
@@ -291,19 +291,20 @@ def main():
             all_preds = []
             all_preds_raw = []
             all_labels = []
+            all_attn = []
             for step, batch in tqdm(enumerate(eval_dataloader)):
                 with torch.no_grad():
                     outputs = model(**batch)
-                preds_raw = outputs.logits.sigmoid().cpu()
+                preds_raw = outputs[1].sigmoid().cpu()
                 preds = (preds_raw > 0.4).int()
                 all_preds_raw.extend(list(preds_raw))
                 all_preds.extend(list(preds))
                 all_labels.extend(list(batch["labels"].cpu().numpy()))
+                all_attn.extend(list(outputs[2]))
             all_preds_raw = np.stack(all_preds_raw)
             all_preds = np.stack(all_preds)
             all_labels = np.stack(all_labels)
             metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw)
-            logger.info(f"epoch {epoch} finished")
             logger.info(f"metrics: {metrics}")
     
     ##### Test!

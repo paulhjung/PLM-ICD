@@ -22,6 +22,7 @@ import warnings
 import logging
 from dataclasses import dataclass
 from typing import Optional, Tuple
+import code ## code.interact(local=locals())
 
 import torch
 import torch.utils.checkpoint
@@ -63,7 +64,7 @@ class RobertaForMultilabelClassification(RobertaPreTrainedModel):
         labels=None,
         output_attentions=None,
         output_hidden_states=None,
-        return_dict=None,
+        return_dict=False,
     ):
         r"""
         input_ids (torch.LongTensor of shape (batch_size, num_chunks, chunk_size))
@@ -103,7 +104,7 @@ class RobertaForMultilabelClassification(RobertaPreTrainedModel):
             att_weights = self.second_linear(weights)
             # att_weights.masked_fill_((attention_mask.view(batch_size, -1, 1)==0), -math.inf)
             att_weights = torch.nn.functional.softmax(att_weights, dim=1).transpose(1, 2)
-            weighted_output = att_weights @ hidden_output
+            weighted_output = att_weights @ hidden_output # want the att_weights
             logits = self.third_linear.weight.mul(weighted_output).sum(dim=2).add(self.third_linear.bias)
             if self.model_mode == "laat-split":
                 logits = logits.view(batch_size, num_chunks, -1).max(dim=1).values
@@ -116,7 +117,8 @@ class RobertaForMultilabelClassification(RobertaPreTrainedModel):
             loss = loss_fct(logits.view(-1, self.num_labels), labels.view(-1, self.num_labels))
 
         if not return_dict:
-            output = (logits,) + outputs[2:]
+            output = (logits, att_weights) + outputs[2:]
+            #code.interact(local=locals())
             return ((loss,) + output) if loss is not None else output
 
         return SequenceClassifierOutput(
