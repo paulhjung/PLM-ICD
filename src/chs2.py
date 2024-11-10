@@ -36,9 +36,6 @@ datasets.utils.logging.set_verbosity_warning()
 transformers.utils.logging.set_verbosity_error() ## changed from info which outputs the config.json
 args = parse_args()
 
-#def get_hidden_output(module, input, output):
-#    print("Hidden layer output:", output)
-
 def main():
     output_dir = f"{args.output_prefix}top{args.num_codes}_max{args.max_length}_epochs{args.num_overalltrain_epochs}"
     os.makedirs(output_dir, exist_ok=True)
@@ -220,7 +217,7 @@ def main():
 
     ##### Train!
     # Get the metric function
-    #if args.task_name is not None:
+    # if args.task_name is not None:
     #    metric = load_metric("glue", args.task_name)
     if args.num_train_epochs > 0:
         # Log a few random samples from the training set:
@@ -246,7 +243,6 @@ def main():
         i = 0
         if args.fromcheckpoint:
             model.eval()
-            #code.interact(local=locals())
             all_preds = []
             all_preds_raw = []
             all_labels = []
@@ -293,51 +289,45 @@ def main():
             all_preds_raw = []
             all_labels = []
             all_attn = []
-            for step, batch in tqdm(enumerate(eval_dataloader)):
+            for step, batch in enumerate(tqdm(eval_dataloader)):
                 with torch.no_grad():
                     outputs = model(**batch)
                 preds_raw = outputs[1].sigmoid().cpu()
-                preds = (preds_raw > 0.4).int()
                 all_preds_raw.extend(list(preds_raw))
-                all_preds.extend(list(preds))
                 all_labels.extend(list(batch["labels"].cpu().numpy()))
-                all_attn.extend(list(outputs[2]))
+                all_attn.extend(list(outputs[2])) #need to dot attn with hidden
             all_preds_raw = np.stack(all_preds_raw)
-            all_preds = np.stack(all_preds)
             all_labels = np.stack(all_labels)
-            metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw)
-            logger.info(f"metrics: {metrics}")
+            logger.info(f"model: {output_dir}")
+            logger.info(f"testfile:"+args.validation_file+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_wordlim{args.wordlimit}.csv")
+            for t in [.18, 0.225, 0.275, 0.325, .375, .425, .475, .525]: #these are the cutoffs of the logits
+                all_preds = (all_preds_raw > t).astype(int)
+                metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw, k=[5,8,15])
+                logger.info(f"metrics for threshold {t}: {metrics}")
     
     ##### Test!
     if args.num_train_epochs == 0 and accelerator.is_local_main_process:
         model.eval()
-        #all_preds = []
         all_preds_raw = []
         all_labels = []
-        i = 0
+        all_attn = []
+        j = 0
         for step, batch in enumerate(tqdm(eval_dataloader)):
-            i += 1
-            #code.interact(local=locals())
+            j += 1
             with torch.no_grad():
                 outputs = model(**batch)
-            preds_raw = outputs.logits.sigmoid().cpu()
-            #preds = (preds_raw > 0.5).int()
+            preds_raw = outputs[1].sigmoid().cpu()
             all_preds_raw.extend(list(preds_raw))
-            if i==10: print(all_preds_raw)
-            #all_preds.extend(list(preds))
+            if j==1: print(all_preds_raw)
             all_labels.extend(list(batch["labels"].cpu().numpy()))
-            #if i == 50: break
+            all_attn.extend(list(outputs[2]))
         
         all_preds_raw = np.stack(all_preds_raw)
-        #all_preds = np.stack(all_preds)
         all_labels = np.stack(all_labels)
-        #metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw)
         logger.info(f"evaluation finished")
-        #logger.info(f"metrics: {metrics}")
-        #code.interact(local=locals())
         logger.info(f"model: {output_dir}")
         logger.info(f"testfile:"+args.validation_file+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_wordlim{args.wordlimit}.csv")
-        for t in [.175, 0.225, 0.275, 0.325, .375, .425, .475, .525, .575, .625]: #these are the cutoffs of the logits
+        for t in [.18, 0.225, 0.275, 0.325, .375, .425, .475, .525]: #these are the cutoffs of the logits
             all_preds = (all_preds_raw > t).astype(int)
             metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw, k=[5,8,15])
             logger.info(f"metrics for threshold {t}: {metrics}")

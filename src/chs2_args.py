@@ -26,8 +26,8 @@ from modeling_roberta import RobertaForMultilabelClassification
 from evaluation import all_metrics
 def parse_args():
     parser = argparse.ArgumentParser(description="Finetune a transformers model on a text classification task")
-    parser.add_argument("--fromcheckpoint", type=bool, default=True, help="Set true if using checkpoint")
-    parser.add_argument("--tokens_exist", type=bool, default=True, help="Set true if already tokenized")
+    parser.add_argument("--fromcheckpoint", type=bool, default=False, help="Set true if using checkpoint")
+    parser.add_argument("--tokens_exist", type=bool, default=False, help="Set true if already tokenized")
     parser.add_argument("--tokens_dir", type=str, default="../data/mimic407-1224tokens_noDigTrue_noFWTrue_max1800", help="Path to tokens")
     parser.add_argument("--devmode", type=bool, default=False, help="Use much smaller data set for training")
     parser.add_argument("--remove_digits", type=bool, default=True, help="Remove digits in text preprocessing")
@@ -36,7 +36,7 @@ def parse_args():
     parser.add_argument("--validation_file", type=str, default="../data/mimic4/CHStest", help="Title prefix of csv or a json file containing the validation data.")
     parser.add_argument("--output_prefix", type=str, default="../models/", help="Prefix for where to store the final model.")
     parser.add_argument("--maxtoken_length", type=int, default=1792, help="The maximum total input sequence length after tokenization. Seq longer than this are truncated, seq shorter are padded if `--pad_to_max_lengh` is passed.")
-    parser.add_argument("--max_length", type=int, default=1800, help="Max num of words at train time .")
+    parser.add_argument("--max_length", type=int, default=350, help="Max num of words at train time .")
     parser.add_argument("--wordlimit", type=str, default=1800, help="Max num of words at data prep time.")
     parser.add_argument("--num_overalltrain_epochs", type=int, default=10, help="Total number of training epochs to perform.")
     parser.add_argument("--num_train_epochs", type=int, default=6, help="Total number of training epochs to perform.")
