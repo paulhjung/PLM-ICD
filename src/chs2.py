@@ -40,7 +40,7 @@ args = parse_args()
 #    print("Hidden layer output:", output)
 
 def main():
-    output_dir = f"{args.output_prefix}top{args.num_codes}_max{args.max_length}_epochs{args.num_train_epochs}"
+    output_dir = f"{args.output_prefix}top{args.num_codes}_max{args.max_length}_epochs{args.num_overalltrain_epochs}"
     os.makedirs(output_dir, exist_ok=True)
     if args.seed is not None:
         set_seed(args.seed)
@@ -90,14 +90,12 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer_path,use_fast=not args.use_slow_tokenizer,do_lower_case=not args.cased)
     model_class = RobertaForMultilabelClassification ### from modeling_roberta
 
-    """ !!!Revisit checkpointing"""
     if args.num_train_epochs > 0:
         model = model_class.from_pretrained(args.model_name_or_path,from_tf=bool(".ckpt" in args.model_name_or_path),config=config)
     else:
         model = model_class.from_pretrained(output_dir, config=config)
 
     ##### Tokenize the texts
-    logger.info("Tokenizing")
     def tokenizing_function(examples):
         ### tokenizer returns a dict with keys 'input_ids' and 'attention_mask'
         result = tokenizer(examples["TEXT"], padding=False, truncation=True, add_special_tokens=True, max_length=args.maxtoken_length)
@@ -107,14 +105,17 @@ def main():
             result["label_ids"] = [[label_to_id.get(label.strip()) for label in labels.strip().split(';') if label.strip() in label_to_id.keys() ] if labels is not None else [] for labels in examples["LABELS"]]
         return result
     column_names = raw_datasets["train0"].column_names if args.train_file is not None else raw_datasets["validation"].column_names
-    tokenized_datasets = raw_datasets.map(tokenizing_function, batched=True, remove_columns=column_names)
-    ## for documentation on map() see https://huggingface.co/docs/datasets/v1.1.1/processing.html default batch is 1000
+    if args.tokens_exist:
+        logger.info("Loading tokens")
+        tokenized_datasets = datasets.load_from_disk(args.tokens_dir)
+    else:
+        logger.info("Tokenizing")
+        tokenized_datasets = raw_datasets.map(tokenizing_function, batched=True, remove_columns=column_names)
+        DIRECTORY_PLM = "../data/mimic4"+str(time.strftime("%d-%H%M")) #data for PLM-ICD
+        save_path = DIRECTORY_PLM + f'tokens_noDig{args.remove_digits}_noFW{args.remove_firstwords}_max{args.max_length}'
+        tokenized_datasets.save_to_disk(save_path)
     eval_dataset = tokenized_datasets["validation"]
     train_dataset = tokenized_datasets["train0"]
-
-    DIRECTORY_PLM = "/Users/paulj/Documents/Github/PLM-ICD/data/mimic4"+str(time.strftime("%d-%H%M")) #data for PLM-ICD
-    save_path = DIRECTORY_PLM + f'tokens_noDig{args.remove_digits}_noFW{args.remove_firstwords}_max{args.max_length}'
-    tokenized_datasets.save_to_disk(save_path)
     if not args.devmode:
         for i in range(1,9):
             train_dataset = datasets.concatenate_datasets([train_dataset, tokenized_datasets[f"train{i}"]])
