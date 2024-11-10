@@ -246,7 +246,7 @@ def main():
             all_preds = []
             all_preds_raw = []
             all_labels = []
-            for step, batch in tqdm(enumerate(eval_dataloader)):
+            for step, batch in enumerate(tqdm(eval_dataloader)):
                 with torch.no_grad():
                     outputs = model(**batch)
                 preds_raw = outputs.logits.sigmoid().cpu()
