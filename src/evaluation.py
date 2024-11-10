@@ -44,6 +44,7 @@ def all_metrics(yhat, y, k=8, yhat_raw=None, calc_auc=True):
     #AUC and @k
     if yhat_raw is not None and calc_auc:
         #allow k to be passed as int or list
+        """
         if type(k) != list:
             k = [k]
         for k_i in k:
@@ -52,7 +53,7 @@ def all_metrics(yhat, y, k=8, yhat_raw=None, calc_auc=True):
             prec_at_k = precision_at_k(yhat_raw, y, k_i)
             metrics['prec_at_%d' % k_i] = prec_at_k
             metrics['f1_at_%d' % k_i] = 2*(prec_at_k*rec_at_k)/(prec_at_k+rec_at_k)
-
+        """
         roc_auc = auc_metrics(yhat_raw, y, ymic)
         metrics.update(roc_auc)
 
