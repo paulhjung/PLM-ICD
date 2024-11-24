@@ -37,7 +37,7 @@ transformers.utils.logging.set_verbosity_error() ## changed from info which outp
 args = parse_args()
 
 def main():
-    output_dir = f"{args.output_prefix}top{args.num_codes}_max{args.max_length}_epochs{args.num_overalltrain_epochs}"
+    output_dir = f"{args.output_prefix}top{args.num_codes}_max{args.maxtoken_length}_epochs{args.num_overalltrain_epochs}"
     os.makedirs(output_dir, exist_ok=True)
     if args.seed is not None:
         set_seed(args.seed)
@@ -53,11 +53,13 @@ def main():
         data_files["train"+str(0)] = args.train_file+str(0)+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_wordlim{args.wordlimit}.csv"
     elif args.train_file is not None:
         for i in range(9):
+            logger.info(f"Loaded dataset {i}")
             data_files["train"+str(i)] = args.train_file+str(i)+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_wordlim{args.wordlimit}.csv"
     if args.validation_file is not None:
         data_files["validation"] = args.validation_file+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_wordlim{args.wordlimit}.csv"
-    ## validation set is for hyperparameters; learning rate (.00005 in Edin), minibatch 4?(8 or 16 in Edin), Decision boundary cutoff theshold (default in Edin is .5), Dropout is .2 in Edin, Chunksize
+     ## validation set is for hyperparameters; learning rate (.00005 in Edin), minibatch 4?(8 or 16 in Edin), Decision boundary cutoff theshold (default in Edin is .5), Dropout is .2 in Edin, Chunksize
     datafiletype = "csv"
+    #code.interact(local=locals())
     raw_datasets = load_dataset(datafiletype, data_files=data_files) #data_files is the path to source data file(s).
     raw_datasets["validation"] = raw_datasets["validation"].filter(lambda example: example["length"] <= args.max_length)
     raw_datasets["train0"] = raw_datasets["train0"].filter(lambda example: example["length"] <= args.max_length)
@@ -109,7 +111,7 @@ def main():
         logger.info("Tokenizing")
         tokenized_datasets = raw_datasets.map(tokenizing_function, batched=True, remove_columns=column_names)
         DIRECTORY_PLM = "../data/mimic4"+str(time.strftime("%d-%H%M")) #data for PLM-ICD
-        save_path = DIRECTORY_PLM + f'tokens_noDig{args.remove_digits}_noFW{args.remove_firstwords}_max{args.max_length}'
+        save_path = DIRECTORY_PLM + f'tokens_noDig{args.remove_digits}_noFW{args.remove_firstwords}_max{args.maxtoken_length}'
         tokenized_datasets.save_to_disk(save_path)
     eval_dataset = tokenized_datasets["validation"]
     train_dataset = tokenized_datasets["train0"]
@@ -177,7 +179,6 @@ def main():
     optimizer = AdamW(optimizer_grouped_parameters, lr=args.learning_rate)
 
     ##### Scheduler (and math around the number of training steps)
-    # Set next to small number to test checkpointing
     num_update_steps_per_epoch =  math.ceil(len(train_dataloader) / args.gradient_accumulation_steps)
     if args.max_train_steps is None:
         args.max_train_steps = args.num_train_epochs * num_update_steps_per_epoch
@@ -223,10 +224,8 @@ def main():
         # Log a few random samples from the training set:
         for index in random.sample(range(len(train_dataset)), 1):
             logger.info(f"Sample {index} of the training set: {train_dataset[index]['labels']}.")
-            logger.info(f"Original tokens: {tokenizer.decode(train_dataset[index]['input_ids'])}")
-        
+            #logger.info(f"Original tokens: {tokenizer.decode(train_dataset[index]['input_ids'])}")
         total_batch_size = args.per_device_train_batch_size * accelerator.num_processes * args.gradient_accumulation_steps
-
         logger.info("***** Running training *****")
         logger.info(f"  Num examples = {len(train_dataset)}")
         logger.info(f"  Num Epochs = {args.num_train_epochs}")
@@ -241,6 +240,7 @@ def main():
         completed_steps = 0
 
         i = 0
+        """
         if args.fromcheckpoint:
             model.eval()
             all_preds = []
@@ -249,7 +249,7 @@ def main():
             for step, batch in enumerate(tqdm(eval_dataloader)):
                 with torch.no_grad():
                     outputs = model(**batch)
-                preds_raw = outputs.logits.sigmoid().cpu()
+                preds_raw = outputs[1].sigmoid().cpu()
                 preds = (preds_raw > 0.4).int()
                 all_preds_raw.extend(list(preds_raw))
                 all_preds.extend(list(preds))
@@ -260,6 +260,7 @@ def main():
             metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw)
             logger.info(f"epoch {i} finished")
             logger.info(f"metrics: {metrics}")
+        """
         for epoch in tqdm(range(args.num_train_epochs)):
             i += 1
             logger.info(f"Epoch = {i}")
@@ -300,7 +301,7 @@ def main():
             all_labels = np.stack(all_labels)
             logger.info(f"model: {output_dir}")
             logger.info(f"testfile:"+args.validation_file+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_wordlim{args.wordlimit}.csv")
-            for t in [.18, 0.225, 0.275, 0.325, .375, .425, .475, .525]: #these are the cutoffs of the logits
+            for t in [.2, .22, .24, .26, .28, .3, .32, .34, .36, .38, .4]: #these are the cutoffs of the logits
                 all_preds = (all_preds_raw > t).astype(int)
                 metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw, k=[5,8,15])
                 logger.info(f"metrics for threshold {t}: {metrics}")
@@ -327,7 +328,7 @@ def main():
         logger.info(f"evaluation finished")
         logger.info(f"model: {output_dir}")
         logger.info(f"testfile:"+args.validation_file+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_wordlim{args.wordlimit}.csv")
-        for t in [.18, 0.225, 0.275, 0.325, .375, .425, .475, .525]: #these are the cutoffs of the logits
+        for t in [.2, .22, .24, .26, .28, .3, .32, .34, .36, .38, .4]: #these are the cutoffs of the logits
             all_preds = (all_preds_raw > t).astype(int)
             metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw, k=[5,8,15])
             logger.info(f"metrics for threshold {t}: {metrics}")
