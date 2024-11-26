@@ -71,7 +71,7 @@ with open('../data/mimic4/test.csv', 'r') as f:
     for row in reader:
         tks = tokenizer(row[0], padding=False, truncation=True, add_special_tokens=True, max_length=args.maxtoken_length)
         tokens = tokenizer.tokenize(row[0], padding=False, truncation=True, add_special_tokens=True, max_length=args.maxtoken_length)
-        tkns2 = tokenizer.convert_tokens_to_string(tokens)
+        #tkns2 = tokenizer.convert_tokens_to_string(tokens)
         d = data_collator([tks])
         #wids = np.array(tks.word_ids())  
         with torch.no_grad():
@@ -83,14 +83,34 @@ with open('../data/mimic4/test.csv', 'r') as f:
             if preds_cutoff[i] == 1:
                 print("\n", id_to_label[i], "Probability:", preds_raw[i])
                 # Get indices of the top 10 tokens
-                indices = np.argsort(np.array(outputs[2])[0][i])[-10:]
+                attns = np.array(outputs[2])[0][i]
+                indices = np.argsort(attns[-10:])
                 indices.sort()
                 # Get indices2 of tokens with high attention
-                x = (np.array(outputs[2])[0][i]> .035).astype(int)
-                indices2 = np.where(x == 1)[0]
+                high_attns = (attns> .035).astype(int)
+                indices2 = np.where(high_attns == 1)[0]
                 indices2.sort()
-                t = [tokens[q] for q in indices2]
-                print(tokenizer.convert_tokens_to_string(t))
+                #t = [tokens[q] for q in indices2]
+                #print(tokenizer.convert_tokens_to_string(t))
+                phrases = {}
+                marker = 0
+                for j in range(len(indices2)):
+                    if indices2[j] >= marker:
+                        phrases[indices2[j]] = (indices2[j]+5, attns[indices2[j]])
+                    else: 
+                        k=1
+                        while indices2[j-k] not in phrases:
+                            k += 1
+                        phrases[indices2[j-k]] = (indices2[j]+5, max(attns[indices2[j]], attns[indices2[j-k]])) #make sure this is in range
+                    marker = indices2[j]+5
+                s_phrases = sorted(phrases.items(), key=lambda x: x[1][1], reverse = True) 
+                #code.interact(local=locals())
+                for k in s_phrases[:5]:
+                    try:
+                        t = [tokens[q-2] for q in range(k[0],k[1][0])]
+                        print(round(100*k[1][1],1), tokenizer.convert_tokens_to_string(t))
+                    except:
+                        print("Exception", wordlist[q])
                 #word_indices = wids[indices2]
                 #code.interact(local=locals())
                 """
