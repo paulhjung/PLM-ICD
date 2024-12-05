@@ -101,7 +101,9 @@ def main():
         ### examples keys are 'SUBJECT_ID', 'HADM_ID', 'TEXT', 'LABELS', 'length'
         if "LABELS" in examples:
             result["labels"] = examples["LABELS"]
+            #result["label_ids"] = [examples["LABELS"]]
             result["label_ids"] = [[label_to_id.get(label.strip()) for label in labels.strip().split(';') if label.strip() in label_to_id.keys() ] if labels is not None else [] for labels in examples["LABELS"]]
+        #code.interact(local=locals())
         return result
     column_names = raw_datasets["validation"].column_names 
     if args.tokens_exist:
@@ -110,11 +112,8 @@ def main():
     else:
         logger.info("Tokenizing")
         tokenized_datasets = raw_datasets.map(tokenizing_function, batched=True, remove_columns=column_names)
-        DIRECTORY_PLM = "../data/mimic4"+str(time.strftime("%d-%H%M")) #data for PLM-ICD
-        save_path = DIRECTORY_PLM + f'tokens_noDig{args.remove_digits}_noFW{args.remove_firstwords}_max{args.maxtoken_length}'
-        tokenized_datasets.save_to_disk(save_path)
+        #DIRECTORY_PLM = "../data/mimic4"+str(time.strftime("%d-%H%M")) #data for PLM-ICD
     eval_dataset = tokenized_datasets["validation"]
-    #code.interact(local=locals())
 
     ### https://huggingface.co/docs/datasets/en/process
     ##### Collate data of the mini-batches https://pytorch.org/docs/stable/data.html
@@ -157,6 +156,7 @@ def main():
     eval_dataloader = DataLoader(eval_dataset, collate_fn=data_collator, batch_size=args.per_device_eval_batch_size) #default batch size is 8, should we use drop_last argument in DataLoader??
     #train_dataloader = DataLoader(train_dataset, shuffle=True, collate_fn=data_collator, batch_size=args.per_device_train_batch_size)
 
+    #code.interact(local=locals())
     ##### Test!
     if args.num_train_epochs == 0:# and accelerator.is_local_main_process:
         model.eval()
@@ -178,8 +178,8 @@ def main():
         all_labels = np.stack(all_labels)
         logger.info(f"evaluation finished")
         logger.info(f"model: {output_dir}")
-        logger.info(f"testfile:"+args.validation_file+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_wordlim{args.wordlimit}.csv")
-        for t in [.1, .125, .15, .175, .2, .225]: #these are the cutoffs of the logits
+        logger.info(f"testfile:"+args.validation_file)
+        for t in [.08, .09, .1, .11, .12, .13]: #these are the cutoffs of the logits
             all_preds = (all_preds_raw > t).astype(int)
             metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw, k=[5,8,15])
             logger.info(f"metrics for threshold {t}: {metrics}")

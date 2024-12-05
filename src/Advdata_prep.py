@@ -79,7 +79,7 @@ def preprocessEr(df: pd.DataFrame, preprocessor: TextPreprocessor) -> pd.DataFra
     #df.loc[:,"LABELS"] = df["icd_code"].apply(lambda x: try: code_dict[x])
     ####df.loc[:,"LABELS"] = df["icd_code"].apply(lambda x: ";".join(x))
     df.loc[:,"LABELS"] = df["icd_code"].apply(code_dict_func)
-    df.loc[:,"LABELS_SECONDARY"] = df["secondary"].apply(code_dict_func)
+    df.loc[:,"LABELS"] += ";"+df["secondary"].apply(code_dict_func)
     df.loc[:,"length"] = df.TEXT.str.count(" ") + 1
     return df
 
@@ -129,5 +129,5 @@ logging.info(f"Limit text to {LIMIT}: Num rows is {numrows}")
 m10 = m10.sample(frac = 1)
 m10 = m10.drop(columns=["secondary"])#"icd_code"
 
-file = f'Advdata_wordlim{LIMIT}.csv'
+file = f'Advdata_wordlim{LIMIT}_withSecond.csv'
 m10.to_csv(output_dir_icd10 / file, index=False)
