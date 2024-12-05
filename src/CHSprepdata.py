@@ -32,6 +32,7 @@ output_dir_icd10.mkdir(parents=True, exist_ok=True) # if folder doesn't exist, m
 
 ##### Create dict that converts icd-codes to text
 code_dict={}
+text2code_dict={}
 with open(output_dir_icd10 / 'icd10code2text.csv') as f:
     dreader = csv.reader(f)
     headerRow = next(dreader)
@@ -40,7 +41,8 @@ with open(output_dir_icd10 / 'icd10code2text.csv') as f:
         short  = row[1] #short description
         long = row[2] #long description
         code_dict.update({codE:[short, long]})
-
+        text2code_dict.update({short:codE})
+        
 ##### Functions to be used
 def load_gz_file_into_df(path: Path, dtype: Optional[dict] = None):
     """Reads the notes from a path into a dataframe. Saves the file as a feather file."""
