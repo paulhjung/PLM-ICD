@@ -1,0 +1,18 @@
+I10, Essential (primary) hypertension
+I2510, Athscl heart disease of native coronary artery w/o ang pctrs
+N179, Acute kidney failure, unspecified
+E039, Hypothyroidism, unspecified
+I4891, Unspecified atrial fibrillation
+J449, Chronic obstructive pulmonary disease, unspecified
+N390, Urinary tract infection, site not specified
+D62, Acute posthemorrhagic anemia
+I129, Hypertensive chronic kidney disease w stg 1-4/unsp chr kdny
+G8929, Other chronic pain
+I110, Hypertensive heart disease with heart failure
+I480, Paroxysmal atrial fibrillation
+J189, Pneumonia, unspecified organism
+J9601, Acute respiratory failure with hypoxia
+E1165, Type 2 diabetes mellitus with hyperglycemia
+A419, Sepsis, unspecified organism
+I214, Non-ST elevation (NSTEMI) myocardial infarction
+R1310, Dysphagia, unspecified

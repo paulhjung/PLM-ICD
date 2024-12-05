@@ -1,0 +1,149 @@
+{
+  "builder_name": "csv",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "csv",
+  "dataset_size": 920726783,
+  "description": "",
+  "download_checksums": {
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHStrain0_nodigitsTrue_nofirstwordsTrue_wordlim2250.csv": {
+      "num_bytes": 92338453,
+      "checksum": null
+    },
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHStrain1_nodigitsTrue_nofirstwordsTrue_wordlim2250.csv": {
+      "num_bytes": 91607809,
+      "checksum": null
+    },
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHStrain2_nodigitsTrue_nofirstwordsTrue_wordlim2250.csv": {
+      "num_bytes": 91873653,
+      "checksum": null
+    },
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHStrain3_nodigitsTrue_nofirstwordsTrue_wordlim2250.csv": {
+      "num_bytes": 91852195,
+      "checksum": null
+    },
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHStrain4_nodigitsTrue_nofirstwordsTrue_wordlim2250.csv": {
+      "num_bytes": 92295276,
+      "checksum": null
+    },
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHStrain5_nodigitsTrue_nofirstwordsTrue_wordlim2250.csv": {
+      "num_bytes": 91738286,
+      "checksum": null
+    },
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHStrain6_nodigitsTrue_nofirstwordsTrue_wordlim2250.csv": {
+      "num_bytes": 92127118,
+      "checksum": null
+    },
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHStrain7_nodigitsTrue_nofirstwordsTrue_wordlim2250.csv": {
+      "num_bytes": 92185159,
+      "checksum": null
+    },
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHStrain8_nodigitsTrue_nofirstwordsTrue_wordlim2250.csv": {
+      "num_bytes": 91800759,
+      "checksum": null
+    },
+    "/Users/paulj/Documents/GitHub/PLM-ICD/src/../data/mimic4/CHStest_nodigitsTrue_nofirstwordsTrue_wordlim2250.csv": {
+      "num_bytes": 91927166,
+      "checksum": null
+    }
+  },
+  "download_size": 919745874,
+  "features": {
+    "input_ids": {
+      "feature": {
+        "dtype": "int32",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    },
+    "attention_mask": {
+      "feature": {
+        "dtype": "int8",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    },
+    "labels": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "label_ids": {
+      "feature": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 1840472657,
+  "splits": {
+    "train0": {
+      "name": "train0",
+      "num_bytes": 92436489,
+      "num_examples": 10670,
+      "dataset_name": "csv"
+    },
+    "train1": {
+      "name": "train1",
+      "num_bytes": 91705922,
+      "num_examples": 10670,
+      "dataset_name": "csv"
+    },
+    "train2": {
+      "name": "train2",
+      "num_bytes": 91971738,
+      "num_examples": 10670,
+      "dataset_name": "csv"
+    },
+    "train3": {
+      "name": "train3",
+      "num_bytes": 91950297,
+      "num_examples": 10670,
+      "dataset_name": "csv"
+    },
+    "train4": {
+      "name": "train4",
+      "num_bytes": 92393317,
+      "num_examples": 10670,
+      "dataset_name": "csv"
+    },
+    "train5": {
+      "name": "train5",
+      "num_bytes": 91836412,
+      "num_examples": 10670,
+      "dataset_name": "csv"
+    },
+    "train6": {
+      "name": "train6",
+      "num_bytes": 92225220,
+      "num_examples": 10670,
+      "dataset_name": "csv"
+    },
+    "train7": {
+      "name": "train7",
+      "num_bytes": 92283208,
+      "num_examples": 10670,
+      "dataset_name": "csv"
+    },
+    "train8": {
+      "name": "train8",
+      "num_bytes": 91898902,
+      "num_examples": 10670,
+      "dataset_name": "csv"
+    },
+    "validation": {
+      "name": "validation",
+      "num_bytes": 92025278,
+      "num_examples": 10671,
+      "dataset_name": "csv"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
