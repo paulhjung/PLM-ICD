@@ -24,7 +24,7 @@ from transformers import (
 )
 from modeling_roberta import RobertaForMultilabelClassification
 from evaluation import all_metrics
-from chs_argsAdvdata import parse_args
+from Advdata_args import parse_args
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename='log.log',
@@ -179,7 +179,7 @@ def main():
         logger.info(f"evaluation finished")
         logger.info(f"model: {output_dir}")
         logger.info(f"testfile:"+args.validation_file+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_wordlim{args.wordlimit}.csv")
-        for t in [.2, .22, .24, .26, .28, .3, .32, .34, .36, .38, .4]: #these are the cutoffs of the logits
+        for t in [.1, .125, .15, .175, .2, .225]: #these are the cutoffs of the logits
             all_preds = (all_preds_raw > t).astype(int)
             metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw, k=[5,8,15])
             logger.info(f"metrics for threshold {t}: {metrics}")

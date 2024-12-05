@@ -33,7 +33,7 @@ def parse_args():
     parser.add_argument("--remove_digits", type=bool, default=True, help="Remove digits in text preprocessing")
     parser.add_argument("--remove_firstwords", type=bool, default=True, help="Remove first words in text preprocessing")
     parser.add_argument("--train_file", type=str, default="../data/mimic4/CHStrain", help="Title prefix of csv or a json file containing the training data.")
-    parser.add_argument("--validation_file", type=str, default="../data/mimic4/Advdata_wordlim5000.csv", help="Title prefix of csv or a json file containing the validation data.")
+    parser.add_argument("--validation_file", type=str, default="../data/mimic4/Advdata_wordlim10000.csv", help="Title prefix of csv or a json file containing the validation data.")
     parser.add_argument("--output_prefix", type=str, default="../models/", help="Prefix for where to store the final model.")
     parser.add_argument("--maxtoken_length", type=int, default=3072, help="The maximum total input sequence length after tokenization. Seq longer than this are truncated, seq shorter are padded if `--pad_to_max_lengh` is passed.")
     parser.add_argument("--max_length", type=int, default=10000, help="Max num of words at train time .")
