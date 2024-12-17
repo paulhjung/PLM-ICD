@@ -85,15 +85,16 @@ def preprocessEr(df: pd.DataFrame, preprocessor: TextPreprocessor) -> pd.DataFra
 
 logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 ##### Load the data
-df = load_file_into_df(download_dir / "hnp_data.csv", dtype={"icd_code": str})
+df = load_file_into_df(download_dir / "json_output.csv", dtype={"icd_code": str})
 numrows = df.shape[0]
 logging.info(f"Numrows codes is {numrows}")
 logging.info("Finished loading data")
 df = df.rename(columns={"primary": "icd_code","text": TEXT})
-df = df.drop(columns=["id","file"])
+#df = df.drop(columns=["id","file"])
 m = df.dropna(subset=["icd_code"], how="all")
+m = m.dropna(subset=[TEXT], how="all")
 numrows = m.shape[0]
-logging.info(f"Removed notes with no codes, subject_id: Num rows is {numrows}")
+logging.info(f"Removed notes with no codes or no text, subject_id: Num rows is {numrows}")
 
 # Text preprocess the notes
 preprocessor = TextPreprocessor(
@@ -116,10 +117,10 @@ logging.info(f"Text preprocess icd10: Num rows is {numrows}")
 m10pp = m10pp[m10pp["length"].apply(lambda x: x > 0)]
 numrows = m10pp.shape[0]
 logging.info(f"Remove empty text: Num rows is {numrows}")
-m10 = m10pp[m10pp["length"].apply(lambda x: x < 10000)]
+m10 = m10pp[m10pp["length"].apply(lambda x: x < 15000)]
 numrows = m10.shape[0]
 logging.info(f"Remove long text: Num rows is {numrows}")
-LIMIT = 10000 #args.wordlimit
+LIMIT = 15000 #args.wordlimit
 m10 = m10pp[m10pp["length"].apply(lambda x: x < LIMIT+1)]
 numrows = m10.shape[0]
 logging.info(f"Limit text to {LIMIT}: Num rows is {numrows}")
