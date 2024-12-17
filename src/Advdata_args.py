@@ -81,4 +81,3 @@ def parse_args():
     #    os.makedirs(args.output_dir, exist_ok=True)
 
     return args
-
