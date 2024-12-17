@@ -28,20 +28,20 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Finetune a transformers model on a text classification task")
     parser.add_argument("--fromcheckpoint", type=bool, default=False, help="Set true if using checkpoint")
     parser.add_argument("--tokens_exist", type=bool, default=False, help="Set true if already tokenized")
-    parser.add_argument("--tokens_dir", type=str, default="../data/mimic4---", help="Path to tokens")
+    parser.add_argument("--tokens_dir", type=str, default="../data/mimic411-1706tokens_noDigTrue_noFWTrue_max1800", help="Path to tokens")
     parser.add_argument("--devmode", type=bool, default=False, help="Use much smaller data set for training")
     parser.add_argument("--remove_digits", type=bool, default=True, help="Remove digits in text preprocessing")
     parser.add_argument("--remove_firstwords", type=bool, default=True, help="Remove first words in text preprocessing")
     parser.add_argument("--train_file", type=str, default="../data/mimic4/CHStrain", help="Title prefix of csv or a json file containing the training data.")
     parser.add_argument("--validation_file", type=str, default="../data/mimic4/CHStest", help="Title prefix of csv or a json file containing the validation data.")
     parser.add_argument("--output_prefix", type=str, default="../models/", help="Prefix for where to store the final model.")
-    parser.add_argument("--maxtoken_length", type=int, default=3072, help="The maximum total input sequence length after tokenization. Seq longer than this are truncated, seq shorter are padded if `--pad_to_max_lengh` is passed.")
-    parser.add_argument("--max_length", type=int, default=2250, help="Max num of words at train time .")
-    parser.add_argument("--wordlimit", type=str, default=2250, help="Max num of words at data prep time.")
-    parser.add_argument("--num_overalltrain_epochs", type=int, default=6, help="Total number of training epochs to perform.")
-    parser.add_argument("--num_train_epochs", type=int, default=6, help="Total number of training epochs to perform.")
-    parser.add_argument("--code_file", type=str, default="../data/mimic4/top25_2digits.txt", help="A txt file containing all codes.")
-    parser.add_argument("--num_codes", type=str, default=25, help="Number of all codes.")
+    parser.add_argument("--maxtoken_length", type=int, default=640, help="The maximum total input sequence length after tokenization. Seq longer than this are truncated, seq shorter are padded if `--pad_to_max_lengh` is passed.")
+    parser.add_argument("--max_length", type=int, default=350, help="Max num of words at train time .")
+    parser.add_argument("--wordlimit", type=str, default=1800, help="Max num of words at data prep time.")
+    parser.add_argument("--num_overalltrain_epochs", type=int, default=20, help="Total number of training epochs to perform.")
+    parser.add_argument("--num_train_epochs", type=int, default=0, help="Total number of training epochs to perform.")
+    parser.add_argument("--code_file", type=str, default="../data/mimic4/top18codes.txt", help="A txt file containing all codes.")
+    parser.add_argument("--num_codes", type=str, default=18, help="Number of all codes.")
     #Should only be changing above while testing
     parser.add_argument("--per_device_train_batch_size", type=int, default=16, help="Batch size (per device) for the training dataloader.")
     parser.add_argument("--chunk_size", type=int, default=128, help="The size of chunks that we'll split the inputs into")
@@ -81,4 +81,5 @@ def parse_args():
     #    os.makedirs(args.output_dir, exist_ok=True)
 
     return args
+
 
