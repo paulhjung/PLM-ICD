@@ -79,7 +79,7 @@ def preprocessEr(df: pd.DataFrame, preprocessor: TextPreprocessor) -> pd.DataFra
     #df.loc[:,"LABELS"] = df["icd_code"].apply(lambda x: try: code_dict[x])
     ####df.loc[:,"LABELS"] = df["icd_code"].apply(lambda x: ";".join(x))
     df.loc[:,"LABELS"] = df["icd_code"].apply(code_dict_func)
-    df.loc[:,"LABELS"] += ";"+df["secondary"].apply(code_dict_func)
+    #df.loc[:,"LABELS"] += ";"+df["secondary"].apply(code_dict_func)
     df.loc[:,"length"] = df.TEXT.str.count(" ") + 1
     return df
 
@@ -117,10 +117,10 @@ logging.info(f"Text preprocess icd10: Num rows is {numrows}")
 m10pp = m10pp[m10pp["length"].apply(lambda x: x > 0)]
 numrows = m10pp.shape[0]
 logging.info(f"Remove empty text: Num rows is {numrows}")
-m10 = m10pp[m10pp["length"].apply(lambda x: x < 15000)]
+m10 = m10pp[m10pp["length"].apply(lambda x: x < 10001)] #########
 numrows = m10.shape[0]
 logging.info(f"Remove long text: Num rows is {numrows}")
-LIMIT = 15000 #args.wordlimit
+LIMIT = 10001 #args.wordlimit                            #########
 m10 = m10pp[m10pp["length"].apply(lambda x: x < LIMIT+1)]
 numrows = m10.shape[0]
 logging.info(f"Limit text to {LIMIT}: Num rows is {numrows}")
@@ -128,7 +128,7 @@ logging.info(f"Limit text to {LIMIT}: Num rows is {numrows}")
 
 # Shuffle df
 m10 = m10.sample(frac = 1)
-m10 = m10.drop(columns=["secondary"])#"icd_code"
+m10 = m10.drop(columns=["secondary", "icd_code", "length"])#"icd_code"
 
-file = f'Advdata_wordlim{LIMIT}_withSecond.csv'
+file = f'Advdata_wordlim{LIMIT}.csv'
 m10.to_csv(output_dir_icd10 / file, index=False)

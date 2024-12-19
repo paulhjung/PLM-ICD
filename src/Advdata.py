@@ -41,37 +41,14 @@ def main():
     os.makedirs(output_dir, exist_ok=True)
     if args.seed is not None:
         set_seed(args.seed)
-
-    ##### Load datasets
-    # For CSV/JSON files, this script will use as labels the column called 'label' and as pair of sentences
-    # the sentences in columns called 'sentence1' and 'sentence2' if such column exists or the first two columns not named
-    # label if at least two columns are provided.
-    # If the CSVs/JSONs contain only one non-label column, the script does single sentence classification on this
-    # single column. You can easily tweak this behavior (see below)
     data_files = {}
-    #if args.devmode:
-    #    data_files["train"+str(0)] = args.train_file+str(0)+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_wordlim{args.wordlimit}.csv"
-    #elif args.train_file is not None:
-    #    for i in range(9):
-    #        logger.info(f"Loaded dataset {i}")
-    #        data_files["train"+str(i)] = args.train_file+str(i)+f"_nodigits{args.remove_digits}_nofirstwords{args.remove_firstwords}_wordlim{args.wordlimit}.csv"
     if args.validation_file is not None:
         data_files["validation"] = args.validation_file
-     ## validation set is for hyperparameters; learning rate (.00005 in Edin), minibatch 4?(8 or 16 in Edin), Decision boundary cutoff theshold (default in Edin is .5), Dropout is .2 in Edin, Chunksize
     datafiletype = "csv"
-    #code.interact(local=locals())
     raw_datasets = load_dataset(datafiletype, data_files=data_files) #data_files is the path to source data file(s).
-    raw_datasets["validation"] = raw_datasets["validation"].filter(lambda example: example["length"] <= args.max_length)
-    #raw_datasets["train0"] = raw_datasets["train0"].filter(lambda example: example["length"] <= args.max_length)
-    #if not args.devmode:
-    #    for i in range(1,9):
-    #        raw_datasets[f"train{i}"] = raw_datasets[f"train{i}"].filter(lambda example: example["length"] <= args.max_length)
-    logger.info(f"Loaded raw datasets")
     logger.info(f"Loaded data files")
-    # More on loading datasets: https://huggingface.co/docs/datasets/v2.20.0/en/package_reference/loading_methods#datasets.load_dataset
 
     ##### Load labels
-    # A useful fast method: https://huggingface.co/docs/datasets/package_reference/main_classes.html#datasets.Dataset.unique
     labels = set()
     all_codes_file = args.code_file
     with open(all_codes_file, "r") as f:
@@ -83,7 +60,6 @@ def main():
     num_labels = len(label_list)
 
     ##### Load pretrained model and tokenizer
-    # In distributed training, the .from_pretrained methods guarantee that only one local process can concurrently download model & vocab.
     config = AutoConfig.from_pretrained(args.model_name_or_path, num_labels=num_labels, output_hidden_states=True)#, finetuning_task=args.task_name)
     config.model_mode = args.model_mode ### different modes implemented by PLM-ICD, default is "laat"; args.model_type = "roberta"
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer_path,use_fast=not args.use_slow_tokenizer,do_lower_case=not args.cased)
@@ -101,9 +77,10 @@ def main():
         ### examples keys are 'SUBJECT_ID', 'HADM_ID', 'TEXT', 'LABELS', 'length'
         if "LABELS" in examples:
             result["labels"] = examples["LABELS"]
-            #result["label_ids"] = [examples["LABELS"]]
-            result["label_ids"] = [[label_to_id.get(label.strip()) for label in labels.strip().split(';') if label.strip() in label_to_id.keys() ] if labels is not None else [] for labels in examples["LABELS"]]
-        #code.interact(local=locals())
+            if examples["LABELS"] in label_to_id:
+                result["label_ids"] = [label_to_id[examples["LABELS"]]]
+            else: result["label_ids"] = []
+            #result["label_ids"] = [[label_to_id.get(label.strip()) for label in labels.strip().split(';') if label.strip() in label_to_id.keys() ] if labels is not None else [] for labels in examples["LABELS"]]
         return result
     column_names = raw_datasets["validation"].column_names 
     if args.tokens_exist:
@@ -111,10 +88,9 @@ def main():
         tokenized_datasets = datasets.load_from_disk(args.tokens_dir)
     else:
         logger.info("Tokenizing")
-        tokenized_datasets = raw_datasets.map(tokenizing_function, batched=True, remove_columns=column_names)
+        tokenized_datasets = raw_datasets.map(tokenizing_function, batched=False, remove_columns=column_names)
         #DIRECTORY_PLM = "../data/mimic4"+str(time.strftime("%d-%H%M")) #data for PLM-ICD
     eval_dataset = tokenized_datasets["validation"]
-
     ### https://huggingface.co/docs/datasets/en/process
     ##### Collate data of the mini-batches https://pytorch.org/docs/stable/data.html
     def data_collator(results):
@@ -144,19 +120,9 @@ def main():
         return batch
     
     ##### DataLoaders
-    #!!!!
-    # /opt/anaconda3/envs/plm/lib/python3.10/site-packages/transformers/optimization.py:591: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
-    # warnings.warn(
-    # 08/19/2024 16:20:36 - INFO - __main__ -   Distributed environment: NO
-    # Num processes: 1
-    # Process index: 0
-    # Local process index: 0
-    # Device: mps
-    # Mixed precision type: no
     eval_dataloader = DataLoader(eval_dataset, collate_fn=data_collator, batch_size=args.per_device_eval_batch_size) #default batch size is 8, should we use drop_last argument in DataLoader??
     #train_dataloader = DataLoader(train_dataset, shuffle=True, collate_fn=data_collator, batch_size=args.per_device_train_batch_size)
 
-    #code.interact(local=locals())
     ##### Test!
     if args.num_train_epochs == 0:# and accelerator.is_local_main_process:
         model.eval()
@@ -166,6 +132,7 @@ def main():
         j = 0
         for step, batch in enumerate(tqdm(eval_dataloader)):
             j += 1
+            #if j == 40: break
             with torch.no_grad():
                 outputs = model(**batch)
             preds_raw = outputs[1].sigmoid().cpu()
@@ -179,9 +146,10 @@ def main():
         logger.info(f"evaluation finished")
         logger.info(f"model: {output_dir}")
         logger.info(f"testfile:"+args.validation_file)
-        for t in [.08, .09, .1, .11, .12, .13]: #these are the cutoffs of the logits
+        #SAVE ALL_PREDS_RAW!!!!
+        for t in [.08, .11, .14, .17, .20, .23]: #these are the cutoffs of the logits
             all_preds = (all_preds_raw > t).astype(int)
-            metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw, k=[5,8,15])
+            metrics = all_metrics(yhat=all_preds, y=all_labels, yhat_raw=all_preds_raw, k=[5])
             logger.info(f"metrics for threshold {t}: {metrics}")
 
 if __name__ == "__main__":
