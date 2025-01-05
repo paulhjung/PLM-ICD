@@ -5,7 +5,7 @@ import code ## code.interact(local=locals())
 
 DOWNLOAD_DIRECTORY = "/Users/paulj/Documents/Github/PLM-ICD/data"
 download_dir = Path(DOWNLOAD_DIRECTORY)
-json_f = download_dir / "advdata.json"
+json_f = download_dir / "ints_w_text.json"
 
 def json_to_csv(json_file_path, csv_file_path):
     """
@@ -53,6 +53,6 @@ def json_to_csv(json_file_path, csv_file_path):
         print(f"An unexpected error occurred: {e}")
 
 # Example usage
-json_to_csv(json_f, download_dir / 'json_output.csv')
+json_to_csv(json_f, download_dir / 'ints_w_text_to_csv.csv')
 
 
