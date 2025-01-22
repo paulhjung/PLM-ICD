@@ -21,6 +21,8 @@ B85-B89,"Pediculosis, acariasis and other infestations (B85-B89)",B85,B89,1
 B90-B94,Sequelae of infectious and parasitic diseases (B90-B94),B90,B94,1
 B95-B97,Bacterial and viral infectious agents (B95-B97),B95,B97,1
 B99,Other infectious diseases (B99),B99,B99,1
+C00-C96,Malignant neoplasms (C00-C96),C00,C96,2
+C00-C75,"Malignant neoplasms, stated or presumed to be primary (of specified sites), and certain specified histologies, except neuroendocrine, and of lymphoid, hematopoietic and related tissue (C00-C75)",C00,C75,2
 C00-C14,"Malignant neoplasms of lip, oral cavity and pharynx (C00-C14)",C00,C14,2
 C15-C26,Malignant neoplasms of digestive organs (C15-C26),C15,C26,2
 C30-C39,Malignant neoplasms of respiratory and intrathoracic organs (C30-C39),C30,C39,2
@@ -138,6 +140,7 @@ L55-L59,Radiation-related disorders of the skin and subcutaneous tissue (L55-L59
 L60-L75,Disorders of skin appendages (L60-L75),L60,L75,12
 L76,Intraoperative and postprocedural complications of skin and subcutaneous tissue (L76),L76,L76,12
 L80-L99,Other disorders of the skin and subcutaneous tissue (L80-L99),L80,L99,12
+M00-M25,Arthropathies (M00-M25),M00,M25,13
 M00-M02,Infectious arthropathies (M00-M02),M00,M02,13
 M04,Autoinflammatory syndromes (M04),M04,M04,13
 M05-M14,Inflammatory polyarthropathies (M05-M14),M05,M14,13
@@ -228,6 +231,7 @@ S60-S69,"Injuries to the wrist, hand and fingers (S60-S69)",S60,S69,19
 S70-S79,Injuries to the hip and thigh (S70-S79),S70,S79,19
 S80-S89,Injuries to the knee and lower leg (S80-S89),S80,S89,19
 S90-S99,Injuries to the ankle and foot (S90-S99),S90,S99,19
+T07-T88,"Injury, poisoning and certain other consequences of external causes (T07-T88)",T07,T88,19
 T07,Injuries involving multiple body regions (T07),T07,T07,19
 T14,Injury of unspecified body region (T14),T14,T14,19
 T15-T19,Effects of foreign body entering through natural orifice (T15-T19),T15,T19,19
@@ -241,48 +245,53 @@ T51-T65,Toxic effects of substances chiefly nonmedicinal as to source (T51-T65),
 T66-T78,Other and unspecified effects of external causes (T66-T78),T66,T78,19
 T79,Certain early complications of trauma (T79),T79,T79,19
 T80-T88,"Complications of surgical and medical care, not elsewhere classified (T80-T88)",T80,T88,19
-V00-V09,Pedestrian injured in transport accident (V00-V09),V00,V09,21
-V10-V19,Pedal cycle rider injured in transport accident (V10-V19),V10,V19,21
-V20-V29,Motorcycle rider injured in transport accident (V20-V29),V20,V29,21
-V30-V39,Occupant of three-wheeled motor vehicle injured in transport accident (V30-V39),V30,V39,21
-V40-V49,Car occupant injured in transport accident (V40-V49),V40,V49,21
-V50-V59,Occupant of pick-up truck or van injured in transport accident (V50-V59),V50,V59,21
-V60-V69,Occupant of heavy transport vehicle injured in transport accident (V60-V69),V60,V69,21
-V70-V79,Bus occupant injured in transport accident (V70-V79),V70,V79,21
-V80-V89,Other land transport accidents (V80-V89),V80,V89,21
-V90-V94,Water transport accidents (V90-V94),V90,V94,21
-V95-V97,Air and space transport accidents (V95-V97),V95,V97,21
-V98-V99,Other and unspecified transport accidents (V98-V99),V98,V99,21
-W00-W19,"Slipping, tripping, stumbling and falls (W00-W19)",W00,W19,21
-W20-W49,Exposure to inanimate mechanical forces (W20-W49),W20,W49,21
-W50-W64,Exposure to animate mechanical forces (W50-W64),W50,W64,21
-W65-W74,Accidental non-transport drowning and submersion (W65-W74),W65,W74,21
-W85-W99,"Exposure to electric current, radiation and extreme ambient air temperature and pressure (W85-W99)",W85,W99,21
-X00-X08,"Exposure to smoke, fire and flames (X00-X08)",X00,X08,21
-X10-X19,Contact with heat and hot substances (X10-X19),X10,X19,21
-X30-X39,Exposure to forces of nature (X30-X39),X30,X39,21
-X50,Overexertion and strenuous or repetitive movements (X50),X50,X50,21
-X52-X58,Accidental exposure to other specified factors (X52-X58),X52,X58,21
-X71-X83,Intentional self-harm (X71-X83),X71,X83,21
-Y21-Y33,Event of undetermined intent (Y21-Y33),Y21,Y33,21
-Y35-Y38,"Legal intervention, operations of war, military operations, and terrorism (Y35-Y38)",Y35,Y38,21
-Y62-Y69,Misadventures to patients during surgical and medical care (Y62-Y69),Y62,Y69,21
-Y70-Y82,Medical devices associated with adverse incidents in diagnostic and therapeutic use (Y70-Y82),Y70,Y82,21
-Y83-Y84,"Surgical and other medical procedures as the cause of abnormal reaction of the patient, or of later complication, without mention of misadventure at the time of the procedure (Y83-Y84)",Y83,Y84,21
-Y90-Y99,Supplementary factors related to causes of morbidity classified elsewhere (Y90-Y99),Y90,Y99,21
-Z00-Z13,Persons encountering health services for examinations (Z00-Z13),Z00,Z13,22
-Z14-Z15,Genetic carrier and genetic susceptibility to disease (Z14-Z15),Z14,Z15,22
-Z16,Resistance to antimicrobial drugs (Z16),Z16,Z16,22
-Z17,Estrogen receptor status (Z17),Z17,Z17,22
-Z18,Retained foreign body fragments (Z18),Z18,Z18,22
-Z19,Hormone sensitivity malignancy status (Z19),Z19,Z19,22
-Z20-Z29,Persons with potential health hazards related to communicable diseases (Z20-Z29),Z20,Z29,22
-Z30-Z39,Persons encountering health services in circumstances related to reproduction (Z30-Z39),Z30,Z39,22
-Z40-Z53,Encounters for other specific health care (Z40-Z53),Z40,Z53,22
-Z55-Z65,Persons with potential health hazards related to socioeconomic and psychosocial circumstances (Z55-Z65),Z55,Z65,22
-Z66,Do not resuscitate status (Z66),Z66,Z66,22
-Z67,Blood type (Z67),Z67,Z67,22
-Z68,Body mass index [BMI] (Z68),Z68,Z68,22
-Z69-Z76,Persons encountering health services in other circumstances (Z69-Z76),Z69,Z76,22
-Z77-Z99,Persons with potential health hazards related to family and personal history and certain conditions influencing health status (Z77-Z99),Z77,Z99,22
-U00-U49,Provisional assignment of new diseases of uncertain etiology or emergency use (U00-U49),U00,U49,20
+V00-X58,Accidents (V00-X58),V00,X58,20
+V00-V99,Transport accidents (V00-V99),V00,V99,20
+V00-V09,Pedestrian injured in transport accident (V00-V09),V00,V09,20
+V10-V19,Pedal cycle rider injured in transport accident (V10-V19),V10,V19,20
+V20-V29,Motorcycle rider injured in transport accident (V20-V29),V20,V29,20
+V30-V39,Occupant of three-wheeled motor vehicle injured in transport accident (V30-V39),V30,V39,20
+V40-V49,Car occupant injured in transport accident (V40-V49),V40,V49,20
+V50-V59,Occupant of pick-up truck or van injured in transport accident (V50-V59),V50,V59,20
+V60-V69,Occupant of heavy transport vehicle injured in transport accident (V60-V69),V60,V69,20
+V70-V79,Bus occupant injured in transport accident (V70-V79),V70,V79,20
+V80-V89,Other land transport accidents (V80-V89),V80,V89,20
+V90-V94,Water transport accidents (V90-V94),V90,V94,20
+V95-V97,Air and space transport accidents (V95-V97),V95,V97,20
+V98-V99,Other and unspecified transport accidents (V98-V99),V98,V99,20
+W00-X58,Other external causes of accidental injury (W00-X58),W00,X58,20
+W00-W19,"Slipping, tripping, stumbling and falls (W00-W19)",W00,W19,20
+W20-W49,Exposure to inanimate mechanical forces (W20-W49),W20,W49,20
+W50-W64,Exposure to animate mechanical forces (W50-W64),W50,W64,20
+W65-W74,Accidental non-transport drowning and submersion (W65-W74),W65,W74,20
+W85-W99,"Exposure to electric current, radiation and extreme ambient air temperature and pressure (W85-W99)",W85,W99,20
+X00-X08,"Exposure to smoke, fire and flames (X00-X08)",X00,X08,20
+X10-X19,Contact with heat and hot substances (X10-X19),X10,X19,20
+X30-X39,Exposure to forces of nature (X30-X39),X30,X39,20
+X50,Overexertion and strenuous or repetitive movements (X50),X50,X50,20
+X52-X58,Accidental exposure to other specified factors (X52-X58),X52,X58,20
+X71-X83,Intentional self-harm (X71-X83),X71,X83,20
+X92-Y09,Assault (X92-Y09),X92,Y09,20
+Y21-Y33,Event of undetermined intent (Y21-Y33),Y21,Y33,20
+Y35-Y38,"Legal intervention, operations of war, military operations, and terrorism (Y35-Y38)",Y35,Y38,20
+Y62-Y84,Complications of medical and surgical care (Y62-Y84),Y62,Y84,20
+Y62-Y69,Misadventures to patients during surgical and medical care (Y62-Y69),Y62,Y69,20
+Y70-Y82,Medical devices associated with adverse incidents in diagnostic and therapeutic use (Y70-Y82),Y70,Y82,20
+Y83-Y84,"Surgical and other medical procedures as the cause of abnormal reaction of the patient, or of later complication, without mention of misadventure at the time of the procedure (Y83-Y84)",Y83,Y84,20
+Y90-Y99,Supplementary factors related to causes of morbidity classified elsewhere (Y90-Y99),Y90,Y99,20
+Z00-Z13,Persons encountering health services for examinations (Z00-Z13),Z00,Z13,21
+Z14-Z15,Genetic carrier and genetic susceptibility to disease (Z14-Z15),Z14,Z15,21
+Z16,Resistance to antimicrobial drugs (Z16),Z16,Z16,21
+Z17,Estrogen receptor status (Z17),Z17,Z17,21
+Z18,Retained foreign body fragments (Z18),Z18,Z18,21
+Z19,Hormone sensitivity malignancy status (Z19),Z19,Z19,21
+Z20-Z29,Persons with potential health hazards related to communicable diseases (Z20-Z29),Z20,Z29,21
+Z30-Z39,Persons encountering health services in circumstances related to reproduction (Z30-Z39),Z30,Z39,21
+Z40-Z53,Encounters for other specific health care (Z40-Z53),Z40,Z53,21
+Z55-Z65,Persons with potential health hazards related to socioeconomic and psychosocial circumstances (Z55-Z65),Z55,Z65,21
+Z66,Do not resuscitate status (Z66),Z66,Z66,21
+Z67,Blood type (Z67),Z67,Z67,21
+Z68,Body mass index [BMI] (Z68),Z68,Z68,21
+Z69-Z76,Persons encountering health services in other circumstances (Z69-Z76),Z69,Z76,21
+Z77-Z99,Persons with potential health hazards related to family and personal history and certain conditions influencing health status (Z77-Z99),Z77,Z99,21
+U00-U49,Provisional assignment of new diseases of uncertain etiology or emergency use (U00-U49),U00,U49,22

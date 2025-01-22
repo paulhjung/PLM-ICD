@@ -50,13 +50,13 @@ def main():
     # single column. You can easily tweak this behavior (see below)
     data_files = {}
     if args.devmode:
-        data_files["train"+str(0)] = args.train_file+str(0)+f"_IJdigits_wordlim{args.wordlimit}.csv"
+        data_files["train"+str(0)] = args.train_file+str(0)+f"_2digits_wordlim{args.wordlimit}.csv"
     elif args.train_file is not None:
         for i in range(9):
             logger.info(f"Loaded dataset {i}")
-            data_files["train"+str(i)] = args.train_file+str(i)+f"_IJdigits_wordlim{args.wordlimit}.csv"
+            data_files["train"+str(i)] = args.train_file+str(i)+f"_2digits_wordlim{args.wordlimit}.csv"
     if args.validation_file is not None:
-        data_files["validation"] = args.validation_file+f"_IJdigits_wordlim{args.wordlimit}.csv"
+        data_files["validation"] = args.validation_file+f"_2digits_wordlim{args.wordlimit}.csv"
      ## validation set is for hyperparameters; learning rate (.00005 in Edin), minibatch 4?(8 or 16 in Edin), Decision boundary cutoff theshold (default in Edin is .5), Dropout is .2 in Edin, Chunksize
     datafiletype = "csv"
     #code.interact(local=locals())
@@ -78,7 +78,7 @@ def main():
         for line in f:
             if line.strip() != "":
                 labels.add(line.strip())
-    label_to_id = {"I0":1,"I1":1,"I2":1, "I3":1,"I4":1,"I5":1,"J0":2,"J1":2,"J2":2,"J3":2,"J4":2,"J5":2,"J6":2,"J7":2,"J8":2,"J9":2}
+    label_to_id = {"I0":1,"I1":1,"I2":1, "I3":1,"I4":1,"I5":1,"J0":0,"J1":0,"J2":0,"J3":0,"J4":0,"J5":0,"J6":0,"J7":0,"J8":0,"J9":0}
     num_labels = 2
     #label_list = sorted(list(labels))
     #label_to_id = {v: i for i, v in enumerate(label_list)}
